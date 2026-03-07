@@ -39,7 +39,8 @@ threads.start(function () {
     } else {
         let r = http.get('https://webdav.123pan.cn/webdav/assttyys_ng.zip', {
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36 Edg/91.0.864.59'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36 Edg/91.0.864.59',
+                'Authorization': 'Basic MTgwMDM5Nzk4MTY6bDh4em93eHk='
             }
         });
         files.ensureDir(path + '/assttyys_ng.zip');
