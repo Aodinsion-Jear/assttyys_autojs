@@ -1530,5 +1530,8 @@ export const versionList = [{
 }, {
 	version: '20260304_01',
 	desc: '修复：008突破转换方案时相关bug'
+}, {
+	version: '20260308_tyfs_01',
+	desc: '体验服适配：修改寮突破入口坐标\n禁用 GitHub 登录验证'
 }];
 export default versionList[versionList.length - 1].version;
