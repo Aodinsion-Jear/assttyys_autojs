@@ -25,6 +25,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Upload to WebDAV
+        run: |
+          curl -u "${{ secrets.WEBDAV_USERNAME }}:${{ secrets.WEBDAV_PASSWORD }}" \
+            -T assttyys_ng.zip \
+            https://webdav.123pan.cn/webdav/assttyys_ng.zip
+
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
