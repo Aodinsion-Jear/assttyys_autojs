@@ -205,8 +205,8 @@ export default function webviewSchemeList() {
 
 	// 注册返回界面的事件
 	fromEvent(ui.emitter, 'resume').subscribe((_e) => {
-		// 登录验证
-		webview.runHtmlJS('window.resumeValidUser && window.resumeValidUser()');
+		// 登录验证（已禁用）
+		// webview.runHtmlJS('window.resumeValidUser && window.resumeValidUser()');
 		// 更新定时任务界面的数据
 		webview.runHtmlJS('window.loadScheduleData && window.loadScheduleData()');
 	})
