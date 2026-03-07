@@ -38,7 +38,7 @@ export class Func010 implements IFuncOrigin {
 			]
 		],
 		oper: [
-			[center, 1280, 720, 1036, 133, 1065, 158, 500]
+			[center, 1280, 720, 1204, 408, 1259, 501, 500]
 		]
 	}, {
 		desc: '探索地图界面_含时空秘境',
