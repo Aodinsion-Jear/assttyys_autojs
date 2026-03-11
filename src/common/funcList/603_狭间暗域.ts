@@ -31,16 +31,16 @@ export class Func603 implements IFuncOrigin {
 				default: ['孔雀', '狐狸'],
 			}, {
 				name: 'sneak',
-				desc: '蛇',
+				desc: '蛇魔（打蛇魔的次数，0为不打蛇魔）',
 				type: 'number',
-				default: '10',
+				default: '0',
 			}],
 		},
 		{
 			desc: '用于战斗前进入式神录进行御魂装配和战斗上预设阵容，需启用315和510功能，逗号分隔，0,0表示不切换预设，5,1表示第5个分组第1组预设',
 			config: [{
-				name: 'preset_pair_小蛇',
-				desc: '小蛇',
+				name: 'preset_pair_蛇魔',
+				desc: '蛇魔',
 				type: 'text',
 				default: '0,0',
 			}, {
@@ -133,7 +133,7 @@ export class Func603 implements IFuncOrigin {
 			[left, 1280, 720, 129, 414, 198, 479, 700], //  白藏主暗域2
 			[left, 1280, 720, 128, 553, 200, 612, 700], //  黑豹暗域3
 		],
-	}, { // 4 小蛇
+	}, { // 4 蛇魔
 		desc: [1280, 720,
 			[
 				[center, 519, 554, 0xbec3d8],
@@ -231,29 +231,44 @@ export class Func603 implements IFuncOrigin {
 				console.log('设置错误');
 				break;
 		}
-		// 记录为数组
-		let sort_0 = null;
-		if (thisconf.boss_order === '小到大') {
-			sort_0 = [boss_select_one, boss_select_one, boss_select_one, boss_select_two, boss_select_two, boss_select_two,
-				boss_select_two, boss_select_two, boss_select_one, boss_select_one,
-				boss_select_one, boss_select_two]
-		} else {
-			sort_0 = [boss_select_one, boss_select_two,
-				boss_select_two, boss_select_two, boss_select_one, boss_select_one,
-				boss_select_one, boss_select_one, boss_select_one, boss_select_two, boss_select_two, boss_select_two]
-		}
-		let sort_1 = null;
-		if (thisconf.boss_order === '小到大') {
-			sort_1 = ['3', '4', '5', '3', '4', '5', '2', '1', '2', '1', '0', '0']
-		} else {
-			sort_1 = ['0', '0', '2', '1', '2', '1', '3', '4', '5', '3', '4', '5']
-		}
+		// 记录为数组：先打完第一个区域，再打第二个区域
+		const challengeOrder = thisconf.boss_order === '小到大'
+			? [
+				[boss_select_one, '3'],
+				[boss_select_one, '4'],
+				[boss_select_one, '5'],
+				[boss_select_one, '1'],
+				[boss_select_one, '2'],
+				[boss_select_one, '0'],
+				[boss_select_two, '3'],
+				[boss_select_two, '4'],
+				[boss_select_two, '5'],
+				[boss_select_two, '1'],
+				[boss_select_two, '2'],
+				[boss_select_two, '0'],
+			]
+			: [
+				[boss_select_one, '0'],
+				[boss_select_one, '1'],
+				[boss_select_one, '2'],
+				[boss_select_one, '3'],
+				[boss_select_one, '4'],
+				[boss_select_one, '5'],
+				[boss_select_two, '0'],
+				[boss_select_two, '1'],
+				[boss_select_two, '2'],
+				[boss_select_two, '3'],
+				[boss_select_two, '4'],
+				[boss_select_two, '5'],
+			];
+		const sort_0 = challengeOrder.map(item => item[0]);
+		const sort_1 = challengeOrder.map(item => item[1]);
 		// Real:用结算次数获取当前已攻打第几个怪物
 		const Real = thisScript.runTimes['2'] - thisScript.global.runTime_2 - (thisconf.sneak as number)
 		// 首次进入_判断换预设御魂
 		let presetStr: string | undefined
 		if (thisScript.runTimes['2'] === thisScript.global.runTime_2) {
-			presetStr = thisconf['preset_pair_小蛇'] as string;
+			presetStr = thisconf['preset_pair_蛇魔'] as string;
 		} else {
 			// 攻打固定次数换预设御魂
 			const arr = thisconf.boss_order === '小到大'
@@ -322,7 +337,7 @@ export class Func603 implements IFuncOrigin {
 		})) {
 			if (thisScript.runTimes['2'] - thisScript.global.runTime_2 < (thisconf.sneak as number)) {
 				if (thisScript.oper({
-					name: '小蛇',
+					name: '蛇魔',
 					operator: [thisOperator[4]]
 				})) {
 					return true;

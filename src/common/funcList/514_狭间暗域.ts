@@ -209,217 +209,51 @@ export class Func514 implements IFuncOrigin {
 			}
 		}
 		if (!thisScript.global.narrow_state) {//	为空的话，这里会初始化数据
-			if (thisconf && thisconf.boss_order === '小到大') {
-				switch (thisconf.boss_select) {
-					case '神龙孔雀': {
-						thisScript.global.narrow_state = {
-							'0_3': false, //	这里填写攻打顺序
-							'0_4': false,
-							'0_5': false,
-							'1_3': false,
-							'1_4': false,
-							'1_5': false,
-							'1_1': false,
-							'1_2': false,
-							'0_1': false,
-							'0_2': false,
-							'0_0': false,
-							'1_0': false,
-						}
-						break;
-					}
-					case '神龙狐狸': {
-						thisScript.global.narrow_state = {
-							'0_3': false, //	这里填写攻打顺序
-							'0_4': false,
-							'0_5': false,
-							'2_3': false,
-							'2_4': false,
-							'2_5': false,
-							'2_1': false,
-							'2_2': false,
-							'0_1': false,
-							'0_2': false,
-							'0_0': false,
-							'2_0': false,
-						}
-						break;
-					}
-					case '神龙豹子': {
-						thisScript.global.narrow_state = {
-							'0_3': false, //	这里填写攻打顺序
-							'0_4': false,
-							'0_5': false,
-							'3_3': false,
-							'3_4': false,
-							'3_5': false,
-							'3_1': false,
-							'3_2': false,
-							'0_1': false,
-							'0_2': false,
-							'0_0': false,
-							'3_0': false,
-						}
-						break;
-					}
-					case '孔雀狐狸': {
-						thisScript.global.narrow_state = {
-							'1_3': false, //	这里填写攻打顺序
-							'1_4': false,
-							'1_5': false,
-							'2_3': false,
-							'2_4': false,
-							'2_5': false,
-							'2_1': false,
-							'2_2': false,
-							'1_1': false,
-							'1_2': false,
-							'1_0': false,
-							'2_0': false,
-						}
-						break;
-					}
-					case '孔雀豹子': {
-						thisScript.global.narrow_state = {
-							'1_3': false, //	这里填写攻打顺序
-							'1_4': false,
-							'1_5': false,
-							'3_3': false,
-							'3_4': false,
-							'3_5': false,
-							'3_1': false,
-							'3_2': false,
-							'1_1': false,
-							'1_2': false,
-							'1_0': false,
-							'3_0': false,
-						}
-						break;
-					}
-					case '狐狸豹子': {
-						thisScript.global.narrow_state = {
-							'2_3': false, //	这里填写攻打顺序
-							'2_4': false,
-							'2_5': false,
-							'3_3': false,
-							'3_4': false,
-							'3_5': false,
-							'3_1': false,
-							'3_2': false,
-							'2_1': false,
-							'2_2': false,
-							'2_0': false,
-							'3_0': false,
-						}
-						break;
-					}
-				}
-			} else {
-				switch (thisconf.boss_select) {
-					case '神龙孔雀': {
-						thisScript.global.narrow_state = {
-							'0_0': false,
-							'1_0': false,
-							'1_1': false,
-							'1_2': false,
-							'0_1': false,
-							'0_2': false,
-							'0_3': false, //	这里填写攻打顺序
-							'0_4': false,
-							'0_5': false,
-							'1_3': false,
-							'1_4': false,
-							'1_5': false,
-						}
-						break;
-					}
-					case '神龙狐狸': {
-						thisScript.global.narrow_state = {
-							'0_0': false,
-							'2_0': false,
-							'2_1': false,
-							'2_2': false,
-							'0_1': false,
-							'0_2': false,
-							'0_3': false, //	这里填写攻打顺序
-							'0_4': false,
-							'0_5': false,
-							'2_3': false,
-							'2_4': false,
-							'2_5': false,
-						}
-						break;
-					}
-					case '神龙豹子': {
-						thisScript.global.narrow_state = {
-							'0_0': false,
-							'3_0': false,
-							'3_1': false,
-							'3_2': false,
-							'0_1': false,
-							'0_2': false,
-							'0_3': false, //	这里填写攻打顺序
-							'0_4': false,
-							'0_5': false,
-							'3_3': false,
-							'3_4': false,
-							'3_5': false,
-						}
-						break;
-					}
-					case '孔雀狐狸': {
-						thisScript.global.narrow_state = {
-							'1_0': false,
-							'2_0': false,
-							'2_1': false,
-							'2_2': false,
-							'1_1': false,
-							'1_2': false,
-							'1_3': false, //	这里填写攻打顺序
-							'1_4': false,
-							'1_5': false,
-							'2_3': false,
-							'2_4': false,
-							'2_5': false,
-						}
-						break;
-					}
-					case '孔雀豹子': {
-						thisScript.global.narrow_state = {
-							'1_0': false,
-							'3_0': false,
-							'3_1': false,
-							'3_2': false,
-							'1_1': false,
-							'1_2': false,
-							'1_3': false, //	这里填写攻打顺序
-							'1_4': false,
-							'1_5': false,
-							'3_3': false,
-							'3_4': false,
-							'3_5': false,
-						}
-						break;
-					}
-					case '狐狸豹子': {
-						thisScript.global.narrow_state = {
-							'2_0': false,
-							'3_0': false,
-							'3_1': false,
-							'3_2': false,
-							'2_1': false,
-							'2_2': false,
-							'2_3': false, //	这里填写攻打顺序
-							'2_4': false,
-							'2_5': false,
-							'3_3': false,
-							'3_4': false,
-							'3_5': false,
-						}
-						break;
-					}
-				}
-			}
+			const areaSelectMap: Record<string, [number, number]> = {
+				'神龙孔雀': [0, 1],
+				'神龙狐狸': [0, 2],
+				'神龙豹子': [0, 3],
+				'孔雀狐狸': [1, 2],
+				'孔雀豹子': [1, 3],
+				'狐狸豹子': [2, 3],
+			};
+			const selectedAreas = areaSelectMap[thisconf.boss_select as string] || [0, 1];
+			const firstArea = selectedAreas[0];
+			const secondArea = selectedAreas[1];
+			const challengeOrder = thisconf && thisconf.boss_order === '小到大'
+				? [
+					`${firstArea}_3`,
+					`${firstArea}_4`,
+					`${firstArea}_5`,
+					`${firstArea}_1`,
+					`${firstArea}_2`,
+					`${firstArea}_0`,
+					`${secondArea}_3`,
+					`${secondArea}_4`,
+					`${secondArea}_5`,
+					`${secondArea}_1`,
+					`${secondArea}_2`,
+					`${secondArea}_0`,
+				]
+				: [
+					`${firstArea}_0`,
+					`${firstArea}_1`,
+					`${firstArea}_2`,
+					`${firstArea}_3`,
+					`${firstArea}_4`,
+					`${firstArea}_5`,
+					`${secondArea}_0`,
+					`${secondArea}_1`,
+					`${secondArea}_2`,
+					`${secondArea}_3`,
+					`${secondArea}_4`,
+					`${secondArea}_5`,
+				];
+
+			thisScript.global.narrow_state = challengeOrder.reduce((stateMap, stateKey) => {
+				stateMap[stateKey] = false;
+				return stateMap;
+			}, {} as Record<string, boolean>);
 		}
 		if (thisScript.global.narrow_mode) {
 			if (
