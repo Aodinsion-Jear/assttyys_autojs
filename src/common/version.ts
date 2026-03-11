@@ -1533,5 +1533,11 @@ export const versionList = [{
 }, {
 	version: '20260308_tyfs_01',
 	desc: '体验服适配：修改寮突破入口坐标\n禁用 GitHub 登录验证'
+}, {
+	version: '20260308_tyfs_02',
+	desc: '体验服适配：狭间暗域默认不打小蛇'
+}, {
+	version: '20260312_tyfs_01',
+	desc: '体验服适配：狭间暗域攻打顺序调整为先清第一个区域，再清第二个区域'
 }];
 export default versionList[versionList.length - 1].version;
