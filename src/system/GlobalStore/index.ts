@@ -56,6 +56,7 @@ export type globalRootType = {
 	banquet_change_flag: boolean,   //  宴会轮换开关标识
 	gateOfHades_state: boolean,     //  阴门状态
 	team_up_lagTime: null | Date,    // 组队延时
+	team_create_wait_time: null | Date,  // 创建队伍等待计时
 	team_up_Frist: boolean,  // 首次组队
 	xsOpened: boolean, // 是否打开过悬赏
 	xsFilter: Record<number, number>,
@@ -186,6 +187,7 @@ export const globalRoot: globalRootType = {
 	banquet_change_flag: false,
 	gateOfHades_state: false,
 	team_up_lagTime: null,
+	team_create_wait_time: null,
 	team_up_Frist: true,
 	xsOpened: false,
 	intensify_lagTime: null,
