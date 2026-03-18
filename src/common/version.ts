@@ -1548,5 +1548,8 @@ export const versionList = [{
 }, {
 	version: '20260319_tyfs_01',
 	desc: '体验服适配：金币妖怪创建队伍模式，等待30秒无人加入后直接单人挑战'
+}, {
+	version: '20260319_tyfs_02',
+	desc: '移除 GitHub OAuth 登录认证界面，直接进入主页'
 }];
 export default versionList[versionList.length - 1].version;
