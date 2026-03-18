@@ -96,9 +96,25 @@ export class Func038 implements IFuncOrigin {
 					operator: [thisOperator[1], thisOperator[2], thisOperator[3]],
 				})
 			) {
+				// 开始计时，超过30秒直接单人挑战
+				if (!thisScript.global.team_create_wait_time) {
+					thisScript.global.team_create_wait_time = new Date();
+				}
+				if (new Date().getTime() - thisScript.global.team_create_wait_time.getTime() > 30000) {
+					console.log('创建队伍等待超过30秒，单人直接挑战');
+					thisScript.global.team_create_wait_time = undefined;
+					return thisScript.oper({
+						id: 38,
+						name: '妖怪_组队界面无人超时 单人开撸',
+						operator: [{
+							oper: thisOperator[0].oper
+						}],
+					});
+				}
 				// 继续等
 				return false;
 			} else {
+				thisScript.global.team_create_wait_time = undefined;
 				return thisScript.oper({
 					id: 38,
 					name: '妖怪_组队界面有人 开撸',
@@ -108,6 +124,7 @@ export class Func038 implements IFuncOrigin {
 				});
 			}
 		}
+		thisScript.global.team_create_wait_time = undefined;
 		return false;
 	}
 }
