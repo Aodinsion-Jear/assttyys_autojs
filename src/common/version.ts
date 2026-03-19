@@ -1551,5 +1551,8 @@ export const versionList = [{
 }, {
 	version: '20260319_tyfs_02',
 	desc: '移除 GitHub OAuth 登录认证界面，直接进入主页'
+}, {
+	version: '20260319_tyfs_03',
+	desc: '彻底移除 OAuth 验证残留：修复 webloaded 不触发导致脚本无法启动的问题'
 }];
 export default versionList[versionList.length - 1].version;
