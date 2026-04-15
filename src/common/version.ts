@@ -1560,5 +1560,8 @@ export const versionList = [{
 }, {
 	version: '20260319_tyfs_03',
 	desc: '彻底移除 OAuth 验证残留：修复 webloaded 不触发导致脚本无法启动的问题'
+}, {
+	version: '20260415_tyfs_01',
+	desc: '同步原作者更新至20260314：修复拓展包、商店、契灵、师徒、道馆等多种功能，新增690-694启动游戏/师徒流程/协战式神等'
 }];
 export default versionList[versionList.length - 1].version;
