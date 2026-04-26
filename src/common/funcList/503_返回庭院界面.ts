@@ -22,12 +22,6 @@ export class Func503 implements IFuncOrigin {
 			desc: '下一个方案',
 			type: 'scheme',
 			default: '通用准备退出',
-		}, {
-			name: 'afterCountOper',
-			desc: '不开启切换方案	则',
-			type: 'list',
-			data: ['停止脚本', '关闭应用', '不进行任何操作'],
-			default: '停止脚本',
 		}]
 	}, {
 
@@ -142,7 +136,7 @@ export class Func503 implements IFuncOrigin {
 			name: 'oper_26',
 			desc: '26 组队界面',
 			type: 'switch',
-			default: true,
+			default: false,
 		}, {
 			name: 'oper_27',
 			desc: '27 探索里面',
@@ -246,6 +240,11 @@ export class Func503 implements IFuncOrigin {
 		}, {
 			name: 'oper_47',
 			desc: '47 御灵界面',
+			type: 'switch',
+			default: true,
+		}, {
+			name: 'oper_48',
+			desc: '48 设置界面',
 			type: 'switch',
 			default: true,
 		}
@@ -492,12 +491,18 @@ export class Func503 implements IFuncOrigin {
 			[center, 1280, 720, 1180, 110, 1230, 153, 1000],
 		]
 	}, {
-		// 22 战斗场景等待
-		desc: '战斗界面',
-		// oper: [
-		// 	[center, 1280, 720, 16, 12, 60, 56, 1000],
-		// 	[center, 1280, 720, 678, 396, 806, 450, 3000],
-		// ]
+		// 22 战斗场景等待 废弃(desc取色乱取的)
+		desc: [1280, 720,
+			[
+				[left, 230, 112, 0x171519],
+				[right, 726, 224, 0x0b090a],
+				[center, 571, 478, 0x57474d],
+				[right, 1016, 187, 0x182873],
+				[center, 540, 181, 0xa854e7],
+				[center, 343, 242, 0xaa57ed],
+				[center, 385, 362, 0x23251c],
+			]
+		],
 		oper: [
 			[center, 1280, 720, -1, -1, -1, -1, 0]
 		]
@@ -610,12 +615,13 @@ export class Func503 implements IFuncOrigin {
 	}, { // 35 六道之门
 		desc: [1280, 720,
 			[
-				[left, 24, 22, 0x454570],
 				[left, 40, 25, 0xd4d6e9],
 				[left, 58, 39, 0x515e7a],
-				[left, 47, 41, 0x727b97],
 				[left, 36, 50, 0xe0e1f2],
 				[left, 23, 41, 0xeff0f9],
+				[left, 316, 18, 0xefcf8c],
+				[center, 343, 30, 0x31386b],
+				[left, 253, 39, 0x5a3716],
 			]
 		],
 		oper: [
@@ -794,26 +800,27 @@ export class Func503 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 21, 16, 67, 56, 1000],
 		]
+	}, { // 48 庭院点击头像的设置界面
+		desc: [1280, 720,
+			[
+				[left, 96, 83, 0xe8c797],
+				[center, 638, 32, 0x5f5647],
+				[center, 813, 32, 0x5f5647],
+				[right, 993, 32, 0x5f5647],
+				[right, 1108, 98, 0xe7d7ce],
+				[left, 140, 224, 0xdba060],
+				[left, 130, 632, 0xdfddd0],
+				[left, 146, 655, 0xe4d8cb],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 1090, 77, 1124, 119, 1000],
+		]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		const thisConf = thisScript.scheme.config['503'];
 		let enabledThisOperator = [];
-		if (typeof thisConf.oper_0 === 'undefined') {
-			// 升级兼容配置为空的情况，这一块代码暂时保留，以后有新增要处理的界面只新增配置，不修改这一块代码
-			enabledThisOperator = [
-				thisOperator[0], thisOperator[1], thisOperator[2],
-				thisOperator[3], thisOperator[5], thisOperator[6],
-				thisOperator[7], thisOperator[10], thisOperator[11],
-				thisOperator[14], thisOperator[15], thisOperator[17],
-				thisOperator[18], thisOperator[19], thisOperator[20],
-				thisOperator[21], thisOperator[22], thisOperator[24],
-				thisOperator[25], thisOperator[27], thisOperator[28],
-				thisOperator[29], thisOperator[30], thisOperator[31],
-				thisOperator[33],
-			]
-		} else {
-			enabledThisOperator = Object.keys(thisConf).filter(keyName => /oper_\d+/.test(keyName) && thisConf[keyName]).map(keyName => thisOperator[parseInt(keyName.split('_')[1])]);
-		}
+		enabledThisOperator = Object.keys(thisConf).filter(keyName => /oper_\d+/.test(keyName) && thisConf[keyName]).map(keyName => thisOperator[parseInt(keyName.split('_')[1])]);
 		if (thisScript.oper({
 			id: 503,
 			name: '返回庭院',
@@ -880,7 +887,7 @@ export class Func503 implements IFuncOrigin {
 					next_scheme = thisConf.next_scheme as string;
 				}
 				if (!next_scheme) {
-					if ('停止脚本' === thisConf.afterCountOper || !thisConf.afterCountOper) {
+					if ('停止脚本' === thisConf.afterCountOper) {
 						thisScript.doPush(thisScript, { text: `[${thisScript.schemeHistory.map(item => item.schemeName).join('、')}]已停止，请查看。`, before() { thisScript.myToast('脚本即将停止，正在上传数据'); } });
 						thisScript.stop();
 					} else if ('关闭应用' === thisConf.afterCountOper) {

@@ -20,13 +20,6 @@ export class Func040 implements IFuncOrigin {
 			desc: '下一个方案',
 			type: 'scheme',
 			default: '返回庭院',
-		}, {
-			name: 'afterCountOper',
-			desc: '不开启切换方案	则',
-			type: 'list',
-			data: ['停止脚本', '关闭应用', '不进行任何操作'],
-			default: '停止脚本',
-			value: null,
 		}]
 	}, {
 		desc: '准备界面下关闭buff',
@@ -79,12 +72,8 @@ export class Func040 implements IFuncOrigin {
 					next_scheme = thisconf.next_scheme as string;
 					sleep(3000);
 				}
-				if (thisconf && thisconf.scheme_switch_enabled) {
-					next_scheme = thisconf.next_scheme;
-					sleep(3000);
-				}
 				if (!next_scheme) {
-					if ('停止脚本' === thisconf.afterCountOper || !thisconf.afterCountOper) {
+					if ('停止脚本' === thisconf.afterCountOper) {
 						thisScript.doPush(thisScript, { text: `[${thisScript.schemeHistory.map(item => item.schemeName).join('、')}]已停止，请查看。`, before() { thisScript.myToast('脚本即将停止，正在上传数据'); } });
 						thisScript.stop();
 					} else if ('关闭应用' === thisconf.afterCountOper) {
