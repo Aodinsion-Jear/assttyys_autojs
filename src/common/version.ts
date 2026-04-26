@@ -1566,5 +1566,8 @@ export const versionList = [{
 }, {
 	version: '20260415_tyfs_01',
 	desc: '同步原作者更新至20260314：修复拓展包、商店、契灵、师徒、道馆等多种功能，新增690-694启动游戏/师徒流程/协战式神等'
+}, {
+	version: '20260426_tyfs_01',
+	desc: '同步原作者更新至20260423：修复道馆、寮活动、悬赏、真蛇、六道之门、WebDAV等，新增1109秘闻分享/1110神秘商店/1111百鬼棋局商店，320改为挂机模式'
 }];
 export default versionList[versionList.length - 1].version;
