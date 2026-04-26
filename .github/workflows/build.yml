@@ -39,9 +39,17 @@ jobs:
 
       - name: Upload to WebDAV
         run: |
-          curl -u "${{ secrets.WEBDAV_USERNAME }}:${{ secrets.WEBDAV_PASSWORD }}" \
-            -T assttyys_ng.zip \
-            https://webdav.123pan.cn/webdav/assttyys_ng.zip
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -u "${{ secrets.WEBDAV_USERNAME }}:${{ secrets.WEBDAV_PASSWORD }}" \
+            -X PUT \
+            --data-binary @assttyys_ng.zip \
+            --max-time 120 \
+            https://webdav.123pan.cn/webdav/assttyys_ng.zip)
+          echo "HTTP status: $HTTP_CODE"
+          if [ "$HTTP_CODE" != "201" ] && [ "$HTTP_CODE" != "204" ] && [ "$HTTP_CODE" != "200" ]; then
+            echo "Upload failed with HTTP $HTTP_CODE"
+            exit 1
+          fi
 
       - name: Release
         uses: softprops/action-gh-release@v2
