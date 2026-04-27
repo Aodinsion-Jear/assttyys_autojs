@@ -1584,5 +1584,8 @@ export const versionList = [{
 }, {
 	version: '20260427_tyfs_04',
 	desc: '新增探索二级界面普通难度比色，支持按配置选择普通/困难难度后点探索'
+}, {
+	version: '20260427_tyfs_05',
+	desc: '更新探索章节面板已展开/未展开比色颜色点'
 }];
 export default versionList[versionList.length - 1].version;
