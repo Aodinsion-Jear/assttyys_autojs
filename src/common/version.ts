@@ -1575,5 +1575,8 @@ export const versionList = [{
 }, {
 	version: '20260427_tyfs_01',
 	desc: '适配新版探索UI：重写探索章节进入逻辑，改为展开章节面板→OCR滑动定位第二十八章→选困难→点探索'
+}, {
+	version: '20260427_tyfs_02',
+	desc: '修复探索地图界面比色，去除OCR改为固定滑动次数到底部点击章节，调整滑动幅度为3倍'
 }];
 export default versionList[versionList.length - 1].version;

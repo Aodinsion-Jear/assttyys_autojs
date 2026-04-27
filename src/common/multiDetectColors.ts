@@ -878,14 +878,13 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 	'探索章节面板未展开': {
 		desc: [1280, 720,
 			[
-				[left,   55,  36, 0xA9743F],
-				[left,   97, 654, 0xB68B55],
-				[left,  190, 654, 0xDDBB1F],
-				[left,  274, 646, 0xC6B2A7],
-				[right, 1232, 126, 0xE8A78B],
-				[right, 1262, 153, 0xB0684F],
-				[right, 1267, 363, 0xBDA478],
-				[right, 1231, 394, 0xCCB880],
+				[left,    57,  34, 0xa5713f],
+				[right, 1244, 123, 0x604a32],
+				[left,    88, 651, 0xf7ddb8],
+				[left,   194, 654, 0xfdfce0],
+				[center,  459, 657, 0xd5543c],
+				[left,   965, 660, 0xbbb180],
+				[right, 1266, 205, 0xd1946f],
 			]
 		]
 	},
