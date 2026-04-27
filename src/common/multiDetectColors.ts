@@ -901,6 +901,19 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 			]
 		]
 	},
+	'探索二级界面_普通': {
+		desc: [1280, 720,
+			[
+				[left,   74, 233, 0x9a381d],
+				[left,   59,  32, 0x97673b],
+				[right, 1040, 592, 0xded2bb],
+				[right, 1124, 583, 0x44433e],
+				[right, 1154, 585, 0x43413e],
+				[right, 1198, 579, 0x42403c],
+				[right,  915, 610, 0x827e73],
+			]
+		]
+	},
 };
 
 
