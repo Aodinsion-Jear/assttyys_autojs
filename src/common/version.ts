@@ -1572,5 +1572,8 @@ export const versionList = [{
 }, {
 	version: '20260426_tyfs_02',
 	desc: '适配游戏UI更新：修复探索地图界面识别颜色，更新结界突破入口（地图突破按钮）坐标，更新探索地图中地域鬼王、御灵、御魂、觉醒副本入口坐标'
+}, {
+	version: '20260427_tyfs_01',
+	desc: '适配新版探索UI：重写探索章节进入逻辑，改为展开章节面板→OCR滑动定位第二十八章→选困难→点探索'
 }];
 export default versionList[versionList.length - 1].version;

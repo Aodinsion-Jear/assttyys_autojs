@@ -862,7 +862,46 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 				[left, -1, -1, 0x000000],
 			]
 		]
-	}
+	},
+	'探索章节面板已展开': {
+		desc: [1280, 720,
+			[
+				[left,   27,  22, 0xA27041],
+				[right, 1172, 130, 0x959087],
+				[left,  1071, 184, 0x624936],
+				[left,    99, 658, 0xE6BE5C],
+				[left,   192, 655, 0xE4CC4F],
+				[left,   969, 652, 0xB4C3D1],
+			]
+		]
+	},
+	'探索章节面板未展开': {
+		desc: [1280, 720,
+			[
+				[left,   55,  36, 0xA9743F],
+				[left,   97, 654, 0xB68B55],
+				[left,  190, 654, 0xDDBB1F],
+				[left,  274, 646, 0xC6B2A7],
+				[right, 1232, 126, 0xE8A78B],
+				[right, 1262, 153, 0xB0684F],
+				[right, 1267, 363, 0xBDA478],
+				[right, 1231, 394, 0xCCB880],
+			]
+		]
+	},
+	'探索二级界面_困难': {
+		desc: [1280, 720,
+			[
+				[left,   57,  29, 0x9C693B],
+				[left,   72, 329, 0x9D3B1F],
+				[left,  161, 342, 0x7D2619],
+				[right,  944, 584, 0xE0D5C1],
+				[right, 1131, 587, 0xE1D7C1],
+				[left,  974, 637, 0x3C2B26],
+				[right, 1168, 593, 0x7D5C47],
+			]
+		]
+	},
 };
 
 
