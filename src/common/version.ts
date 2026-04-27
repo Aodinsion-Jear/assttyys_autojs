@@ -1587,5 +1587,8 @@ export const versionList = [{
 }, {
 	version: '20260427_tyfs_05',
 	desc: '更新探索章节面板已展开/未展开比色颜色点'
+}, {
+	version: '20260427_tyfs_06',
+	desc: '修复func025探索单人退出：更新比色颜色点，修正退出按钮坐标，新增二级界面排除逻辑'
 }];
 export default versionList[versionList.length - 1].version;
