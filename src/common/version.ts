@@ -1578,5 +1578,8 @@ export const versionList = [{
 }, {
 	version: '20260427_tyfs_02',
 	desc: '修复探索地图界面比色，去除OCR改为固定滑动次数到底部点击章节，调整滑动幅度为3倍'
+}, {
+	version: '20260427_tyfs_03',
+	desc: '再次更新探索章节面板未展开比色颜色点'
 }];
 export default versionList[versionList.length - 1].version;
