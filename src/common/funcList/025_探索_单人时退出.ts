@@ -11,17 +11,20 @@ export class Func025 implements IFuncOrigin {
 	name = '探索_单人时退出';
 	desc = '探索小怪界面时，若只有自己一个人在里面，则退出';
 	operator: IFuncOperatorOrigin[] = [{
-		desc: [1280, 720,
+		desc: [1280, 720, // 0 组队匹配上了的话就不做任何操作
 			[
-				[left,   57,  34, 0x9b6a3b],
-				[left,  147, 341, 0x802417],
-				[right,  934, 587, 0xe1d6c0],
-				[right, 1132, 601, 0xe5d7c1],
-				[right, 1237, 411, 0x2a2521],
+				[left, 46, 36, 0xf7e3a5],
+				[left, 36, 570, 0x983254],
+				[left, 29, 672, 0x615a77],
+				[right, 1227, 30, 0xd3af84],
+				[right, 1174, 33, 0xd7b287],
+				[left, 64, 456, 0xf6f6e9],
+				[left, 72, 444, 0x483726]
 			]
 		],
 		oper: [
-			[left, 1280, 720, 24, 15, 63, 50, 1000],
+			[left, 1280, 720, 32, 45, 70, 86, 1000],
+			[center, 1280, 720, 700, 386, 850, 418, 2000]
 		]
 	}, { // 1 探索界面
 		desc: [1280, 720,
@@ -48,16 +51,6 @@ export class Func025 implements IFuncOrigin {
 		]
 	}]
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
-		// 在探索二级界面时不执行退出逻辑，避免误退出
-		if (thisScript.oper({
-			name: '排除_探索二级界面',
-			operator: [
-				{ desc: '探索二级界面_普通' },
-				{ desc: '探索二级界面_困难' },
-			]
-		})) {
-			return false;
-		}
 		if (thisScript.oper({
 			name: '探索界面',
 			operator: [{ desc: thisOperator[1].desc }]
