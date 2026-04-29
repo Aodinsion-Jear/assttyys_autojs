@@ -23,10 +23,10 @@ export class Func013 implements IFuncOrigin {
 			default: '1151,348',
 		}]
 	}, {
-		desc: '探索进入章节_新版',
+		desc: '新版进入探索28章节',
 		config: [{
 			name: 'new_go',
-			desc: '新版探索进入章节',
+			desc: '新版进入探索28章节',
 			type: 'switch',
 			default: false,
 		}]
