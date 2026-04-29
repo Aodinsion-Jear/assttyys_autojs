@@ -3,7 +3,7 @@ import { IFuncOrigin, IFuncOperatorOrigin } from '@/interface/IFunc';
 // const normal = -1; //定义常量
 const left = 0;
 const center = 1;
-// const right = 2;
+const right = 2;
 
 export class Func024 implements IFuncOrigin {
 	id = 24;
@@ -60,6 +60,26 @@ export class Func024 implements IFuncOrigin {
 		],
 		oper: [
 			[center, 1280, 720, 1215, 32, 1230, 50, 1000],
+		]
+	}, { // 思金神活动获得奖励
+		desc: [1280, 720,
+			[
+				[left, 45, 46, 0x30343c],
+				[left, 71, 48, 0x343841],
+				[left, 100, 50, 0x363c45],
+				[left, 42, 75, 0x383d46],
+				[left, 73, 75, 0x373d47],
+				[left, 99, 76, 0x343a43],
+				[right, 1182, 263, 0x292b36],
+				[right, 1187, 300, 0x735a3c],
+				[right, 1183, 350, 0x303136],
+				[right, 1208, 271, 0x1d1e24],
+				[right, 1213, 304, 0x2e2e31],
+				[right, 1212, 341, 0x292d36],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 850, 580, 1255, 703, 1000],
 		]
 	}]
 }
