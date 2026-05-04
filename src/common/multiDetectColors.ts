@@ -528,12 +528,13 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 	'探索地图界面': {
 		desc: [1280, 720,
 			[
-				[right, 1168, 146, 0xd5cec1],
-				[right, 1124, 32, 0xd7b18b],
-				[right, 1226, 30, 0xd3af84],
-				[left, 18, 705, 0x754830],
-				[left, 210, 711, 0x72452f],
-				[left, 45, 36, 0xf5e5a6],
+				[left, 53, 36, 0xb47e48],
+				[right, 702, 25, 0x6a6d5b],
+				[right, 885, 32, 0xf9793a],
+				[center, 496, 25, 0x82331c],
+				[left, 265, 646, 0xdbcfc5],
+				[left, 97, 651, 0xb88c59],
+				[right, 954, 647, 0xdee2ef],
 			]
 		]
 	},

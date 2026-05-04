@@ -1575,5 +1575,8 @@ export const versionList = [{
 }, {
 	version: '20260505_tyfs_01',
 	desc: '体验服适配：适配体服结界突破入口（更新探索地图界面比色点及突破入口坐标）'
+}, {
+	version: '20260505_tyfs_02',
+	desc: '体验服适配：更新探索地图界面比色点'
 }];
 export default versionList[versionList.length - 1].version;
