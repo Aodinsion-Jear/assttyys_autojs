@@ -540,7 +540,7 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 	'探索地图界面_新版': {
 		desc: [1280, 720,
 			[
-				[right, 1252, 129, 0xd6b68b],
+				[right, 1226, 130, 0xede2bf], // 原(1252,129)=0xd6b68b已失效，2026-04更新
 				[right, 1105, 49, 0xcca273],
 				[right, 1046, 32, 0xd6c4a2],
 				[left, 34, 37, 0xf5e5a6],
@@ -550,17 +550,18 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 			]
 		],
 	},
-	'探索地图界面_含时空秘境': {
+	'新版探索地图界面': {
 		desc: [1280, 720,
 			[
-				[left, 45, 36, 0xf5e5a6],
-				[right, 1168, 146, 0xd5cec1],
-				[right, 1124, 32, 0xd7b18b],
-				[right, 1226, 30, 0xd3af84],
-				[left, 18, 705, 0x794c31],
-				[left, 206, 710, 0x72452f],
-				[left, 251, 674, 0x1d140f],
-				[left, 287, 654, 0xffffff],
+				[left, 24, 30, 0xa8733f],
+				[left, 37, 38, 0xf5e2a3],
+				[left, 28, 55, 0xaa7847],
+				[left, 75, 654, 0x67343f],
+				[left, 105, 656, 0xebc9a0],
+				[left, 92, 674, 0xae6449],
+				[left, 262, 642, 0xdea084],
+				[left, 307, 640, 0xb7873d],
+				[left, 275, 666, 0x0b0909],
 			]
 		],
 	},

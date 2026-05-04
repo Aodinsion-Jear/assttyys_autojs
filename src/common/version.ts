@@ -1572,5 +1572,8 @@ export const versionList = [{
 }, {
 	version: '20260429_tyfs_01',
 	desc: '通用活动兼容思金神_天现迷局'
+}, {
+	version: '20260505_tyfs_01',
+	desc: '体验服适配：适配体服结界突破入口（更新探索地图界面比色点及突破入口坐标）'
 }];
 export default versionList[versionList.length - 1].version;

@@ -9,8 +9,8 @@ export class Func308 implements IFuncOrigin {
 	name = '探索地图进入每周挑战秘闻';
 	desc = '从探索地图进入每周挑战秘闻';
 	operator: IFuncOperatorOrigin[] = [{
-		// 0 体服 探索地图界面_含时空秘境
-		desc: '探索地图界面_含时空秘境',
+		// 0 体服 新版探索地图界面
+		desc: '新版探索地图界面',
 		oper: [
 			[center, 1280, 720, 641, 638, 706, 694, 1000],
 		]
