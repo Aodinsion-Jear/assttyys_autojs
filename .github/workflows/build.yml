@@ -37,19 +37,22 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload to WebDAV
+      - name: Upload to server
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SERVER_UPLOAD_PATH: ${{ secrets.SERVER_UPLOAD_PATH }}
         run: |
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
-            -u "${{ secrets.WEBDAV_USERNAME }}:${{ secrets.WEBDAV_PASSWORD }}" \
-            -X PUT \
-            --data-binary @assttyys_ng.zip \
-            --max-time 120 \
-            https://webdav.123pan.cn/webdav/assttyys_ng.zip)
-          echo "HTTP status: $HTTP_CODE"
-          if [ "$HTTP_CODE" != "201" ] && [ "$HTTP_CODE" != "204" ] && [ "$HTTP_CODE" != "200" ]; then
-            echo "Upload failed with HTTP $HTTP_CODE"
-            exit 1
-          fi
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SERVER_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$SERVER_PORT" "$SERVER_HOST" >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p \"$(dirname \"$SERVER_UPLOAD_PATH\")\""
+          scp -i ~/.ssh/deploy_key -P "$SERVER_PORT" assttyys_ng.zip "$SERVER_USER@$SERVER_HOST:$SERVER_UPLOAD_PATH"
+          ssh -i ~/.ssh/deploy_key -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ls -lh \"$SERVER_UPLOAD_PATH\""
 
       - name: Release
         uses: softprops/action-gh-release@v2

@@ -37,10 +37,9 @@ threads.start(function () {
             ui.finish();
         }, 1000);
     } else {
-        let r = http.get('https://webdav.123pan.cn/webdav/assttyys_ng.zip', {
+        let r = http.get('https://asttyys.gzlyyds.cn/assttyys/assttyys_ng.zip', {
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36 Edg/91.0.864.59',
-                'Authorization': 'Basic MTgwMDM5Nzk4MTY6bDh4em93eHk='
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36 Edg/91.0.864.59'
             }
         });
         files.ensureDir(path + '/assttyys_ng.zip');
