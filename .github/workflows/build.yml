@@ -50,9 +50,10 @@ jobs:
           printf '%s\n' "$SERVER_SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "$SERVER_PORT" "$SERVER_HOST" >> ~/.ssh/known_hosts
-          ssh -i ~/.ssh/deploy_key -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p \"$(dirname \"$SERVER_UPLOAD_PATH\")\""
+          upload_dir="${SERVER_UPLOAD_PATH%/*}"
+          ssh -i ~/.ssh/deploy_key -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p $upload_dir"
           scp -i ~/.ssh/deploy_key -P "$SERVER_PORT" assttyys_ng.zip "$SERVER_USER@$SERVER_HOST:$SERVER_UPLOAD_PATH"
-          ssh -i ~/.ssh/deploy_key -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ls -lh \"$SERVER_UPLOAD_PATH\""
+          ssh -i ~/.ssh/deploy_key -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ls -lh $SERVER_UPLOAD_PATH"
 
       - name: Release
         uses: softprops/action-gh-release@v2
