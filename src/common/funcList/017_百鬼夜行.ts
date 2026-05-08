@@ -79,18 +79,16 @@ export class Func017 implements IFuncOrigin {
 	}, { // 4 邀请好友
 		desc: [1280, 720,
 			[
-				[center, 170, 600, 0xc3b99e],
-				[center, 392, 156, 0xe7bc93],
-				[center, 391, 200, 0xd7bfae],
-				[center, 582, 208, 0xd7bfae],
-				[center, 886, 276, 0xeac9a0],
-				[center, 608, 277, 0xeac9a0],
-				[center, 1084, 202, 0xb1a29e],
-				[center, 1132, 590, 0x322518]]
+				[left, 153, 149, 0xe4b68e],
+				[left, 243, 153, 0x986349],
+				[center, 343, 155, 0xa26b4e],
+				[left, 156, 198, 0xd2b8a6],
+				[right, 711, 554, 0xd5bfac],
+			]
 		],
 		oper: [
-			[center, 1280, 720, 468, 233, 624, 550, 500],
-			[center, 1280, 720, 731, 229, 890, 563, 500],
+			[center, 1280, 720, 238, 236, 416, 539, 1000],
+			[center, 1280, 720, 510, 229, 684, 539, 1000],
 		]
 	}, { // 5
 		desc: [1280, 720,
@@ -146,7 +144,23 @@ export class Func017 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, -1, -1, -1, -1, 1000]
 		]
-	}];
+	}, { // 9 邀请好友
+		desc: [1280, 720,
+			[
+				[center, 170, 600, 0xc3b99e],
+				[center, 392, 156, 0xe7bc93],
+				[center, 391, 200, 0xd7bfae],
+				[center, 582, 208, 0xd7bfae],
+				[center, 886, 276, 0xeac9a0],
+				[center, 608, 277, 0xeac9a0],
+				[center, 1084, 202, 0xb1a29e],
+				[center, 1132, 590, 0x322518]]
+		],
+		oper: [
+			[center, 1280, 720, 468, 233, 624, 550, 500],
+			[center, 1280, 720, 731, 229, 890, 563, 500],
+		]
+	},];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		const thisconf = thisScript.scheme.config['17'];
 		if (thisScript.oper({
@@ -162,6 +176,16 @@ export class Func017 implements IFuncOrigin {
 			operator: [{
 				desc: thisOperator[4].desc,
 				oper: [thisOperator[4].oper[random(0, 1)]]
+			}]
+		})) {
+			thisScript.keepScreen(false);
+		}
+		if (thisScript.oper({
+			id: 17,
+			name: '百鬼夜行_邀请好友',
+			operator: [{
+				desc: thisOperator[9].desc,
+				oper: [thisOperator[9].oper[random(0, 1)]]
 			}]
 		})) {
 			thisScript.keepScreen(false);

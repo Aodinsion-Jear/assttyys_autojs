@@ -59,7 +59,7 @@ export type globalRootType = {
 	team_create_wait_time: null | Date,  // 创建队伍等待计时
 	team_up_Frist: boolean,  // 首次组队
 	xsOpened: boolean, // 是否打开过悬赏
-	xsFilter: Record<number, number>,
+	xsXieZuo: boolean, // 开始协作
 	intensify_lagTime: null | Date, // 强化延时
 	intensify_NumOT: number, // 强化计数
 	create_NumOT: number, // 创建队伍计数
@@ -79,6 +79,7 @@ export type globalRootType = {
 	qiling_Position: number[] | null;   //  契灵的地图位置
 	qiling_last: number | null;     //  契灵的上次类型
 	qiling_shop: boolean; // 契灵商店购买
+	qiling_ball: number; // 已购买的契灵球次数
 	opened_buff: boolean; // 是否已执行开启buff
 	closed_buff: boolean; // 是否已执行关闭buff
 	huahezhan: boolean;//    是否已领取花合战
@@ -108,6 +109,7 @@ export type globalRootType = {
 	fengNa: boolean, // 302奉纳
 	xxxskill: number, // 寻香行技能
 	MT_share: 'start' | 'back' | 'end', // 每周分享
+	MT_share_type: 'mumu' | 'phone', // 每周分享_类型
 	MT_liaoShop: 'start' | 'back' | 'end', // 寮商店购买
 	MT_liaoShopList: string[], // 寮商店购买_未购买列表
 	MT_shop: 'zhiBo' | 'jiShouWu' | 'miJuanWu' | 'zaHuoPu_teSu' | 'zaHuoPu_rongYu' | 'zaHuoPu_youQing' | 'zaHuoPu_xunZhang' | 'zaHuoPu_meiLi' | 'done', // 商店购买
@@ -144,6 +146,7 @@ export type globalRootType = {
 	frist: boolean, // 上阵式神
 	chess: Record<string, boolean | number>,  // 下棋局数判定
 	chessShop: boolean, // 下棋商店
+
 }
 
 export const globalRoot: globalRootType = {
@@ -205,6 +208,7 @@ export const globalRoot: globalRootType = {
 	team_create_wait_time: null,
 	team_up_Frist: true,
 	xsOpened: false,
+	xsXieZuo: false,
 	intensify_lagTime: null,
 	intensify_NumOT: 0,
 	create_NumOT: 0,
@@ -223,6 +227,7 @@ export const globalRoot: globalRootType = {
 	preset_once_team_defaultNum: null,
 	qiling_Position: null,
 	qiling_last: null,
+	qiling_ball: 0,
 	opened_buff: false,
 	closed_buff: false,
 	huahezhan: true,
@@ -250,9 +255,9 @@ export const globalRoot: globalRootType = {
 	open_only_once: false,
 	flash_time: 0,
 	fengNa: false,
-	xsFilter: {},
 	xxxskill: 0,
 	MT_share: 'start',
+	MT_share_type: 'mumu',
 	MT_liaoShop: 'start',
 	MT_liaoShopList: null,
 	MT_shop: 'zhiBo',

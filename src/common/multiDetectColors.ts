@@ -528,43 +528,14 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 	'探索地图界面': {
 		desc: [1280, 720,
 			[
-				[left, 53, 36, 0xb47e48],
-				[right, 702, 25, 0x6a6d5b],
-				[right, 885, 32, 0xf9793a],
-				[center, 496, 25, 0x82331c],
-				[left, 265, 646, 0xdbcfc5],
-				[left, 97, 651, 0xb88c59],
-				[right, 954, 647, 0xdee2ef],
+				[left, 36, 36, 0xf7e3a5],
+				[left, 117, 26, 0xf7efb5],
+				[center, 410, 48, 0xf9ddc8],
+				[right, 1173, 37, 0xd6b289],
+				[left, 103, 666, 0x976f42],
+				[left, 191, 664, 0xdec329],
 			]
 		]
-	},
-	'探索地图界面_新版': {
-		desc: [1280, 720,
-			[
-				[right, 1226, 130, 0xede2bf], // 原(1252,129)=0xd6b68b已失效，2026-04更新
-				[right, 1105, 49, 0xcca273],
-				[right, 1046, 32, 0xd6c4a2],
-				[left, 34, 37, 0xf5e5a6],
-				[left, 88, 653, 0xf7dbb6],
-				[left, 195, 661, 0xffffd6],
-				[left, 291, 677, 0xcec7be],
-			]
-		],
-	},
-	'新版探索地图界面': {
-		desc: [1280, 720,
-			[
-				[left, 24, 30, 0xa8733f],
-				[left, 37, 38, 0xf5e2a3],
-				[left, 28, 55, 0xaa7847],
-				[left, 75, 654, 0x67343f],
-				[left, 105, 656, 0xebc9a0],
-				[left, 92, 674, 0xae6449],
-				[left, 262, 642, 0xdea084],
-				[left, 307, 640, 0xb7873d],
-				[left, 275, 666, 0x0b0909],
-			]
-		],
 	},
 	'探索章节_挑战': {
 		desc: [

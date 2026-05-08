@@ -14,7 +14,7 @@ const SchemeList: IScheme[] = [
 	{
 		id: 26,
 		schemeName: '关闭BUFF',
-		list: [502, 0, 1, 2, 3, 501, 29, 40],
+		list: [0, 1, 2, 3, 501, 29, 40, 503],
 	},
 	{
 		id: 29,
@@ -60,7 +60,7 @@ const SchemeList: IScheme[] = [
 		schemeName: '个人突破_打9退4',
 		groupNames: ['战斗'],
 		star: true,
-		list: [690, 51, 0, 1, 2, 3, 7, 8, 9, 10, 29, 503],
+		list: [690, 509, 510, 51, 0, 1, 2, 3, 7, 8, 9, 29, 503],
 		config: {
 			'7': {
 				switch_nineWin: true,
@@ -70,7 +70,7 @@ const SchemeList: IScheme[] = [
 			},
 			'51': {
 				greenType: '自定义坐标',
-				'preSearch': true,
+				preSearch: true,
 			},
 		},
 	},
@@ -78,7 +78,7 @@ const SchemeList: IScheme[] = [
 		id: 4,
 		schemeName: '个人突破_降级',
 		groupNames: ['战斗'],
-		list: [0, 1, 2, 3, 8, 9, 10, 11],
+		list: [0, 1, 2, 3, 8, 9, 11],
 		config: {
 			'0': {
 				jspd_enabled_1: true,
@@ -94,12 +94,9 @@ const SchemeList: IScheme[] = [
 		schemeName: '寮突破',
 		groupNames: ['战斗'],
 		star: true,
-		list: [0, 1, 2, 3, 8, 9, 10, 12, 29],
+		list: [0, 1, 2, 3, 8, 9, 12, 29],
 		config: {
 			'8': {
-				type: '寮突破',
-			},
-			'10': {
 				type: '寮突破',
 			},
 		},
@@ -116,7 +113,7 @@ const SchemeList: IScheme[] = [
 		schemeName: '个人探索',
 		groupNames: ['战斗'],
 		star: true,
-		list: [0, 1, 2, 3, 13, 14, 29],
+		list: [0, 1, 2, 3, 14, 29],
 	},
 	{
 		id: 12,
@@ -143,14 +140,14 @@ const SchemeList: IScheme[] = [
 		schemeName: '悬赏',
 		groupNames: ['日常'],
 		star: true,
-		list: [690, 0, 1, 2, 3, 18, 29, 503],
+		list: [690, 509, 510, 1, 2, 3, 18, 29, 503],
 	},
 	{
 		id: 9,
 		schemeName: '地鬼日常',
 		groupNames: ['日常'],
 		star: true,
-		list: [690, 0, 1, 2, 3, 16, 29, 503],
+		list: [690, 509, 510, 0, 1, 2, 3, 16, 29, 503],
 		config: {
 			'16': {
 				next_scheme: '逢魔日常'
@@ -293,13 +290,13 @@ const SchemeList: IScheme[] = [
 		id: 17,
 		schemeName: '斗技',
 		groupNames: ['每周活动'],
-		list: [690, 509, 510, 0, 1, 2, 3, 30, 307, 503],
+		list: [690, 509, 510, 0, 1, 2, 3, 30, 503],
 	},
 	{
 		id: 22,
 		schemeName: '秘闻前五层',
 		groupNames: ['每周活动'],
-		list: [690, 509, 510, 315, 0, 50, 1, 2, 3, 34, 308, 29, 503],
+		list: [690, 509, 510, 315, 0, 50, 1, 2, 3, 34, 29, 503],
 		star: true,
 		config: {
 			'0': {
@@ -311,6 +308,10 @@ const SchemeList: IScheme[] = [
 			'50': {
 				buff_type: '金币',
 				ready_once_buff: true
+			},
+			'503': {
+				oper_42: false,
+				oper_43: false,
 			}
 		},
 	},
@@ -318,7 +319,7 @@ const SchemeList: IScheme[] = [
 		id: 22,
 		schemeName: '秘闻后五层',
 		groupNames: ['每周活动'],
-		list: [509, 510, 315, 0, 40, 1, 2, 3, 34, 308],
+		list: [509, 510, 315, 0, 40, 1, 2, 3, 34],
 		star: true,
 		config: {
 			'0': {
@@ -329,6 +330,10 @@ const SchemeList: IScheme[] = [
 			},
 			'40': {
 				ready_once_buff: true
+			},
+			'503': {
+				oper_42: false,
+				oper_43: false,
 			}
 		},
 	},
@@ -384,6 +389,7 @@ const SchemeList: IScheme[] = [
 		list: [690, 509, 510, 0, 1, 2, 3, 306, 5, 313, 29, 503],
 		config: {
 			'313': {
+				buy_ball: true,
 				team: '队长'
 			},
 			'503': {
@@ -411,7 +417,7 @@ const SchemeList: IScheme[] = [
 		groupNames: ['每周活动'],
 		list: [690, 0, 1, 2, 3, 24, 1110, 503],
 		config: {
-			0: {
+			'0': {
 				jspd_times_longtime_nodo: '1',
 			},
 		},
@@ -422,7 +428,7 @@ const SchemeList: IScheme[] = [
 		groupNames: ['每周活动'],
 		list: [0, 1, 2, 3, 24, 320],
 		config: {
-			0: {
+			'0': {
 				jspd_times_longtime_nodo: '5',
 			},
 		},
@@ -433,9 +439,49 @@ const SchemeList: IScheme[] = [
 		groupNames: ['每周活动'],
 		list: [690, 0, 1, 2, 3, 24, 1100, 1101, 1102, 1103, 1104, 1105, 1107, 1108, 1109, 1111, 503],
 		config: {
-			0: {
+			'0': {
 				jspd_times_longtime_nodo: '1',
 			},
+		},
+	},
+	{
+		id: 78,
+		schemeName: '魂海_队员',
+		groupNames: ['每周活动'],
+		star: true,
+		list: [690, 509, 510, 0, 1, 2, 3, 4, 503],
+		config: {
+			'0': {
+				jspd_enabled_2: true,
+				jspd_times_2: '30',
+				stop_with_launched_app_exit: true
+			},
+			'503': {
+				oper_34: false
+			},
+		}
+	},
+	{
+		id: 78,
+		schemeName: '魂海_队长',
+		star: false,
+		groupNames: ['每周活动'],
+		list: [690, 509, 510, 0, 1, 2, 3, 306, 5, 5, 27, 503, 306],
+		config: {
+			'0': {
+				jspd_enabled_2: true,
+				jspd_times_2: 30,
+				after_operation: '切换方案',
+				next_scheme: '__关闭应用__'
+			},
+			'27': {
+				mission: '永生之海',
+				next_scheme: '__关闭应用__'
+			},
+			'503': {
+				afterCountOper: '不进行任何操作',
+				oper_34: false
+			}
 		},
 	},
 	// ========== 罕见活动 ==========
@@ -480,7 +526,6 @@ const SchemeList: IScheme[] = [
 		id: 111,
 		schemeName: '循环_魂十队长',
 		star: true,
-		hidden: true,
 		list: [690, 509, 510, 0, 1, 2, 3, 5, 27, 306, 503],
 		groupNames: ['循环任务'],
 		config: {
@@ -488,7 +533,7 @@ const SchemeList: IScheme[] = [
 				'jspd_enabled_2': true,
 				'jspd_times_2': '80',
 				'after_operation': '切换方案',
-				'next_scheme': '循环_突破打9退4'
+				'next_scheme': '突破打9退4'
 			},
 			'27': { 'level': '魂十' },
 			'503': { 'oper_26': false },
@@ -498,14 +543,14 @@ const SchemeList: IScheme[] = [
 		id: 111,
 		schemeName: '循环_御魂队员',
 		star: true,
-		list: [690, 50, 0, 1, 2, 3, 4, 503],
+		list: [690, 509, 510, 50, 0, 1, 2, 3, 4, 503],
 		groupNames: ['循环任务'],
 		config: {
 			'0': {
 				jspd_enabled_2: true,
 				jspd_times_2: '80',
 				after_operation: '切换方案',
-				next_scheme: '循环_突破打9退4'
+				next_scheme: '突破打9退4'
 			},
 			'50': {
 				buff_type: '御魂',
@@ -520,32 +565,31 @@ const SchemeList: IScheme[] = [
 		id: 111,
 		schemeName: '循环_探索队长',
 		star: true,
-		hidden: true,
 		list: [690, 509, 510, 0, 1, 2, 3, 5, 27, 306, 25, 14, 503],
 		groupNames: ['循环任务'],
 		config: {
 			'0': {
-				'jspd_enabled_2': true,
-				'jspd_times_2': '80',
-				'after_operation': '切换方案',
-				'next_scheme': '循环_突破打9退4'
+				jspd_enabled_2: true,
+				jspd_times_2: 80,
+				after_operation: '切换方案',
+				next_scheme: '突破打9退4'
 			},
-			'27': { 'level': '探索（困难）' },
-			'503': { 'oper_26': false, 'oper_27': false },
+			'27': { mission: '探索（困难）' },
+			'503': { oper_26: false, oper_27: false },
 		}
 	},
 	{
 		id: 111,
 		schemeName: '循环_探索队员',
 		star: true,
-		list: [690, 50, 0, 1, 2, 3, 4, 25, 503],
+		list: [690, 509, 510, 50, 0, 1, 2, 3, 4, 25, 503],
 		groupNames: ['循环任务'],
 		config: {
 			'0': {
 				jspd_enabled_2: true,
 				jspd_times_2: '80',
 				after_operation: '切换方案',
-				next_scheme: '循环_突破打9退4'
+				next_scheme: '突破打9退4'
 			},
 			'50': {
 				buff_type: '经验',
@@ -559,14 +603,11 @@ const SchemeList: IScheme[] = [
 	},
 	{
 		id: 3,
-		schemeName: '循环_突破打9退4',
+		schemeName: '突破打9退4',
 		groupNames: ['循环任务'],
 		star: true,
-		list: [690, 51, 0, 1, 2, 3, 7, 8, 9, 10, 29, 503],
+		list: [690, 509, 510, 501, 40, 51, 0, 1, 2, 3, 8, 9, 10, 11, 29, 503],
 		config: {
-			'7': {
-				switch_nineWin: true,
-			},
 			'8': {
 				inv: true,
 				designated_scheme: '循环',
@@ -576,7 +617,13 @@ const SchemeList: IScheme[] = [
 			},
 			'51': {
 				greenType: '自定义坐标',
-				'preSearch': true,
+				preSearch: true,
+			},
+			'501': {
+				once: true
+			},
+			'503': {
+				oper_26: true,
 			},
 		},
 	},
@@ -587,7 +634,6 @@ const SchemeList: IScheme[] = [
 		star: true,
 		list: [0, 1, 2, 3, 24, 609, 690, 503],
 		groupNames: ['小号部分'],
-		hidden: true,
 		config: {
 			'0': {
 				jspd_times_longtime_nodo: '1',
@@ -620,7 +666,6 @@ const SchemeList: IScheme[] = [
 		id: 79,
 		schemeName: '师徒_师傅战斗',
 		groupNames: ['师徒部分'],
-		hidden: true,
 		list: [690, 510, 0, 1, 2, 3, 693, 503],
 		config: {
 			'0': {

@@ -82,7 +82,7 @@ export class Func016 implements IFuncOrigin {
 		// 3 探索地图界面
 		desc: '探索地图界面',
 		oper: [
-			[center, 1280, 720, 641, 633, 701, 698, 1000],
+			[center, 1280, 720, 644, 646, 686, 681, 1000],
 		]
 	}, {
 		// 4 地鬼_挑战页面_极
@@ -116,18 +116,12 @@ export class Func016 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 158, 118, 821, 626, 1000],
 		]
-	}, {
-		// 6 新版探索地图界面
-		desc: '新版探索地图界面',
-		oper: [
-			[center, 1280, 720, 737, 639, 801, 697, 1000],
-		]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		if (thisScript.oper({
 			id: 16,
 			name: '探索界面',
-			operator: [thisOperator[6], thisOperator[3]]
+			operator: [thisOperator[3]]
 		})) {
 			return true;
 		}

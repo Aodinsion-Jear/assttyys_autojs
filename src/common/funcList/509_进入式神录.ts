@@ -68,14 +68,16 @@ export class Func509 implements IFuncOrigin {
 			[
 				1280, 720,
 				[
-					[right, 1060, 650, 0xfff3f3],
-					[center, 885, 661, 0xfff4f5],
-					[left, 259, 35, 0x2a2937],
-					[left, 175, 589, 0x684b2c],
+					[left, 112, 594, 0x664b30],
+					[left, 139, 590, 0x5b452c],
+					[left, 175, 603, 0x966f47],
+					[right, 1178, 593, 0xe5dac3],
+					[right, 1178, 657, 0xe0d5be],
+					[right, 1187, 626, 0x482d20],
 				]
 			],
 		oper: [
-			[center, 1280, 720, 1031, 633, 1080, 685, 1000],	//	点击_式神
+			[center, 1280, 720, 1035, 644, 1071, 675, 1000],	//	点击_式神
 		]
 	}, { // 6 检测_阴门
 		desc:
@@ -93,7 +95,7 @@ export class Func509 implements IFuncOrigin {
 				]
 			],
 		oper: [
-			[left, 1280, 720, 145, 601, 190, 646, 1200]	//	点击式神按钮
+			[center, 1280, 720, 225, 602, 264, 637, 1000],	//	点击式神按钮
 		]
 	}, { // 7 检测_狭间
 		desc:
@@ -136,7 +138,7 @@ export class Func509 implements IFuncOrigin {
 	}, { // 10 突破界面
 		desc: '突破界面',
 		oper: [
-			// [right, 1280, 720, 1207, 617, 1245, 649, 1200]	//	点击式神按钮
+			[right, 1280, 720, 1207, 617, 1245, 649, 1200]	//	点击式神按钮
 		]
 	}, { // 11 误触_情报界面
 		desc: [
@@ -154,7 +156,7 @@ export class Func509 implements IFuncOrigin {
 	}, { // 12 探索地图
 		desc: '探索地图界面',
 		oper: [
-			[center, 1280, 720, 32, 34, 76, 81, 1000],
+			[center, 1280, 720, 22, 22, 62, 54, 1000],
 		]
 	}, { // 13 秘闻
 		desc: [1280, 720,
