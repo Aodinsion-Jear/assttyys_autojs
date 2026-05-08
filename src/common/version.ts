@@ -1578,5 +1578,8 @@ export const versionList = [{
 }, {
 	version: '20260505_tyfs_02',
 	desc: '体验服适配：更新探索地图界面比色点'
+}, {
+	version: '20260509_tyfs_01',
+	desc: '同步原作者更新并迁移热更新下载：修复突破、师徒等功能；热更新地址切换至自有服务器 asttyys.gzlyyds.cn，解决 123 网盘 WebDAV 上传/下载失败问题'
 }];
 export default versionList[versionList.length - 1].version;
