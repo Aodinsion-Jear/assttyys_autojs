@@ -55,11 +55,10 @@ export class Func053 implements IFuncOrigin {
 		desc: [
 			1280, 720,
 			[
-				[left, 278, 147, 0xdbbc78],
-				[center, 598, 144, 0xd8be85],
-				[right, 891, 162, 0xe2c78c],
-				[right, 1206, 153, 0xa78b65],
-				[right, 1156, 230, 0x9854b9],
+				[left, 260, 366, 0xef6658],
+				[center, 581, 298, 0x7fc079],
+				[right, 888, 360, 0x2ebad7],
+				[right, 1187, 297, 0x784cab],
 			]
 		],
 		oper: [
@@ -102,15 +101,44 @@ export class Func053 implements IFuncOrigin {
 			[center, 1280, 720, 107, 535, 180, 557, 1000], // 倒数第二
 			[center, 1280, 720, 105, 639, 180, 662, 1000], // 倒数第一
 		]
-	}];
+	}, { // 5 御魂入口_第一位置
+		desc: [1280, 720,
+			[
+				[left, 92, 657, 0xd0aa17],
+				[left, 110, 646, 0xb1860e],
+				[left, 73, 641, 0x91190d],
+				[left, 96, 636, 0xb58508],
+				[left, 85, 673, 0xa12118],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 72, 644, 116, 678, 1000],
+		]
+	}, { // 6 御魂入口_第二位置
+		desc: [1280, 720,
+			[
+				[left, 168, 641, 0x8d170e],
+				[left, 193, 637, 0xb98706],
+				[left, 181, 673, 0xa22117],
+				[left, 195, 667, 0xecd22d],
+				[left, 206, 647, 0xae820e],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 165, 641, 211, 681, 1000],
+		]
+	},];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		const thisconf = thisScript.scheme.config['53'];
 		// '御魂-八岐大蛇', '御魂-业原火', '御魂-日轮之陨', '御魂-永生之海'
 		let operator: IFuncOperator[];
 		if ('御魂-八岐大蛇' === thisconf.challenge_type) {
 			operator = [{
-				desc: thisOperator[0].desc,
-				oper: [thisOperator[0].oper[0]]
+				desc: thisOperator[5].desc,
+				oper: [thisOperator[5].oper[0]]
+			}, {
+				desc: thisOperator[6].desc,
+				oper: [thisOperator[6].oper[0]]
 			}, {
 				desc: thisOperator[1].desc,
 				oper: [thisOperator[1].oper[0]]
@@ -142,24 +170,33 @@ export class Func053 implements IFuncOrigin {
 			}
 		} else if ('御魂-业原火' === thisconf.challenge_type) {
 			operator = [{
-				desc: thisOperator[0].desc,
-				oper: [thisOperator[0].oper[0]]
+				desc: thisOperator[5].desc,
+				oper: [thisOperator[5].oper[0]]
+			}, {
+				desc: thisOperator[6].desc,
+				oper: [thisOperator[6].oper[0]]
 			}, {
 				desc: thisOperator[1].desc,
 				oper: [thisOperator[1].oper[1]]
 			}]
 		} else if ('御魂-日轮之陨' === thisconf.challenge_type) {
 			operator = [{
-				desc: thisOperator[0].desc,
-				oper: [thisOperator[0].oper[0]]
+				desc: thisOperator[5].desc,
+				oper: [thisOperator[5].oper[0]]
+			}, {
+				desc: thisOperator[6].desc,
+				oper: [thisOperator[6].oper[0]]
 			}, {
 				desc: thisOperator[1].desc,
 				oper: [thisOperator[1].oper[2]]
 			}]
 		} else if ('御魂-永生之海' === thisconf.challenge_type) {
 			operator = [{
-				desc: thisOperator[0].desc,
-				oper: [thisOperator[0].oper[0]]
+				desc: thisOperator[5].desc,
+				oper: [thisOperator[5].oper[0]]
+			}, {
+				desc: thisOperator[6].desc,
+				oper: [thisOperator[6].oper[0]]
 			}, {
 				desc: thisOperator[1].desc,
 				oper: [thisOperator[1].oper[3]]

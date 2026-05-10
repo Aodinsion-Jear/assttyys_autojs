@@ -1546,6 +1546,9 @@ export const versionList = [{
 	version: '20260423_01',
 	desc: '修复：32，道馆打第二次、500，进入寮活动重新取色'
 }, {
+	version: '20260409_01',
+	desc: '修复：515狭间不挑战问题'
+}, {
 	version: '20260308_tyfs_01',
 	desc: '体验服适配：修改寮突破入口坐标\n禁用 GitHub 登录验证'
 }, {
@@ -1581,5 +1584,8 @@ export const versionList = [{
 }, {
 	version: '20260509_tyfs_01',
 	desc: '同步原作者更新并迁移热更新下载：修复突破、师徒等功能；热更新地址切换至自有服务器 asttyys.gzlyyds.cn，解决 123 网盘 WebDAV 上传/下载失败问题'
+}, {
+	version: '20260511_tyfs_01',
+	desc: '同步原作者更新至d80cdffa：修复515狭间不挑战、修复探索、悬赏、邮件、每日签到、每周任务、组队、奉纳御魂、宴会，百鬼增加多次点击跳过'
 }];
 export default versionList[versionList.length - 1].version;
