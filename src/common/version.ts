@@ -1587,5 +1587,8 @@ export const versionList = [{
 }, {
 	version: '20260511_tyfs_01',
 	desc: '同步原作者更新至d80cdffa：修复515狭间不挑战、修复探索、悬赏、邮件、每日签到、每周任务、组队、奉纳御魂、宴会，百鬼增加多次点击跳过'
+}, {
+	version: '20260515_tyfs_01',
+	desc: '同步原作者更新至9c351fa0：修复进入寮突破和日常奖励，新增990烧条，修复大神、真蛇、秘闻红叶、百鬼误触、关闭buff等功能'
 }];
 export default versionList[versionList.length - 1].version;
