@@ -1590,5 +1590,8 @@ export const versionList = [{
 }, {
 	version: '20260515_tyfs_01',
 	desc: '同步原作者更新至9c351fa0：修复进入寮突破和日常奖励，新增990烧条，修复大神、真蛇、秘闻红叶、百鬼误触、关闭buff等功能'
+}, {
+	version: '20260515_tyfs_02',
+	desc: '同步原作者前端更新至0376618：优化定时任务、方案列表滚动、导入导出等界面，并保留移除 GitHub OAuth 验证'
 }];
 export default versionList[versionList.length - 1].version;
