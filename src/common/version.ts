@@ -1549,6 +1549,9 @@ export const versionList = [{
 	version: '20260409_01',
 	desc: '修复：515狭间不挑战问题'
 }, {
+	version: '20260516_01',
+	desc: '修复：修复更换预设问题'
+}, {
 	version: '20260308_tyfs_01',
 	desc: '体验服适配：修改寮突破入口坐标\n禁用 GitHub 登录验证'
 }, {
@@ -1593,5 +1596,8 @@ export const versionList = [{
 }, {
 	version: '20260515_tyfs_02',
 	desc: '同步原作者前端更新至0376618：优化定时任务、方案列表滚动、导入导出等界面，并保留移除 GitHub OAuth 验证'
+}, {
+	version: '20260519_tyfs_01',
+	desc: '同步原作者更新至97b6ca59：修复更换预设问题，修复506卡狩猎战界面'
 }];
 export default versionList[versionList.length - 1].version;
