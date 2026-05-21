@@ -1599,5 +1599,8 @@ export const versionList = [{
 }, {
 	version: '20260519_tyfs_01',
 	desc: '同步原作者更新至97b6ca59：修复更换预设问题，修复506卡狩猎战界面'
+}, {
+	version: '20260521_tyfs_01',
+	desc: '同步原作者更新至28a6f77d：修复契灵进入、探索、烧条、百鬼棋局、每周分享、大神、悬赏、真蛇、师徒流程等功能'
 }];
 export default versionList[versionList.length - 1].version;
