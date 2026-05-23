@@ -22,9 +22,9 @@ export class Func029 implements IFuncOrigin {
 		if (thisScript.oper({
 			name: '庭院判断',
 			operator: [{
-				desc: thisOperator[0].desc
+				desc: '页面是否为庭院_菜单未展开_只支持默认庭院皮肤与默认装饰'
 			}, {
-				desc: thisOperator[1].desc
+				desc: '页面是否为庭院_菜单已展开_只支持默认庭院皮肤与默认装饰'
 			}]
 		})) {
 			const point = thisScript.findMultiColor('庭院_探索灯笼');

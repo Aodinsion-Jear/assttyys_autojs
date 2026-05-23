@@ -26,6 +26,7 @@ export interface IMultiDetectColorsOrigin {
 		desc: [number, number,
 			[number, number, number, number][]
 		]
+		fallbacks?: string[]
 	}
 }
 
@@ -33,5 +34,6 @@ export interface IMultiDetectColors {
 	[key: string]: {
 		// similar?: number;  目前暂时用不上
 		desc: [number, number, number, number][]
+		fallbacks?: string[]
 	}
 }

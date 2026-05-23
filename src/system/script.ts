@@ -264,11 +264,9 @@ export class Script {
 				for (let k = 0; k < operator.length; k++) {
 					if (operator[k].desc) {
 						if (typeof operator[k].desc === 'string') {
-							try {
-								operator[k].desc = this.multiDetectColors[operator[k].desc as string].desc;
-							} catch (e) {
+							if (!this.multiDetectColors[operator[k].desc as string]) {
 								console.error(`${operator[k].desc}未在multiDetectColors定义`);
-								throw e;
+								throw new Error(`${operator[k].desc}未在multiDetectColors定义`);
 							}
 						} else {
 							// if (operator[k]?.desc?.length >= 3) {
@@ -324,9 +322,10 @@ export class Script {
 	initMultiDetectColors() {
 		const thisMultiDetectColor = {};
 		for (const key in multiDetectColors) {
-			const { desc } = multiDetectColors[key];
+			const { desc, fallbacks } = multiDetectColors[key];
 			thisMultiDetectColor[key] = {
-				desc: helperBridge.helper.GetCmpColorArray(desc[0], desc[1], desc[2])
+				desc: helperBridge.helper.GetCmpColorArray(desc[0], desc[1], desc[2]),
+				...(fallbacks ? { fallbacks } : {})
 			};
 		}
 		this.multiDetectColors = thisMultiDetectColor;
@@ -785,7 +784,14 @@ export class Script {
 				let rs;
 				if (item.desc && item.desc.length) {
 					if (typeof item.desc === 'string') {
-						rs = helperBridge.helper.CompareColorEx(this.multiDetectColors[item.desc].desc, this.scheme.commonConfig.colorSimilar, false);
+						const detectEntry = this.multiDetectColors[item.desc];
+						rs = helperBridge.helper.CompareColorEx(detectEntry.desc, this.scheme.commonConfig.colorSimilar, false);
+						if (!rs && detectEntry.fallbacks) {
+							for (const fbKey of detectEntry.fallbacks) {
+								rs = helperBridge.helper.CompareColorEx(this.multiDetectColors[fbKey].desc, this.scheme.commonConfig.colorSimilar, false);
+								if (rs) break;
+							}
+						}
 					} else {
 						rs = helperBridge.helper.CompareColorEx(item.desc, this.scheme.commonConfig.colorSimilar, false);
 					}
@@ -854,7 +860,14 @@ export class Script {
 			if (item.desc) {
 				let res = null;
 				if (typeof item.desc === 'string') {
-					res = helperBridge.helper.CompareColorEx(this.multiDetectColors[item.desc].desc, commonConfig.colorSimilar, false);
+					const detectEntry = this.multiDetectColors[item.desc];
+					res = helperBridge.helper.CompareColorEx(detectEntry.desc, commonConfig.colorSimilar, false);
+					if (!res && detectEntry.fallbacks) {
+						for (const fbKey of detectEntry.fallbacks) {
+							res = helperBridge.helper.CompareColorEx(this.multiDetectColors[fbKey].desc, commonConfig.colorSimilar, false);
+							if (res) break;
+						}
+					}
 					if (res) {
 						console.log(`desc_sucess：[string] currFunc.name:${currFunc.name} currFunc.id:${currFunc.id} id:${id}`);
 					}

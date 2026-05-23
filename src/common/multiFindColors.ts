@@ -769,6 +769,18 @@ const multiFindColors: IMultiFindColorsOrigin = {
 					[center, 879, 158, 0x5b5b5b],
 				]
 			],
+			// sp天命火铃彦姬版本
+			[1280, 720,
+				[
+					[center, 658, 109, 0xe9bf9b],
+					[center, 670, 125, 0x444341],
+					[center, 680, 135, 0xfffbc0],
+					[center, 670, 155, 0xffffde],
+					[center, 680, 145, 0x524d43],
+					[center, 670, 175, 0xffffc3],
+					[center, 680, 195, 0xffffec],
+				]
+			],
 		]
 	},
 	'探索_宝箱': {

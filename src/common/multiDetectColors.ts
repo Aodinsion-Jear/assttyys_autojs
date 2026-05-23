@@ -546,7 +546,8 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 				[right, 1220, 600, 0x331a12],
 				[right, 1188, 645, 0x792413],
 			]
-		]
+		],
+		fallbacks: ['页面是否为庭院_菜单未展开_sp天命火铃彦姬版本']
 	},
 	'页面是否为庭院_菜单已展开_只支持默认庭院皮肤与默认装饰': {
 		desc: [
@@ -558,6 +559,7 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 				[right, 1154, 40, 0xd7b288],
 			]
 		],
+		fallbacks: ['页面是否为庭院_菜单已展开_sp天命火铃彦姬版本']
 	},
 	'页面是否为庭院_菜单已展开_另一种图标_御祝图标_只支持默认庭院皮肤与默认装饰': {
 		desc: [1280, 720,
@@ -568,6 +570,7 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 				[center, 673, 651, 0xdb8b3f],
 			],
 		],
+		fallbacks: ['页面是否为庭院_菜单已展开_sp天命火铃彦姬版本']
 	},
 	'庭院已打开菜单_另另外一种图标': {
 		desc: [1280, 720,
@@ -576,6 +579,36 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 				[right, 1155, 41, 0xd6b187],
 				[center, 451, 631, 0xe6e3e1],
 				[center, 683, 657, 0xda6b29],
+			],
+		],
+		fallbacks: ['页面是否为庭院_菜单已展开_sp天命火铃彦姬版本']
+	},
+	'页面是否为庭院_菜单已展开_sp天命火铃彦姬版本': {
+		desc: [1280, 720,
+			[
+				[right, 1106, 634, 0xacb9ed],
+				[right, 1132, 629, 0x61365a],
+				[right, 1156, 631, 0x7a2a19],
+				[right, 1135, 653, 0x3f1515],
+				[right, 1223, 619, 0xc2a06f],
+				[right, 1223, 643, 0xdfcec8],
+				[right, 1227, 663, 0xd6c8c3],
+				[right, 1230, 687, 0xbd9456],
+				[center, 502, 25, 0xdcab4b],
+				[right, 691, 33, 0xe9381f],
+				[right, 866, 32, 0xffb14b],
+			],
+		],
+	},
+	'页面是否为庭院_菜单未展开_sp天命火铃彦姬版本': {
+		desc: [1280, 720,
+			[
+				[right, 1219, 604, 0x350d0d],
+				[right, 1207, 639, 0xdecdc9],
+				[right, 1190, 664, 0xdbccc7],
+				[right, 1177, 689, 0x642727],
+				[center, 619, 642, 0x12216a],
+				[center, 661, 642, 0x13216a],
 			],
 		],
 	},
