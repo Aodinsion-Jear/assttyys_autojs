@@ -1602,5 +1602,8 @@ export const versionList = [{
 }, {
 	version: '20260521_tyfs_01',
 	desc: '同步原作者更新至28a6f77d：修复契灵进入、探索、烧条、百鬼棋局、每周分享、大神、悬赏、真蛇、师徒流程等功能'
+}, {
+	version: '20260523_tyfs_01',
+	desc: '适配sp天命火铃彦姬版本庭院检测，新增fallback机制支持多皮肤/版本庭院识别'
 }];
 export default versionList[versionList.length - 1].version;
