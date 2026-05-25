@@ -1605,5 +1605,8 @@ export const versionList = [{
 }, {
 	version: '20260523_tyfs_01',
 	desc: '适配sp天命火铃彦姬版本庭院检测，新增fallback机制支持多皮肤/版本庭院识别'
+}, {
+	version: '20260525_tyfs_01',
+	desc: '更新探索28章节取色，更新町中取色，兼容狭间结算'
 }];
 export default versionList[versionList.length - 1].version;
