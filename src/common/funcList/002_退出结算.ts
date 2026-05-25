@@ -410,6 +410,31 @@ export class Func002 implements IFuncOrigin {
 			[center, 1280, 720, 779, 95, 808, 124, 1000],
 		],
 		notForCnt: true,
+	}, { // 36 狭间暗域_太鼓
+		desc: [1280, 720,
+			[
+				[center, 478, 154, 0x7c1910],
+				[center, 458, 205, 0x9f1c12],
+				[center, 506, 201, 0x9d1b11],
+				[center, 510, 161, 0xc8b6a1],
+				[center, 540, 225, 0xd0bfa9],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 383, 115, 573, 273, 1000],
+		]
+	}, { // 37 狭间暗域_胜利文字
+		desc: [1280, 720,
+			[
+				[right, 754, 183, 0xc2aa77],
+				[right, 819, 184, 0xd8c090],
+				[right, 917, 172, 0xdeca9b],
+				[right, 920, 219, 0x977448],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 685, 117, 1033, 274, 1000],
+		]
 	}, { // 35 结算保底页面  //字体存白容易误触,加了聊天框弹出的点防止误触
 		desc: [1280, 720,
 			[
@@ -458,6 +483,22 @@ export class Func002 implements IFuncOrigin {
 			sleep(3000);
 			return true
 		}
+		if (thisScript.oper({
+			name: '狭间暗域_太鼓检测',
+			operator: [{ desc: thisOperator[36].desc }]
+		})) {
+			console.log('[DEBUG] 狭间暗域_太鼓部分 匹配成功');
+		} else {
+			console.log('[DEBUG] 狭间暗域_太鼓部分 匹配失败');
+		}
+		if (thisScript.oper({
+			name: '狭间暗域_胜利文字检测',
+			operator: [{ desc: thisOperator[37].desc }]
+		})) {
+			console.log('[DEBUG] 狭间暗域_胜利文字 匹配成功');
+		} else {
+			console.log('[DEBUG] 狭间暗域_胜利文字 匹配失败');
+		}
 		return thisScript.oper({
 			id: 2,
 			name: '退出结算',
@@ -471,7 +512,7 @@ export class Func002 implements IFuncOrigin {
 				thisOperator[11], thisOperator[23], thisOperator[24], thisOperator[25],
 				thisOperator[26], thisOperator[27], thisOperator[28], thisOperator[29],
 				thisOperator[30], thisOperator[31], thisOperator[33], thisOperator[34],
-				thisOperator[35],]
+				thisOperator[35], thisOperator[36], thisOperator[37],]
 		});
 	}
 }

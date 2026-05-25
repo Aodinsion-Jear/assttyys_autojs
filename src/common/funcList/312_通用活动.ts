@@ -67,8 +67,8 @@ export class Func312 implements IFuncOrigin {
 				thisScript.stop();
 				sleep(2000);
 				return false;
-			}// 复制活动停止代码
-			{// 执行点击
+			}
+			{
 				const xy = String(thisConf.xy).split(',');
 				if (xy.length !== 4) {
 					thisScript.myToast('自定义坐标格式定义错误，请检查');
