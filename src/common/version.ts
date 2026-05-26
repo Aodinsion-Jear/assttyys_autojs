@@ -1608,5 +1608,8 @@ export const versionList = [{
 }, {
 	version: '20260525_tyfs_01',
 	desc: '更新探索28章节取色，更新町中取色，兼容狭间结算'
+}, {
+	version: '20260526_tyfs_01',
+	desc: '兼容狭间暗域战斗结算界面识别'
 }];
 export default versionList[versionList.length - 1].version;

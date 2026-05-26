@@ -483,22 +483,6 @@ export class Func002 implements IFuncOrigin {
 			sleep(3000);
 			return true
 		}
-		if (thisScript.oper({
-			name: '狭间暗域_太鼓检测',
-			operator: [{ desc: thisOperator[36].desc }]
-		})) {
-			console.log('[DEBUG] 狭间暗域_太鼓部分 匹配成功');
-		} else {
-			console.log('[DEBUG] 狭间暗域_太鼓部分 匹配失败');
-		}
-		if (thisScript.oper({
-			name: '狭间暗域_胜利文字检测',
-			operator: [{ desc: thisOperator[37].desc }]
-		})) {
-			console.log('[DEBUG] 狭间暗域_胜利文字 匹配成功');
-		} else {
-			console.log('[DEBUG] 狭间暗域_胜利文字 匹配失败');
-		}
 		return thisScript.oper({
 			id: 2,
 			name: '退出结算',
