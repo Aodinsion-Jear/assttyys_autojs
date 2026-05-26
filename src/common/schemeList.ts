@@ -235,6 +235,12 @@ const SchemeList: IScheme[] = [
 		list: [509, 510, 0, 1, 2, 3, 601],
 	},
 	{
+		id: 33,
+		schemeName: '庭院进入狩猎战',
+		groupNames: ['寮活动'],
+		list: [509, 510, 0, 1, 2, 3, 6120, 6130, 601, 507],
+	},
+	{
 		id: 19,
 		schemeName: '道馆',
 		groupNames: ['寮活动'],
