@@ -44,17 +44,17 @@ export class Func6130 implements IFuncOrigin {
 		]],
 		oper: [[right, 1280, 720, 1141, 581, 1224, 679, 1000]]
 	}, {
-		// 3 检测麒麟已被击杀 → 停止脚本
+		// 3 检测麒麟已被击杀 → 点击返回并停止脚本
 		desc: [1280, 720, [
-			[left, 72, 654, 0x865631],
-			[left, 146, 657, 0xb2b2b2],
-			[left, 228, 655, 0xed4b37],
-			[left, 296, 656, 0xb73a1a],
-			[center, 370, 656, 0x8d6a1b],
-			[right, 1183, 595, 0xd7d7d7],
-			[right, 1183, 653, 0xd7d7d7],
-			[right, 1218, 596, 0x525252],
-		]]
+			[left, 67, 655, 0xdcb576],
+			[left, 143, 661, 0x868686],
+			[left, 228, 657, 0xed4b36],
+			[left, 296, 655, 0xb73a1a],
+			[right, 1177, 599, 0xdcdcdc],
+			[right, 1183, 645, 0xd8d8d8],
+			[right, 856, 564, 0xbe1010],
+		]],
+		oper: [[left, 1280, 720, 98, 19, 137, 60, 2000]]
 	}, {
 		// 4 检测借式神弹窗 → 点击取消
 		desc: [1280, 720, [
@@ -71,11 +71,12 @@ export class Func6130 implements IFuncOrigin {
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		if (thisScript.oper({
 			name: '检测_麒麟已被击杀',
-			operator: [{ desc: thisOperator[3].desc }]
+			operator: [thisOperator[3]]
 		})) {
-			thisScript.myToast('麒麟已被击杀，停止脚本');
+			thisScript.myToast('麒麟已被击杀，返回庭院并停止脚本');
+			sleep(2000);
 			thisScript.stop();
-			return false;
+			return true;
 		}
 		if (thisScript.oper({
 			id: 6130,

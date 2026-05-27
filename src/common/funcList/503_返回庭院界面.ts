@@ -242,6 +242,11 @@ export class Func503 implements IFuncOrigin {
 			desc: '48 设置界面',
 			type: 'switch',
 			default: true,
+		}, {
+			name: 'oper_49',
+			desc: '49 麒麟狩猎成功',
+			type: 'switch',
+			default: true,
 		}
 		]
 	}];
@@ -806,6 +811,21 @@ export class Func503 implements IFuncOrigin {
 		],
 		oper: [
 			[center, 1280, 720, 1090, 77, 1124, 119, 1000],
+		]
+	}, { // 49 麒麟狩猎成功
+		desc: [1280, 720,
+			[
+				[left, 67, 655, 0xdcb576],
+				[left, 143, 661, 0x868686],
+				[left, 228, 657, 0xed4b36],
+				[left, 296, 655, 0xb73a1a],
+				[right, 1177, 599, 0xdcdcdc],
+				[right, 1183, 645, 0xd8d8d8],
+				[right, 856, 564, 0xbe1010],
+			]
+		],
+		oper: [
+			[left, 1280, 720, 98, 19, 137, 60, 2000],
 		]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
