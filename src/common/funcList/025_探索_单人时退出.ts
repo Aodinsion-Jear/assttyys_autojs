@@ -28,10 +28,12 @@ export class Func025 implements IFuncOrigin {
 	}, { // 1 探索界面
 		desc: [1280, 720,
 			[
-				[left, 46, 36, 0xf7e3a5],
-				[left, 29, 672, 0x615a77],
-				[right, 1227, 30, 0xd3af84],
-				[right, 1174, 33, 0xd7b287],
+				[left, 36, 569, 0x913157],
+				[left, 47, 580, 0x85304f],
+				[left, 62, 653, 0xefefe9],
+				[left, 18, 634, 0x645c79],
+				[right, 814, 658, 0xd7c8ab],
+				[right, 732, 660, 0xd5c4a5],
 			]
 		]
 	}, { // 2确认退出探索，该色组取点不太好，但考虑上面一步已执行过，暂时不修改，待后续慢设备反馈再考虑重新取点
