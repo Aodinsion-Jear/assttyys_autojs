@@ -28,15 +28,14 @@ export class Func025 implements IFuncOrigin {
 	}, { // 1 探索界面
 		desc: [1280, 720,
 			[
-				[left, 36, 569, 0x913157],
-				[left, 47, 580, 0x85304f],
-				[left, 62, 653, 0xefefe9],
-				[left, 18, 634, 0x645c79],
-				[right, 814, 658, 0xd7c8ab],
-				[right, 732, 660, 0xd5c4a5],
+				[left, 29, 672, 0x615a77],
+				[left, 54, 60, 0xdec38c],
+				[left, 124, 26, 0xf7eeb5],
+				[right, 1163, 22, 0xd7b288],
+				[right, 1223, 21, 0xd4ae84],
 			]
-		]
-	}, { // 2确认退出探索，该色组取点不太好，但考虑上面一步已执行过，暂时不修改，待后续慢设备反馈再考虑重新取点
+		],
+	}, { // 2 确认退出探索，该色组取点不太好，但考虑上面一步已执行过，暂时不修改，待后续慢设备反馈再考虑重新取点
 		desc: [1280, 720,
 			[
 				[center, 340, 261, 0x472b18],
@@ -49,51 +48,24 @@ export class Func025 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 700, 386, 848, 420, 1000]
 		]
-	}, { // 3探索界面点击退出后确认窗口
+	}, { // 3 探索入口界面
 		desc: [1280, 720,
 			[
-				[left, 45, 35, 0x666046],
-				[left, 124, 29, 0x66624b],
-				[right, 1046, 28, 0x585043],
-				[right, 1105, 45, 0x544330],
-				[center, 555, 405, 0xf4b25d],
-				[right, 827, 405, 0xf4b25d],
-				[right, 812, 660, 0x534d41]
+				[left, 114, 21, 0xf7eeb5],
+				[left, 33, 32, 0xf7efb0],
+				[left, 201, 494, 0x31110a],
+				[left, 201, 219, 0x2c0f0a],
+				[right, 1238, 31, 0xd3ae84],
 			]
 		],
 		oper: [
-			[center, 1280, 720, 713, 392, 836, 419, 500]
-		]
-	}, { // 4 新版_点击章节后界面（注意：下面的5是带妖气探索界面）
-		desc: [1280, 720,
-			[
-				[right, 942, 592, 0xe5dac3],
-				[right, 945, 659, 0xe2d7c0],
-				[right, 944, 628, 0x3c2b26],
-				[right, 1135, 656, 0xe3d7c2],
-				[right, 1132, 587, 0xe1d6c0],
-				[right, 1100, 477, 0xdfac48],
-				[right, 1035, 485, 0x3afefe],
-			]
-		],
-		oper: [
-			[center, 1280, 720, 25, 19, 56, 46, 500]
-		]
-	}, { // 5 探索找怪界面（带妖气）
-		desc: [1280, 720,
-			[
-				[left, 60, 655, 0xeff0e9],
-				[right, 811, 659, 0xcabaa0],
-				[right, 731, 663, 0xc6b396],
-				[right, 1094, 602, 0xfc9f3b],
-				[right, 896, 25, 0xfb8934],
-			]
+			[center, 1280, 720, 20, 10, 64, 52, 1000],
 		]
 	}]
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		if (thisScript.oper({
 			name: '探索界面',
-			operator: [{ desc: thisOperator[1].desc }, { desc: thisOperator[5].desc }]
+			operator: [{ desc: thisOperator[1].desc }]
 		})) {
 			if (!thisScript.oper({
 				name: '是否组队',
@@ -104,8 +76,8 @@ export class Func025 implements IFuncOrigin {
 			}
 		}
 		if (thisScript.oper({
-			name: '探索_章节里退出到探索地图', // 有时会卡住没点到
-			operator: [thisOperator[3], thisOperator[4]]
+			name: '探索入口界面',
+			operator: [thisOperator[3]]
 		})) {
 			return true;
 		}

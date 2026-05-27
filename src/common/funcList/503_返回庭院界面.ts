@@ -244,7 +244,12 @@ export class Func503 implements IFuncOrigin {
 			default: true,
 		}, {
 			name: 'oper_49',
-			desc: '49 麒麟狩猎成功',
+			desc: '49 探索确认',
+			type: 'switch',
+			default: true,
+		}, {
+			name: 'oper_50',
+			desc: '50 麒麟狩猎成功',
 			type: 'switch',
 			default: true,
 		}
@@ -812,7 +817,21 @@ export class Func503 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 1090, 77, 1124, 119, 1000],
 		]
-	}, { // 49 麒麟狩猎成功
+	}, { // 49 探索确认
+		desc: [1280, 720,
+			[
+				[center, 442, 392, 0xf4b25d],
+				[center, 554, 415, 0xf4b25d],
+				[right, 714, 397, 0xf4b25d],
+				[right, 833, 416, 0xf4b25d],
+				[center, 525, 325, 0xcbb59c],
+				[right, 749, 328, 0xcbb59c],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 712, 391, 843, 420, 1000],
+		]
+	}, { // 50 麒麟狩猎成功
 		desc: [1280, 720,
 			[
 				[left, 67, 655, 0xdcb576],
@@ -830,8 +849,8 @@ export class Func503 implements IFuncOrigin {
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		const thisConf = thisScript.scheme.config['503'];
-		// 检测只运行一次的开关状态判断是否不再运行
-		if (!thisScript.global.open_only_once) {
+		// 增加全局开关
+		if (thisScript.global.back) {
 			let enabledThisOperator = [];
 			enabledThisOperator = Object.keys(thisConf).filter(keyName => /oper_\d+/.test(keyName) && thisConf[keyName]).map(keyName => thisOperator[parseInt(keyName.split('_')[1])]);
 			if (thisScript.oper({
