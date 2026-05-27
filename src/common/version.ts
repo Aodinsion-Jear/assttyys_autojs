@@ -1614,5 +1614,8 @@ export const versionList = [{
 }, {
 	version: '20260527_tyfs_01',
 	desc: '1. 014_探索_点击挑战图标，兼容人物遮挡28章节遮挡情况\n2. 029_庭院进入探索地图，支持直接在突破界面退出，适用于突破转探索\n3. 025_探索_单人时退出，兼容有妖气的界面'
+}, {
+	version: '20260527_tyfs_02',
+	desc: '新增6120庭院进入狩猎战、6130挑战麒麟，支持从庭院到狩猎战(只支持6星麒麟)'
 }];
 export default versionList[versionList.length - 1].version;
