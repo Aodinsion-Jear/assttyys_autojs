@@ -67,13 +67,13 @@ export class Func025 implements IFuncOrigin {
 	}, { // 4 新版_点击章节后界面
 		desc: [1280, 720,
 			[
-				[left, 35, 30, 0xf7e5a7],
-				[left, 111, 21, 0xf8edb5],
-				[right, 848, 29, 0xd6c4a2],
-				[right, 1105, 47, 0xcca273],
-				[left, 304, 128, 0xa5361e],
-				[left, 291, 144, 0x9e331b],
-				[center, 323, 145, 0x9c3018],
+				[right, 942, 592, 0xe5dac3],
+				[right, 945, 659, 0xe2d7c0],
+				[right, 944, 628, 0x3c2b26],
+				[right, 1135, 656, 0xe3d7c2],
+				[right, 1132, 587, 0xe1d6c0],
+				[right, 1100, 477, 0xdfac48],
+				[right, 1035, 485, 0x3afefe],
 			]
 		],
 		oper: [
