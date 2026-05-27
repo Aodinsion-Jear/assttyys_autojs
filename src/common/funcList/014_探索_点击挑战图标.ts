@@ -108,7 +108,7 @@ export class Func014 implements IFuncOrigin {
 		const thisconf = thisScript.scheme.config['14'];
 		if (thisScript.oper({
 			name: '探索界面_杂项',
-			operator: [thisOperator[1]],
+			operator: [thisOperator[1], { desc: '探索地图界面_人物遮挡', oper: thisOperator[1].oper, retest: thisOperator[1].retest }],
 		})) {
 			return true;
 		}

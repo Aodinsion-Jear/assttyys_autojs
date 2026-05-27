@@ -536,6 +536,18 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 			]
 		]
 	},
+	'探索地图界面_人物遮挡': {
+		desc: [1280, 720,
+			[
+				[left, 101, 653, 0xb38753],
+				[left, 194, 653, 0xfdfce2],
+				[left, 275, 654, 0x453d3d],
+				[center, 491, 668, 0xbbb4a5],
+				[center, 567, 652, 0xf5ebe1],
+				[left, 95, 566, 0x371915],
+			]
+		]
+	},
 	'页面是否为庭院_菜单未展开_只支持默认庭院皮肤与默认装饰': {
 		desc: [
 			1280, 720,

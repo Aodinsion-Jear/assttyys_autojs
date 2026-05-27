@@ -64,7 +64,7 @@ export class Func025 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 713, 392, 836, 419, 500]
 		]
-	}, { // 4 新版_点击章节后界面
+	}, { // 4 新版_点击章节后界面（注意：下面的5是带妖气探索界面）
 		desc: [1280, 720,
 			[
 				[right, 942, 592, 0xe5dac3],
@@ -79,11 +79,21 @@ export class Func025 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 25, 19, 56, 46, 500]
 		]
+	}, { // 5 探索找怪界面（带妖气）
+		desc: [1280, 720,
+			[
+				[left, 60, 655, 0xeff0e9],
+				[right, 811, 659, 0xcabaa0],
+				[right, 731, 663, 0xc6b396],
+				[right, 1094, 602, 0xfc9f3b],
+				[right, 896, 25, 0xfb8934],
+			]
+		]
 	}]
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		if (thisScript.oper({
 			name: '探索界面',
-			operator: [{ desc: thisOperator[1].desc }]
+			operator: [{ desc: thisOperator[1].desc }, { desc: thisOperator[5].desc }]
 		})) {
 			if (!thisScript.oper({
 				name: '是否组队',
