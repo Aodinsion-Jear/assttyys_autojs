@@ -84,6 +84,25 @@ export class Func014 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 1090, 588, 1178, 663, 1000],
 		]
+	}, { // 4 探索找怪界面（带妖气）
+		desc: [1280, 720,
+			[
+				[left, 60, 655, 0xeff0e9],
+				[right, 811, 659, 0xcabaa0],
+				[right, 731, 663, 0xc6b396],
+				[right, 1094, 602, 0xfc9f3b],
+				[right, 896, 25, 0xfb8934],
+			]
+		],
+		oper: [
+			[left, 1280, 720, 0, 0, 42, 51, 1000],
+			[right, 1280, 720, 1121, 117, 1224, 209, 1000],
+			[left, 1280, 720, 46, 215, 162, 525, 1000],
+			[center, 1280, 720, 32, 20, 69, 51, 1000],
+			[center, 1280, 720, 702, 388, 846, 421, 1000],
+			[left, 1280, 720, 0, 0, 16, 16, 1000],
+			[right, 1280, 720, 0, 0, 1275, 715, 1000],
+		]
 	},];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		const thisconf = thisScript.scheme.config['14'];
@@ -108,7 +127,7 @@ export class Func014 implements IFuncOrigin {
 		}
 		while (thisScript.oper({
 			name: '探索界面_判断',
-			operator: [{ desc: thisOperator[0].desc, retest: 500 }],
+			operator: [{ desc: thisOperator[0].desc, retest: 500 }, { desc: thisOperator[4].desc, retest: 500 }],
 		})) {
 			if (thisScript.global.tsAttackSwhipeNum === undefined) {
 				thisScript.global.tsAttackSwhipeNum = parseInt(String(thisconf.swipeTime), 10);
@@ -180,7 +199,7 @@ export class Func014 implements IFuncOrigin {
 				if (--thisScript.global.tsAttackSwhipeNum <= 0) {
 					if (thisScript.oper({
 						name: '探索界面_判断',
-						operator: [{ desc: thisOperator[0].desc }],
+						operator: [{ desc: thisOperator[0].desc }, { desc: thisOperator[4].desc }],
 					})) {
 						thisScript.regionClick([thisOperator[0].oper[3], thisOperator[0].oper[4]]);
 						thisScript.global.tsAttackSwhipeNum = undefined;
@@ -189,7 +208,7 @@ export class Func014 implements IFuncOrigin {
 				}
 				if (thisScript.oper({
 					name: '探索界面_判断',
-					operator: [{ desc: thisOperator[0].desc }],
+					operator: [{ desc: thisOperator[0].desc }, { desc: thisOperator[4].desc }],
 				})) {
 					thisScript.myToast(`剩余滑屏次数：${thisScript.global.tsAttackSwhipeNum}`);
 					thisScript.regionBezierSwipe(thisOperator[0].oper[1], thisOperator[0].oper[2], {
