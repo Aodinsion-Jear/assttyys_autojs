@@ -1626,5 +1626,8 @@ export const versionList = [{
 }, {
 	version: '20260527_tyfs_02',
 	desc: '新增6120庭院进入狩猎战、6130挑战麒麟，支持从庭院到狩猎战(只支持6星麒麟)'
+}, {
+	version: '20260528_tyfs_01',
+	desc: '同步原作者更新至f9ece1c4，优化麒麟狩猎成功界面返回庭院及击杀后停止逻辑，014/025/029探索兼容性更新'
 }];
 export default versionList[versionList.length - 1].version;
