@@ -1629,5 +1629,8 @@ export const versionList = [{
 }, {
 	version: '20260528_tyfs_01',
 	desc: '同步原作者更新至f9ece1c4，优化麒麟狩猎成功界面返回庭院及击杀后停止逻辑，014/025/029探索兼容性更新'
+}, {
+	version: '20260531_tyfs_01',
+	desc: '1. 前端改为本地加载，移除登录验证页\n2. 新增6220、6230方案(待完善)'
 }];
 export default versionList[versionList.length - 1].version;

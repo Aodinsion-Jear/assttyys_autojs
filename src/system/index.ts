@@ -4,7 +4,6 @@ runtime.loadDex('./assets/lib/scriptlib.dex');
 runtime.unloadDex('./assets/lib/nlp-hanzi-similar-1.3.0.dex');
 runtime.loadDex('./assets/lib/nlp-hanzi-similar-1.3.0.dex');
 
-import { isDebugPlayerRunning } from '@/common/toolAuto';
 import core, { closeForeground, setSystemUiVisibility } from '@auto.pro/core'
 import { run } from '@auto.pro/webview'
 
@@ -27,16 +26,8 @@ core({
 // console.log(files.cwd());
 console.log(`autojs version: ${app.autojs.versionCode}`);
 
-let url = 'https://assttyys.zzliux.cn/static/webview/'
-// 调试模式，可能存在有人用run.js运行脚本，这时就得用运行路径判断了
-// if (context.packageName.match(/^org.autojs.autojs(pro)?$/) && files.cwd().indexOf(context.getExternalFilesDir(null).getAbsolutePath()) === -1) {
-// 	url = 'file://' + files.path('dist/index.html');
-// }
-// aj彻底废了。。
-if (isDebugPlayerRunning()) {
-	url = 'file://' + files.path('dist/index.html');
-	// url = 'https://assttyys.zzliux.cn/new/'
-}
+// 体验服改动：加载热更新包内自带前端，脱离原作者在线前端(zzliux.cn)，否则 UI 改动(如移除 OAuth 验证页)不会生效
+const url = 'file://' + files.path('dist/index.html');
 
 export const webview = run(url, {
 	// fitsSystemWindows: 'true',
