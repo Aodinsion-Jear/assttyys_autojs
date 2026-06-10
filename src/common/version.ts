@@ -1632,5 +1632,8 @@ export const versionList = [{
 }, {
 	version: '20260531_tyfs_01',
 	desc: '1. 前端改为本地加载，移除登录验证页\n2. 新增6220、6230方案(待完善)'
+}, {
+	version: '20260610_tyfs_01',
+	desc: '同步原作者更新至bfbf4f4d：修复510使用OCR时卡在式神录界面不退出、返回庭院次数检测、町中检测改为multiDetectColors，并保留体验服町中取色适配'
 }];
 export default versionList[versionList.length - 1].version;

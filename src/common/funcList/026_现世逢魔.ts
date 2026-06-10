@@ -102,7 +102,6 @@ export class Func026 implements IFuncOrigin {
 				[center, 810, 656, 0x5a5650],
 				[center, 921, 677, 0x521c18],
 				[right, 1024, 656, 0x331215],
-				[left, 42, 48, 0x50545d],
 			]
 		],
 		oper: [
@@ -136,18 +135,7 @@ export class Func026 implements IFuncOrigin {
 	}, { // 10 页面是否为庭院(菜单已展开) 只支持默认庭院皮肤与默认装饰
 		desc: '页面是否为庭院_菜单已展开_只支持默认庭院皮肤与默认装饰',
 	}, { // 11 检测_町中
-		desc:
-			[
-				1280, 720,
-				[
-					[right, 1056, 320, 0x999595],
-					[right, 1056, 348, 0x979492],
-					[right, 1055, 378, 0x9d9897],
-					[right, 997, 538, 0x252b30],
-					[right, 988, 554, 0x131b1d],
-					[right, 923, 556, 0x1a2127],
-				]
-			],
+		desc: '町中',
 		oper: [
 			[center, 1280, 720, 625, 137, 669, 218, 1200]	//	点击逢魔灯笼
 		]

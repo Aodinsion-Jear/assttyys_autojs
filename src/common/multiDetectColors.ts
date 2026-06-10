@@ -577,7 +577,7 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 		desc: [1280, 720,
 			[
 				[right, 1223, 662, 0xdbcbc7],
-				[right, 1155, 41, 0xd7b188],
+				[right, 1155, 41, 0xcca375],
 				[center, 451, 631, 0xe8e4e1],
 				[center, 673, 651, 0xdb8b3f],
 			],
@@ -864,6 +864,20 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 				[left, -1, -1, 0x000000],
 			]
 		]
+	},
+	'町中': {
+		desc: [
+			1280, 720,
+			[
+				[right, 1056, 320, 0x999595],
+				[right, 1056, 348, 0x979492],
+				[right, 1055, 378, 0x9d9897],
+				[right, 997, 538, 0x252b30],
+				[right, 988, 554, 0x131b1d],
+				[right, 923, 556, 0x1a2127],
+			]
+		]
+
 	}
 };
 
