@@ -1561,6 +1561,9 @@ export const versionList = [{
 	version: '20260527_03',
 	desc: '修复：探索找怪界面'
 }, {
+	version: '20260707_01',
+	desc: '修复：兼容新版本斗技主界面'
+}, {
 	version: '20260308_tyfs_01',
 	desc: '体验服适配：修改寮突破入口坐标\n禁用 GitHub 登录验证'
 }, {
@@ -1635,5 +1638,8 @@ export const versionList = [{
 }, {
 	version: '20260610_tyfs_01',
 	desc: '同步原作者更新至bfbf4f4d：修复510使用OCR时卡在式神录界面不退出、返回庭院次数检测、町中检测改为multiDetectColors，并保留体验服町中取色适配'
+}, {
+	version: '20260714_tyfs_01',
+	desc: '同步原作者更新至8e5d01ce：修复兼容新版本斗技主界面，优化退出结算斗技界面排序优先级'
 }];
 export default versionList[versionList.length - 1].version;
