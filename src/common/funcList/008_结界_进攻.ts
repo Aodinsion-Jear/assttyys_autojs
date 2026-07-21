@@ -116,18 +116,19 @@ export class Func008 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 264, 647, 301, 678, 1000],
 		]
-	}, { // 6 进入寮突破
+	}, { // 6 进入寮突破：先比色判断是否在个人突破界面，命中则点击寮突破切换按钮区域
 		desc: [1280, 720,
 			[
-				[right, 1214, 293, 0x6a4222],
-				[right, 1240, 337, 0xa75e1c],
-				[right, 1230, 374, 0x744622],
-				[right, 1213, 424, 0x5d3d26],
-				[right, 1246, 476, 0x553623],
+				[left, 27, 518, 0xb9b9b9],
+				[right, 1222, 272, 0x754622],
+				[right, 1121, 26, 0x344c5e],
+				[right, 729, 94, 0xb5903d],
+				[center, 535, 93, 0x563f2d],
+				[right, 1248, 414, 0x523523],
 			]
 		],
 		oper: [
-			[center, 1280, 720, 1216, 414, 1244, 500, 1000],
+			[right, 1280, 720, 1206, 383, 1251, 475, 1000],
 		]
 	},];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
