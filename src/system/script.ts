@@ -366,6 +366,10 @@ export class Script {
 	 */
 	findMultiColor(key: string, inRegion?: any, multiRegion?: boolean, noLog?: boolean, openmisalignedMatch?: boolean) {
 		this.initRedList();
+		if (!this.multiFindColors[key]) {
+			console.error(`findMultiColor: 多点找色key[${key}]不存在，请检查multiFindColors.ts定义。已跳过该识别`);
+			return null;
+		}
 		if (!multiRegion) {
 			const region = inRegion || this.multiFindColors[key].region;
 			const desc = this.multiFindColors[key].desc;
@@ -431,6 +435,10 @@ export class Script {
 	*/
 	findMultiColorEx(key, inRegion?): Point[] {
 		this.initRedList();
+		if (!this.multiFindColors[key]) {
+			console.error(`findMultiColorEx: 多点找色key[${key}]不存在，请检查multiFindColors.ts定义。已跳过该识别`);
+			return [];
+		}
 		const region = inRegion || this.multiFindColors[key].region;
 		const desc = this.multiFindColors[key].desc;
 		const similar = this.multiFindColors[key].similar || this.scheme.commonConfig.multiColorSimilar;

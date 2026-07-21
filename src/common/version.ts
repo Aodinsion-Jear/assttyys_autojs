@@ -1641,5 +1641,8 @@ export const versionList = [{
 }, {
 	version: '20260714_tyfs_01',
 	desc: '同步原作者更新至8e5d01ce：修复兼容新版本斗技主界面，优化退出结算斗技界面排序优先级'
+}, {
+	version: '20260721_tyfs_01',
+	desc: '修复312通用活动崩溃(补回丢失的思金神_返回按钮/思金神_智慧之火比色条目)，findMultiColor/findMultiColorEx增加key缺失防御，避免整脚本崩溃'
 }];
 export default versionList[versionList.length - 1].version;
