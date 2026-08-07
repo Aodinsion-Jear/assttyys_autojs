@@ -116,21 +116,21 @@ export class Func008 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 264, 647, 301, 678, 1000],
 		]
-	}, { // 6 进入寮突破：先比色判断是否在个人突破界面，命中则点击寮突破切换按钮区域
+	}, { // 6 进入寮突破
 		desc: [1280, 720,
 			[
-				[left, 27, 518, 0xb9b9b9],
-				[right, 1222, 272, 0x754622],
-				[right, 1121, 26, 0x344c5e],
-				[right, 729, 94, 0xb5903d],
-				[center, 535, 93, 0x563f2d],
-				[right, 1248, 414, 0x523523],
+				[right, 1212, 290, 0x854e20],
+				[right, 1245, 338, 0x653d20],
+				[right, 1213, 424, 0x5f3e26],
+				[right, 1247, 473, 0x563622],
+				[right, 1233, 304, 0xc16a19],
+				[right, 1235, 440, 0x583924],
 			]
 		],
 		oper: [
-			[right, 1280, 720, 1206, 383, 1251, 475, 1000],
+			[center, 1280, 720, 1208, 384, 1253, 479, 1000],
 		]
-	},];
+	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		const thisConf = thisScript.scheme.config['8'];
 		if (thisConf.inv && thisScript.scheme.config[0].jspd_enabled_2 == false) {
@@ -155,12 +155,14 @@ export class Func008 implements IFuncOrigin {
 			}
 		}
 		if (thisScript.oper({
+			id: 8,
 			name: '地图进入个人突破',
 			operator: [thisOperator[5]]
 		})) {
 			return true;
 		}
 		if ('寮突破' === thisConf.type && thisScript.oper({
+			id: 8,
 			name: '地图进入寮突破',
 			operator: [thisOperator[6]]
 		})) {

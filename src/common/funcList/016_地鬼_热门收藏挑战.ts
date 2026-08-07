@@ -59,7 +59,7 @@ export class Func016 implements IFuncOrigin {
 				[right, 1209, 43, 0xe8d4cf],
 				[right, 1204, 530, 0xded3bd],
 				[right, 1087, 624, 0xebe5ce],
-				[right, 1205, 437, 0xa05437],
+				[right, 1206, 500, 0x954d34],
 			]
 		],
 		oper: [
@@ -71,7 +71,7 @@ export class Func016 implements IFuncOrigin {
 			[
 				[left, 202, 388, 0x161211], // 第0个没打
 				[left, 308, 386, 0x161211], // 第1个没打
-				[center, 425, 391, 0x161211], // 第2个没打
+				[left, 427, 387, 0x161211], // 第2个没打 // 该坐标后续可能还会有问题，需要兼容未开启、还有式神头像可能没有盖住这个点的情况
 			]
 		],
 		oper: [
@@ -153,6 +153,7 @@ export class Func016 implements IFuncOrigin {
 			thisScript.global.dgCurNum = -1;
 			for (let i = 0; i < thisOperator[2].desc.length; i++) {
 				if (thisScript.oper({
+					id: 16,
 					name: `地鬼_检测第${i}个未打`,
 					operator: [{
 						desc: [thisOperator[2].desc[i] as [number, number, number, number]]
