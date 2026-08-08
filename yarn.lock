@@ -2040,8 +2040,8 @@ assert@2.0.0:
     util "^0.12.0"
 
 "assttyys_ui@github:Aodinsion-Jear/assttyys_ui#main":
-  version "1.0.11"
-  resolved "git+ssh://git@github.com/Aodinsion-Jear/assttyys_ui.git#79f9f388ccabd263e5ba742cd68298f1dd9be9f5"
+  version "1.0.14"
+  resolved "git+ssh://git@github.com/Aodinsion-Jear/assttyys_ui.git#736b23854d82c009369f8ad7530a9af3fc94a122"
   dependencies:
     "@element-plus/icons-vue" "^2.3.1"
     "@marshallswain/vuedraggable" "^4.2.0"

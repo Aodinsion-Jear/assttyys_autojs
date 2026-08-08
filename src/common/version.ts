@@ -1662,5 +1662,8 @@ export const versionList = [{
 }, {
 	version: '20260808_tyfs_01',
 	desc: '703武道大会-探索：更新未探索界面取色，改为右上寻票数区4点(894,40等)与搜寻按钮区3点(1144,588/1130,637/1158,656)，共7点全为right对齐；原左侧灰色妖怪头像取色点[left,128,339,0x84868f]已移除，如需增强判别可加回'
+}, {
+	version: '20260808_tyfs_02',
+	desc: '同步原作者前端更新至9e96563(前端1.0.11->1.0.14)：定时任务新增推送配置(JobOptions.pushOption)、修复导入方案缺commonConfig无法修改、修复mock模式定时任务无初始数据与cron模式下次执行时间不生效；零冲突，已保留移除OAuth验证页与本地前端依赖'
 }];
 export default versionList[versionList.length - 1].version;
