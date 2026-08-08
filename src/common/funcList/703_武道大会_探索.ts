@@ -7,7 +7,7 @@ const right = 2;
 export class Func703 implements IFuncOrigin {
 	id = 703;
 	name = '武道大会-探索';
-	desc = '武道大会探索界面（配合通用活动使用）：已探索出怪物则点击左侧怪物图标进入挑战界面，未探索则点击右侧探索按钮，探索后自动进入怪物挑战界面';
+	desc = '武道大会探索界面（配合通用活动使用）：已探索出御灵则点击左侧御灵图标进入挑战界面，未探索则点击右侧探索按钮，探索后自动进入御灵挑战界面';
 	operator: IFuncOperatorOrigin[] = [{
 		// 0 检测_御灵挑战界面（仅比色，不点击）
 		desc: [1280, 720,
@@ -21,20 +21,20 @@ export class Func703 implements IFuncOrigin {
 			]
 		]
 	}, {
-		// 1 探索界面_已探索出怪物 → 点击左侧怪物图标
+		// 1 探索界面_已探索出御灵 → 点击左侧御灵图标
 		desc: [1280, 720,
 			[
 				[right, 894, 36, 0xf8e2b6],
 				[right, 896, 20, 0xfbeecf],
 				[right, 1097, 19, 0xf7d099],
 				[right, 1096, 38, 0xf9edae],
-				[left, 260, 83, 0xa92b36], // 怪物名牌，未探索时不存在
+				[left, 260, 83, 0xa92b36], // 御灵名牌，未探索时不存在
 				[right, 1148, 624, 0xb4a88d],
 				[right, 1169, 623, 0x3b3a35],
 			]
 		],
 		oper: [
-			[left, 1280, 720, 21, 87, 283, 191, 1500], // 点击 左侧怪物图标
+			[left, 1280, 720, 21, 87, 283, 191, 1500], // 点击 左侧御灵图标
 		]
 	}, {
 		// 2 探索界面_未探索 → 点击右侧探索按钮
@@ -54,7 +54,7 @@ export class Func703 implements IFuncOrigin {
 		]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
-		// 已经在怪物挑战界面，本功能不再操作，交给方案里后续功能处理
+		// 已经在御灵挑战界面，本功能不再操作，交给方案里后续功能处理
 		if (thisScript.oper({
 			id: 703,
 			name: '武道大会_已在挑战界面',
@@ -62,15 +62,15 @@ export class Func703 implements IFuncOrigin {
 		})) {
 			return false;
 		}
-		// 已探索出怪物：点击左侧怪物图标进入挑战界面
+		// 已探索出御灵：点击左侧御灵图标进入挑战界面
 		if (thisScript.oper({
 			id: 703,
-			name: '武道大会_点击怪物图标',
+			name: '武道大会_点击御灵图标',
 			operator: [thisOperator[1]]
 		})) {
 			return true;
 		}
-		// 未探索：点击右侧探索按钮，探索后游戏会自动进入怪物挑战界面
+		// 未探索：点击右侧探索按钮，探索后游戏会自动进入御灵挑战界面
 		if (thisScript.oper({
 			id: 703,
 			name: '武道大会_点击探索',
