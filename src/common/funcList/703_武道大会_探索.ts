@@ -40,13 +40,13 @@ export class Func703 implements IFuncOrigin {
 		// 2 探索界面_未探索 → 点击右侧探索按钮
 		desc: [1280, 720,
 			[
-				[right, 898, 21, 0xfee7bd],
-				[right, 892, 37, 0xf5ddac],
-				[right, 1100, 14, 0xecdba0],
-				[right, 1092, 46, 0xeecc7d],
-				[right, 1146, 594, 0xddd2bb],
-				[right, 1002, 654, 0xfef8df],
-				[left, 128, 339, 0x84868f], // 灰色妖怪头像(尚未发现)，已探索时不存在
+				[right, 894, 40, 0xc889a5],
+				[right, 896, 19, 0xf7e3d1],
+				[right, 1099, 22, 0xf9edbf],
+				[right, 1094, 44, 0xfcf0b8],
+				[right, 1144, 588, 0xd8ccb5],
+				[right, 1130, 637, 0x27231f],
+				[right, 1158, 656, 0xd8ceb8],
 			]
 		],
 		oper: [
