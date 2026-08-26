@@ -621,8 +621,8 @@ export class Script {
 				if (typeof self.stopCallback === 'function') {
 					self.stopCallback();
 				}
-				if (this.job) {
-					this.job.doDone();
+				if (self.job) {
+					self.job.doDone();
 				}
 			}
 		});
@@ -794,7 +794,7 @@ export class Script {
 		const operatorFunc = currFunc.operatorFunc;
 		if (typeof operatorFunc === 'function') {
 			if (operatorFunc.call(null, this, operator)) {
-				console.log('oper_success: [function] currFunc.name' + currFunc.name);
+				console.log('oper_success: [function] currFunc.name:' + currFunc.name);
 				return true;
 			}
 		} else {

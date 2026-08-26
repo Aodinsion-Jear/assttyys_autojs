@@ -2039,9 +2039,10 @@ assert@2.0.0:
     object-is "^1.0.1"
     util "^0.12.0"
 
-"assttyys_ui@github:Aodinsion-Jear/assttyys_ui#main":
+assttyys_ui@^1.0.14:
   version "1.0.14"
-  resolved "git+ssh://git@github.com/Aodinsion-Jear/assttyys_ui.git#736b23854d82c009369f8ad7530a9af3fc94a122"
+  resolved "https://registry.npmjs.org/assttyys_ui/-/assttyys_ui-1.0.14.tgz"
+  integrity sha512-HZZ6WUPDgboWbNO+0Qle6/AwXzk3NgfzaNlget5p2jMJCtLVQqFENWRAnEAa+goZ7FlobWJTGNt6EnD5LhVHOQ==
   dependencies:
     "@element-plus/icons-vue" "^2.3.1"
     "@marshallswain/vuedraggable" "^4.2.0"
