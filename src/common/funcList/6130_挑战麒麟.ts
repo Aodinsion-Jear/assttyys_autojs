@@ -12,23 +12,25 @@ export class Func6130 implements IFuncOrigin {
 	operator: IFuncOperatorOrigin[] = [{
 		// 0 检测星级选择界面 → 点击六星麒麟
 		desc: [1280, 720, [
-			[left, 72, 658, 0xa97343],
-			[left, 141, 660, 0xb1b1b1],
-			[left, 229, 657, 0xec4933],
-			[right, 1176, 625, 0xe6dac5],
-			[right, 1217, 625, 0xe3d9c2],
-			[left, 223, 33, 0xf8f3e0],
+			[left, 56, 37, 0x9f6b3c],
+			[left, 110, 29, 0xf8edb6],
+			[center, 371, 671, 0xcca05a],
+			[center, 367, 659, 0xb29a1b],
+			[right, 1182, 625, 0xe5d9c4],
+			[right, 1188, 563, 0x8a6b54],
+			[right, 1180, 671, 0xddd2bd],
 		]],
 		oper: [[center, 1280, 720, 1049, 337, 1141, 423, 1000]]
 	}, {
 		// 1 检测六星已选中 → 点击开始狩猎
 		desc: [1280, 720, [
-			[left, 79, 647, 0xb07a46],
-			[left, 150, 650, 0xd2d2d3],
-			[left, 233, 655, 0xf75931],
-			[left, 295, 657, 0xb33519],
-			[right, 1039, 343, 0xfee898],
-			[right, 1040, 364, 0xfeeca3],
+			[center, 357, 655, 0xdbaa4e],
+			[center, 368, 659, 0xb2991c],
+			[left, 116, 27, 0xf9eeb7],
+			[left, 36, 37, 0xf5e2a3],
+			[right, 1185, 627, 0xe3d9c5],
+			[right, 1038, 344, 0xfee9a7],
+			[right, 1040, 365, 0xfeeda7],
 		]],
 		oper: [[right, 1280, 720, 1144, 580, 1226, 673, 1000]]
 	}, {
