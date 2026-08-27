@@ -693,7 +693,8 @@ const multiFindColors: IMultiFindColorsOrigin = {
 		]
 	},
 	'庭院_探索灯笼': {
-		region: [center, 1280, 720, 0, 83, 1006, 284],
+		// y2 由 284 最小扩区至 300：缘结之庭_菜单已展开变体的锚点(47,291)在原 region 外（见 courtSkins/yuanJieZhiTing.ts）
+		region: [center, 1280, 720, 0, 83, 1006, 300],
 		desc: [
 			[1280, 720,
 				[

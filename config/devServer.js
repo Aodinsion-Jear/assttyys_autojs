@@ -39,7 +39,12 @@ app.use(async (ctx, next) => {
         const { t, m, d } = ctx.request.body;
         if (['info', 'log', 'trace', 'debug', 'error'].includes(m));
         const dt = new Date(t);
-        console.log(`[remote] ${dt.toLocaleString()}.${dt.getTime() % 1000}/${m}: ${d}`);
+        const logLine = `[remote] ${dt.toLocaleString()}.${dt.getTime() % 1000}/${m}: ${d}`;
+        console.log(logLine);
+        // 同步落盘，便于外部工具（如 Claude Code）读取分析
+        try {
+            fs.appendFileSync('dev-remote.log', logLine + '\n');
+        } catch (e) { /* 忽略写文件失败 */ }
         ctx.body = 'success';
     } else {
         await next();
