@@ -359,16 +359,6 @@ export class Script {
 			if (multiFindColors[key].similar) {
 				thisMultiFindColor[key].similar = multiFindColors[key].similar;
 			}
-			if (multiFindColors[key].pointOffsets) {
-				// 偏移量按分辨率缩放（取色基于1280x720）
-				thisMultiFindColor[key].pointOffsets = multiFindColors[key].pointOffsets.map(offset => {
-					if (!offset) return null;
-					const hp = this.helperBridge.getHelper(1280, 720);
-					const p = hp.GetPoint(offset[0], offset[1], -1);
-					const z = hp.GetPoint(0, 0, -1);
-					return [p.x - z.x, p.y - z.y];
-				});
-			}
 		}
 		this.multiFindColors = thisMultiFindColor;
 	}
@@ -410,14 +400,6 @@ export class Script {
 						toDraw[0].region = [point.x - 5, point.y - 5, point.x + 5, point.y + 5];
 						drawFloaty.draw(toDraw, 200);
 					}
-					const pointOffsets = this.multiFindColors[key].pointOffsets;
-					if (pointOffsets && pointOffsets[i]) {
-						point.x += pointOffsets[i][0];
-						point.y += pointOffsets[i][1];
-						if (!noLog) {
-							console.log(`[${key}]应用锚点偏移(${pointOffsets[i][0]},${pointOffsets[i][1]})，偏移后坐标：(${point.x}, ${point.y})`);
-						}
-					}
 					return point;
 				}
 			}
@@ -443,14 +425,6 @@ export class Script {
 							toDraw[0].color = 'orange';
 							toDraw[0].region = [point.x - 5, point.y - 5, point.x + 5, point.y + 5];
 							drawFloaty.draw(toDraw, 200);
-						}
-						const pointOffsets = this.multiFindColors[key].pointOffsets;
-						if (pointOffsets && pointOffsets[i]) {
-							point.x += pointOffsets[i][0];
-							point.y += pointOffsets[i][1];
-							if (!noLog) {
-								console.log(`[${key}]应用锚点偏移(${pointOffsets[i][0]},${pointOffsets[i][1]})，偏移后坐标：(${point.x}, ${point.y})`);
-							}
 						}
 						return point;
 					}

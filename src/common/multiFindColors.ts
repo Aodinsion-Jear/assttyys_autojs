@@ -666,7 +666,7 @@ const multiFindColors: IMultiFindColorsOrigin = {
 		]
 	},
 	'庭院_町中竖牌': {
-		region: [center, 1280, 720, 0, 83, 1279, 719],
+		region: [center, 1280, 720, 0, 83, 1279, 412],
 		desc: [
 			[1280, 720,
 				[
@@ -688,38 +688,11 @@ const multiFindColors: IMultiFindColorsOrigin = {
 					[center, 709, 307, 0xa59e9d],
 					[center, 697, 257, 0xaaa290],
 				]
-			],
-			[   //  缘结之庭_菜单未展开，流畅画质；取庭院背景特征点，命中后经pointOffsets偏移到町中竖牌点击区域(587,338,649,388)
-				1280, 720,
-				[
-					[right, 1090, 166, 0xa53636],
-					[right, 1112, 176, 0xbbafa3],
-					[right, 1025, 278, 0x3c2831],
-					[right, 1217, 623, 0xefcb94],
-					[right, 1210, 641, 0xd0c7bd],
-					[right, 1204, 651, 0x54120e],
-					[right, 1188, 666, 0xd9c7c2],
-					[left, 47, 212, 0x6a3c38],
-				]
-			],
-			[   //  缘结之庭_菜单已展开，流畅画质；同上
-				1280, 720,
-				[
-					[right, 1160, 270, 0x3c262c],
-					[right, 1076, 375, 0x422021],
-					[left, 47, 291, 0x693431],
-					[left, 56, 318, 0x5a332d],
-					[left, 96, 628, 0x6f89b6],
-					[right, 1223, 647, 0xdecec8],
-					[right, 1035, 618, 0xc64555],
-				]
-			],
-		],
-		// 第2、3组(缘结之庭)锚点在庭院背景上，偏移到町中竖牌点击区域内的(615,360)
-		pointOffsets: [null, null, [-475, 194], [-545, 90]],
+			]
+		]
 	},
 	'庭院_探索灯笼': {
-		region: [center, 1280, 720, 0, 83, 1279, 719],
+		region: [center, 1280, 720, 0, 83, 1006, 284],
 		desc: [
 			[1280, 720,
 				[
@@ -808,34 +781,7 @@ const multiFindColors: IMultiFindColorsOrigin = {
 					[right, 676, 166, 0x6f6248],
 				]
 			],
-			[   //  缘结之庭_菜单未展开，流畅画质；取庭院背景特征点，命中后经pointOffsets偏移到探索灯笼点击区域(417,109,512,186)
-				1280, 720,
-				[
-					[right, 1090, 166, 0xa53636],
-					[right, 1112, 176, 0xbbafa3],
-					[right, 1025, 278, 0x3c2831],
-					[right, 1217, 623, 0xefcb94],
-					[right, 1210, 641, 0xd0c7bd],
-					[right, 1204, 651, 0x54120e],
-					[right, 1188, 666, 0xd9c7c2],
-					[left, 47, 212, 0x6a3c38],
-				]
-			],
-			[   //  缘结之庭_菜单已展开，流畅画质；同上
-				1280, 720,
-				[
-					[right, 1160, 270, 0x3c262c],
-					[right, 1076, 375, 0x422021],
-					[left, 47, 291, 0x693431],
-					[left, 56, 318, 0x5a332d],
-					[left, 96, 628, 0x6f89b6],
-					[right, 1223, 647, 0xdecec8],
-					[right, 1035, 618, 0xc64555],
-				]
-			],
-		],
-		// 第8、9组(缘结之庭)锚点在庭院背景上，偏移到探索灯笼点击区域内的(425,112)
-		pointOffsets: [null, null, null, null, null, null, null, null, [-665, -54], [-735, -158]],
+		]
 	},
 	'探索_宝箱': {
 		region: [left, 1280, 720, 17, 603, 861, 685],
@@ -1174,7 +1120,7 @@ const multiFindColors: IMultiFindColorsOrigin = {
 		]
 	},
 	'悬赏_庭院检测悬赏图标': {
-		region: [left, 1280, 720, 0, 88, 1280, 719],
+		region: [left, 1280, 720, 0, 88, 1280, 520],
 		desc: [
 			[1280, 720, // 封
 				[
@@ -1310,34 +1256,7 @@ const multiFindColors: IMultiFindColorsOrigin = {
 					[left, 276, 351, 0xf8e3ae],
 				]
 			],
-			[   //  缘结之庭_菜单未展开，流畅画质；取庭院背景特征点，命中后经pointOffsets偏移到悬赏图标点击区域(276,274,342,334)
-				1280, 720,
-				[
-					[right, 1090, 166, 0xa53636],
-					[right, 1112, 176, 0xbbafa3],
-					[right, 1025, 278, 0x3c2831],
-					[right, 1217, 623, 0xefcb94],
-					[right, 1210, 641, 0xd0c7bd],
-					[right, 1204, 651, 0x54120e],
-					[right, 1188, 666, 0xd9c7c2],
-					[left, 47, 212, 0x6a3c38],
-				]
-			],
-			[   //  缘结之庭_菜单已展开，流畅画质；同上
-				1280, 720,
-				[
-					[right, 1160, 270, 0x3c262c],
-					[right, 1076, 375, 0x422021],
-					[left, 47, 291, 0x693431],
-					[left, 56, 318, 0x5a332d],
-					[left, 96, 628, 0x6f89b6],
-					[right, 1223, 647, 0xdecec8],
-					[right, 1035, 618, 0xc64555],
-				]
-			],
 		],
-		// 第12、13组(缘结之庭)锚点在庭院背景上，偏移到悬赏图标点击区域内的(300,295)
-		pointOffsets: [null, null, null, null, null, null, null, null, null, null, null, null, [-790, 129], [-860, 25]],
 	},
 	'金币妖怪_金币妖怪字样': {
 		region: [left, 1280, 720, 128, 103, 371, 682],
