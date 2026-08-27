@@ -1,4 +1,5 @@
 import { IMultiFindColorsOrigin } from '@/interface/IMultiColor';
+import { skinFinds } from '@/common/courtSkins';
 
 // const normal = -1; //定义常量
 const left = 0;
@@ -3207,4 +3208,21 @@ const multiFindColors: IMultiFindColorsOrigin = {
 	// 	],]
 	// },
 }
+
+// 庭院皮肤变体聚合：把 src/common/courtSkins/ 中注册的找色变体追加到对应 key 的 desc 尾部，
+// 元数据（皮肤/画质/状态/偏移）作为 desc 元素的第 4 元素随变体共存（新增皮肤不需要改动本文件）
+for (const variant of skinFinds) {
+	const target = multiFindColors[variant.key];
+	if (!target) {
+		console.error(`courtSkins: 找色key[${variant.key}]不存在，皮肤[${variant.skin}]的变体已跳过`);
+		continue;
+	}
+	target.desc.push([variant.desc[0], variant.desc[1], variant.desc[2], {
+		skin: variant.skin,
+		quality: variant.quality,
+		state: variant.state,
+		offset: variant.offset,
+	}]);
+}
+
 export default multiFindColors;

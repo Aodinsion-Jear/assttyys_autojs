@@ -1,4 +1,5 @@
 import { IMultiDetectColorsOrigin } from '@/interface/IMultiColor';
+import { skinDetects } from '@/common/courtSkins';
 
 // const normal = -1; //定义常量
 const left = 0;
@@ -881,5 +882,23 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 	}
 };
 
+
+// 庭院皮肤判定聚合：把 src/common/courtSkins/ 中注册的判定条目写入新 key，
+// 并挂载到 attachTo 指定的 base key 的 fallbacks（新增皮肤不需要改动本文件）
+for (const entry of skinDetects) {
+	if (multiDetectColors[entry.key]) {
+		console.error(`courtSkins: 比色key[${entry.key}]已存在，皮肤[${entry.key}]的判定已跳过`);
+		continue;
+	}
+	multiDetectColors[entry.key] = { desc: entry.desc };
+	for (const baseKey of entry.attachTo) {
+		const base = multiDetectColors[baseKey];
+		if (!base) {
+			console.error(`courtSkins: base key[${baseKey}]不存在，无法挂载[${entry.key}]的fallbacks`);
+			continue;
+		}
+		base.fallbacks = (base.fallbacks || []).concat(entry.key);
+	}
+}
 
 export default multiDetectColors;

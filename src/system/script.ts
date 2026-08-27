@@ -350,6 +350,22 @@ export class Script {
 			};
 			for (const desc of multiFindColors[key].desc) {
 				thisMultiFindColor[key].desc.push(this.helperBridge.helper.GetFindColorArray(desc[0], desc[1], desc[2]));
+				// desc 第 4 元素为元数据（庭院皮肤变体用），透传到 metas 并保持与 desc 同下标
+				const meta = desc[3];
+				if (meta && !thisMultiFindColor[key].metas) {
+					thisMultiFindColor[key].metas = new Array(thisMultiFindColor[key].desc.length - 1).fill(null);
+				}
+				if (thisMultiFindColor[key].metas) {
+					if (meta && meta.offset) {
+						// 偏移量按分辨率缩放（取色基于1280x720）
+						const hp = this.helperBridge.getHelper(1280, 720);
+						const p = hp.GetPoint(meta.offset[0], meta.offset[1], -1);
+						const z = hp.GetPoint(0, 0, -1);
+						thisMultiFindColor[key].metas.push({ ...meta, offset: [p.x - z.x, p.y - z.y] });
+					} else {
+						thisMultiFindColor[key].metas.push(meta || null);
+					}
+				}
 			}
 			if (multiFindColors[key].region) {
 				const sr = this.helperBridge.getHelper(multiFindColors[key].region[1], multiFindColors[key].region[2]).GetPoint(multiFindColors[key].region[3], multiFindColors[key].region[4], multiFindColors[key].region[0]);
@@ -386,8 +402,14 @@ export class Script {
 				const item = desc[i];
 				const point = this.helperBridge.helper.FindMultiColor(region[0], region[1], region[2], region[3], item, similar, misalignedMatch);
 				if (point.x !== -1) {
+					const meta = this.multiFindColors[key].metas && this.multiFindColors[key].metas[i];
+					if (meta && meta.offset) {
+						point.x += meta.offset[0];
+						point.y += meta.offset[1];
+					}
 					if (!noLog) {
-						console.log(`[${key}]第${i}个查找成功， 坐标为：(${point.x}, ${point.y})`);
+						const metaStr = meta && meta.skin ? `，变体[${[meta.skin, meta.quality, meta.state].filter(Boolean).join('/')}]` : '';
+						console.log(`[${key}]第${i}个查找成功${metaStr}， 坐标为：(${point.x}, ${point.y})`);
 					}
 					if (drawFloaty.instacne && item) {
 						const toDraw = item.map(kk => {
@@ -412,8 +434,14 @@ export class Script {
 					const item = desc[i];
 					const point = this.helperBridge.helper.FindMultiColor(region[0], region[1], region[2], region[3], item, similar, true);
 					if (point.x !== -1) {
+						const meta = this.multiFindColors[key].metas && this.multiFindColors[key].metas[i];
+						if (meta && meta.offset) {
+							point.x += meta.offset[0];
+							point.y += meta.offset[1];
+						}
 						if (!noLog) {
-							console.log(`[${key}]第${i}个查找成功， 坐标为：(${point.x}, ${point.y})`);
+							const metaStr = meta && meta.skin ? `，变体[${[meta.skin, meta.quality, meta.state].filter(Boolean).join('/')}]` : '';
+							console.log(`[${key}]第${i}个查找成功${metaStr}， 坐标为：(${point.x}, ${point.y})`);
 						}
 						if (drawFloaty.instacne && item) {
 							const toDraw = item.map(kk => {
