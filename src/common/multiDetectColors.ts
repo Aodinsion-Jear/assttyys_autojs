@@ -879,6 +879,18 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 			]
 		]
 
+	},
+	// 503返回庭院判定"已回到庭院"用：庭院中的町中立牌（取色自默认庭院皮肤，原funcList/503 operator[12]内联数据）
+	'庭院_町中立牌': {
+		desc: [
+			1280, 720,
+			[
+				[center, 738, 324, 0x979693],
+				[center, 738, 349, 0x999595],
+				[center, 740, 247, 0xb7b0af],
+				[center, 754, 302, 0xaba896],
+			]
+		]
 	}
 };
 
