@@ -32,6 +32,11 @@ export class Func519 implements IFuncOrigin {
 			type: 'integer',
 			default: 999,
 		}, {
+			name: 'name',
+			desc: '指定道馆名称，填写后按名称攻打（可填部分名字，留空则按系数选择）',
+			type: 'text',
+			default: '',
+		}, {
 			name: 'day',
 			desc: '星期567不进入',
 			type: 'switch',
@@ -198,6 +203,10 @@ export class Func519 implements IFuncOrigin {
 				[center, 690, 648, 0xb8b6a7],
 			]
 		]
+	}, { // 12 右侧寮列表整栏OCR区域（按名称攻打用）
+		oper: [
+			[center, 1280, 720, 1086, 40, 1241, 640, 0],
+		]
 	},
 	];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
@@ -244,6 +253,56 @@ export class Func519 implements IFuncOrigin {
 					thisScript.global.daoGuan_swip = true;
 					return true;
 				}
+			}
+			// 配置了道馆名称时，按名称在右侧列表中查找攻打
+			const daoGuanName = String(thisConf.name || '').replace(/\s+/g, '');
+			if (daoGuanName) {
+				if (!thisScript.getOcrDetector()) {
+					return false;
+				}
+				const ocrResult = thisScript.findText('.+', 0, thisOperator[12].oper[0], '包含');
+				for (const i in ocrResult) {
+					console.log(`道馆列表文字历遍:${ocrResult[i].label}`);
+				}
+				const hitName = thisScript.findTextByOcrResult(daoGuanName, ocrResult, '包含');
+				if (hitName.length) {
+					// 按命中文字的y坐标找最近的行，点该行寮头像
+					const avatarOpers = thisScript.global.daoGuan_swip ? thisOperator[4].oper : thisOperator[6].oper;
+					let row = 0;
+					let minDist = Infinity;
+					for (let i = 0; i < avatarOpers.length; i++) {
+						const centerY = (avatarOpers[i][1] + avatarOpers[i][3]) / 2;
+						const dist = Math.abs(hitName[0].points[0].y - centerY);
+						if (dist < minDist) {
+							minDist = dist;
+							row = i;
+						}
+					}
+					console.log(`找到目标道馆[${daoGuanName}]，点击第${row + 1}个寮`);
+					thisScript.regionClick([avatarOpers[row]]);
+					thisScript.global.daoGuan_click = true;
+					return true;
+				}
+				if (thisScript.global.daoGuan_swip) {
+					// 前4没有目标道馆，滑动查看后4
+					console.log(`前4未找到道馆[${daoGuanName}]，滑动查看后4`);
+					thisScript.regionSwipe(thisOperator[1].oper[1], thisOperator[1].oper[2], [300, 400], 3000);
+					thisScript.global.daoGuan_swip = false;
+					return true;
+				}
+				// 后4也没有，刷新重找
+				if (thisScript.global.flash_time >= 3) {
+					thisScript.doPush(thisScript, { text: `没有找到目标道馆[${daoGuanName}]`, before() { thisScript.myToast(`没有找到目标道馆[${daoGuanName}]`); } });
+					thisScript.stop();
+					sleep(3000);
+					return true;
+				}
+				console.log(`未找到道馆[${daoGuanName}]，刷新列表`);
+				thisScript.regionClick([thisOperator[1].oper[3]]);
+				thisScript.regionClick([thisOperator[1].oper[4]]);
+				thisScript.global.daoGuan_swip = true;
+				thisScript.global.flash_time++;
+				return true;
 			}
 			if (thisScript.getOcrDetector()) {
 				const glod = [];

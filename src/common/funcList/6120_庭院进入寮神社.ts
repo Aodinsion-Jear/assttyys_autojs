@@ -7,8 +7,18 @@ const right = 2;
 
 export class Func6120 implements IFuncOrigin {
 	id = 6120;
-	name = '庭院进入狩猎战';
-	desc = '从庭院(默认皮肤)导航进入狩猎战界面';
+	name = '庭院进入寮神社';
+	desc = '从庭院(默认皮肤)导航进入寮神社，可选进入麒麟或道馆';
+	config = [{
+		desc: '',
+		config: [{
+			name: 'type',
+			desc: '进入目标',
+			type: 'list',
+			data: ['麒麟', '道馆'],
+			default: '麒麟',
+		}]
+	}];
 	operator: IFuncOperatorOrigin[] = [{
 		// 0 在庭院打开菜单
 		desc: '页面是否为庭院_菜单未展开_只支持默认庭院皮肤与默认装饰',
@@ -71,17 +81,35 @@ export class Func6120 implements IFuncOrigin {
 				[left, 187, 593, 0x7a5836],
 			]
 		]
+	}, {
+		// 7 在神社页面点击道馆区域
+		desc: [1280, 720,
+			[
+				[center, 498, 264, 0xc2bca9],
+				[center, 546, 265, 0xbabaac],
+				[center, 550, 293, 0xc5924c],
+				[center, 467, 300, 0xa67636],
+				[center, 468, 276, 0xcfcdb7],
+				[center, 507, 267, 0xd6d0bc],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 396, 126, 625, 351, 1000]
+		]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
+		const thisConf = thisScript.scheme.config['6120'];
+		// 根据配置选择神社内的目标：道馆或麒麟(狩猎战)
+		const targetOper = thisConf && thisConf.type === '道馆' ? thisOperator[7] : thisOperator[5];
 		if (thisScript.oper({
 			id: 6120,
-			name: '庭院进入狩猎战_导航',
-			operator: [thisOperator[0], thisOperator[1], thisOperator[2], thisOperator[3], thisOperator[4], thisOperator[5]]
+			name: '庭院进入寮神社_导航',
+			operator: [thisOperator[0], thisOperator[1], thisOperator[2], thisOperator[3], thisOperator[4], targetOper]
 		})) {
 			return true;
 		}
 
-		if (thisScript.oper({
+		if (thisConf && thisConf.type !== '道馆' && thisScript.oper({
 			name: '检测_已进入狩猎战',
 			operator: [{
 				desc: thisOperator[6].desc
