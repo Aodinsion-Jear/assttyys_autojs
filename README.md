@@ -10,11 +10,14 @@ ASISTTANT YYS NEXT GENERATION<br/>
 脚本开发分辨率为 720 * 1280 该分辨率的横屏或竖屏均能兼容，其他分辨率兼容原理见 <https://gitee.com/yiszza/ScriptLib> 中 README 所提到的锚点比色 与 多点找色，开发分辨率得到的相关坐标点都会在运行分辨率上进行一次缩放与位移，但未测试过其他分辨率，因目前大多真机都是异型屏，阴阳师对异型屏有特殊优化，导致几乎所有异型屏都不支持锚点比色做阴阳师的多分辨率兼容，建议使用配合虚拟机或云手机使用。
 
 # 目录说明
-前端已从本项目分离，见 [zzliux/assttyys_ui](https://github.com/zzliux/assttyys_ui)
+前端已从本项目分离，见 [zzliux/assttyys_ui](https://github.com/zzliux/assttyys_ui)（其构建产物 dist/index.html 会被打进 zip 本地加载）
+
+> 更详细的架构与开发指南见 [docs/second_development.md](./docs/second_development.md)
+
 ```
 assttyys_autojs
 ├─assets                                       资源目录，不经过webpack打包，运行时可加载该目录下的文件
-│  ├─img                                       
+│  ├─img
 │  └─lib
 ├─build                                        aj打包时自动产生的构建目录
 ├─config                                       webpack打包配置
@@ -31,35 +34,42 @@ assttyys_autojs
 │  ├─common                                    公共模块
 │  │  │  commonConfig.ts                       公共默认配置，每个方案右上角的配置来源
 │  │  │  fmmxQuestionList.ts                   逢魔密信题库
-│  │  │  funcList.ts                           功能入口，用以动态加载funcList下所有模块
-│  │  │  globalCommconConfig.ts                全局参数，用于在设置中体现
-│  │  │  multiDetectColors.ts                  **多点找色配置文件**
-│  │  │  multiFindColors.ts                    **多点找色配置文件**
-│  │  │  schemeList.tson                       **预设方案配置文件**
+│  │  │  funcListIndex.ts                      功能入口，用以动态加载funcList下所有模块
+│  │  │  globalCommonConfig.ts                 全局参数，用于在设置中体现
+│  │  │  multiDetectColors.ts                  **多点比色配置文件**（场景判定，可配fallbacks回退键）
+│  │  │  multiFindColors.ts                    **多点找色配置文件**（定位点击点，一键可有多组模板）
+│  │  │  schemeList.ts                         **预设方案配置文件**
+│  │  │  version.ts                            版本记录（发版时追加）
 │  │  │  ...
-│  │  └─funcList                               **功能配置目录**
+│  │  ├─courtSkins                             庭院皮肤兼容数据（按皮肤分文件，index.ts注册）
+│  │  └─funcList                               **功能配置目录**（require.context自动加载）
 │  │          000_结束判断.ts
 │  │          001_准备.ts
 │  │          002_退出结算.ts
 │  │          003.悬赏协作.ts
 │  │          004_接受邀请.ts
 │  │          ...
+│  ├─interface                                 接口定义（IFunc、IMultiColor等）
 │  ├─system                                    aj端目录
-│  │  │  drawFloaty.ts                         悬浮绘制模块
+│  │  │  drawFloaty.ts                         调试悬浮绘制模块（比色/点击框）
 │  │  │  helperBridge.ts                       操作模块，集成scriptlib以及点击等操作
 │  │  │  index.ts                              aj端入口
 │  │  │  inputhideutil.ts                      适配软键盘弹起布局的模块
-│  │  │  myFloaty.ts                           悬浮按钮模块
-│  │  │  ocr.ts                                ocr模块
+│  │  │  MyAutomator.ts                        点击模式实现（无障碍/Root/Shell/RootAutomator）
+│  │  │  MyFloaty.ts                           悬浮按钮模块
 │  │  │  schemeDialog.ts                       方案弹窗选择模块
 │  │  │  script.ts                             **脚本逻辑模块**
-│  │  │  store.ts                              本地存储模块
 │  │  ├─FloatButton                            大柒悬浮按钮
+│  │  ├─GlobalStore                            global/superGlobal 状态类型与初始值
+│  │  ├─Ocr                                    ocr模块（Mlkit/Yunxi多实现）
+│  │  ├─PushClient                             推送模块（Gotify/OneBot/PushPlus/Server酱）
+│  │  ├─Schedule                               定时任务模块
+│  │  ├─Store                                  本地存储模块（支持WebDAV后端）
 │  │  └─webviewEvents                          auto端处理前端路由目录
 │  │          funcList.ts
 │  │          index.ts
 │  │          ...
-├─test                                          测试目录，里面有乱七八糟的测试用的文件
+├─test                                          测试目录，里面是直接在Auto.js中运行的独立实验脚本
 |  ...                                          待补充
 ```
 

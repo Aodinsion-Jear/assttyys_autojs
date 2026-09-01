@@ -508,7 +508,8 @@ export class Func018 implements IFuncOrigin {
 					sleep(1000);
 					return true;
 				} else {
-					thisScript.doPush(thisScript, { text: `[${thisScript.schemeHistory.map(item => item.schemeName).join('、')}]已停止，请查看。`, before() { thisScript.myToast('脚本即将停止，正在上传数据'); } });
+					thisScript.myToast('悬赏停止原因A:协作全部完成判定');
+					thisScript.doPush(thisScript, { text: `[${thisScript.schemeHistory.map(item => item.schemeName).join('、')}]已停止，请查看。(停止原因A:协作全部完成判定)`, before() { thisScript.myToast('脚本即将停止，正在上传数据'); } });
 					thisScript.stop();
 					sleep(1000);
 					return true;
@@ -569,7 +570,8 @@ export class Func018 implements IFuncOrigin {
 				sleep(1000);
 				return true;
 			} else {
-				thisScript.doPush(thisScript, { text: `[${thisScript.schemeHistory.map(item => item.schemeName).join('、')}]已停止，请查看。`, before() { thisScript.myToast('脚本即将停止，正在上传数据'); } });
+				thisScript.myToast('悬赏停止原因B:悬赏全部完成面板');
+				thisScript.doPush(thisScript, { text: `[${thisScript.schemeHistory.map(item => item.schemeName).join('、')}]已停止，请查看。(停止原因B:悬赏全部完成面板)`, before() { thisScript.myToast('脚本即将停止，正在上传数据'); } });
 				thisScript.stop();
 				sleep(1000);
 				return true;
@@ -665,7 +667,8 @@ export class Func018 implements IFuncOrigin {
 					sleep(1000);
 					return;
 				} else {
-					thisScript.doPush(thisScript, { text: `[${thisScript.schemeHistory.map(item => item.schemeName).join('、')}]已停止，请查看。`, before() { thisScript.myToast('脚本即将停止，正在上传数据'); } });
+					thisScript.myToast('悬赏停止原因C:探索界面未找到已追踪任务');
+					thisScript.doPush(thisScript, { text: `[${thisScript.schemeHistory.map(item => item.schemeName).join('、')}]已停止，请查看。(停止原因C:探索界面${maxCount}次未找到已追踪任务)`, before() { thisScript.myToast('脚本即将停止，正在上传数据'); } });
 					thisScript.stop();
 					sleep(1000);
 					return;
