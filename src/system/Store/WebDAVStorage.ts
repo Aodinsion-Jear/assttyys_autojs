@@ -58,9 +58,13 @@ export default class WebDAVStorage extends AbstractStorages {
 		const auth = java.lang.String(android.util.Base64.encode(java.lang.String(`${this.getStorageConfig('WebDAV_username')}:${this.getStorageConfig('WebDAV_password')}`).getBytes(), android.util.Base64.NO_WRAP));
 		try {
 			const res = WebDavRequest('PROPFIND', `${url}`, auth);
+			if (res.statusCode !== 207) {
+				console.error(`WebDAV验证失败，statusCode: ${res.statusCode}，body前200字符: ${(res.body || '').substring(0, 200)}`);
+				return false;
+			}
 			const fileList = parsePropFindBodyXML(res.body);
 			console.log(`当前目录的文件：${JSON.stringify(fileList)}`);
-			return res.statusCode === 207;
+			return true;
 		} catch (e) {
 			console.error($debug.getStackTrace(e));
 			return false;
@@ -211,8 +215,12 @@ export class WebDAVStore implements IStore {
 
 // TODO 使用正经xml解析，正则无法处理包含CDATA的情况以及CDATA中包含当前结束符的情况
 function parsePropFindBodyXML(xml: string) {
-	const dresponseItemStrs = xml.match(/<D:response>.+?<\/D:response>/ig).map(item => item.trim());
-	return dresponseItemStrs.map(str => {
+	// match 无命中时返回 null，直接 .map 会抛 TypeError（掩掉真实的响应内容），这里先兜底再带上下文抛出
+	const dresponseItemStrs = (xml || '').match(/<D:response>.+?<\/D:response>/ig);
+	if (!dresponseItemStrs) {
+		throw new Error(`WebDAV响应解析失败：未找到<D:response>节点，body前200字符: ${(xml || '').substring(0, 200)}`);
+	}
+	return dresponseItemStrs.map(item => item.trim()).map(str => {
 		return {
 			path: decodeURIComponent(str.match(/<D:href>(.+?)<\/D:href>/i)?.[1]?.trim()),
 			name: decodeURIComponent(str.match(/<D:displayname>(.+?)<\/D:displayname>/i)?.[1]?.trim()),

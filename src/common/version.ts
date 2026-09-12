@@ -1695,5 +1695,8 @@ export const versionList = [{
 }, {
 	version: '20260912_tyfs_03',
 	desc: '修复：狐栖归处皮肤下"菜单未展开"判定误命中（取色组缺少菜单按钮本体点，菜单展开后仍判定未展开），导致启动游戏反复点击展开按钮死循环。'
+}, {
+	version: '20260912_tyfs_04',
+	desc: '修复：WebDAV存储验证时若服务器返回非207状态码或响应体无<D:response>节点，原代码对null调用.map直接崩溃且看不到真实原因；现改为打印状态码与响应体前200字符，便于排查认证失败或厂商响应格式不兼容问题。'
 }];
 export default versionList[versionList.length - 1].version;
