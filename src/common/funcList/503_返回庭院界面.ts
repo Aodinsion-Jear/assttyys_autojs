@@ -6,6 +6,37 @@ const left = 0;
 const center = 1;
 const right = 2;
 
+/**
+ * OCR兜底确认已回庭院：取色未命中「庭院_町中立牌」时，
+ * 在各皮肤町中牌子区域内OCR"中"字（牌子上"町中"二字与皮肤无关）。
+ * 需要安装OCR扩展，未安装时直接返回false（不影响原取色逻辑）。
+ * 注意：operatorFunc 被以 call(null, ...) 调用，this 不是 Func503 实例，故定义为模块级函数。
+ */
+function ocrConfirmCourt(thisScript: Script): boolean {
+	if (!thisScript.getOcrDetector()) {
+		return false;
+	}
+	// OCR region 是原始像素 [x1, y1, x2, y2]（非 func 坐标格式），基于 1280x720 取色，运行时换算
+	// 注意 MLKit 要求宽高均 >= 32 像素
+	const regions = [
+		[700, 245, 775, 325],	// 默认庭院（"町中"实测位于723,257-754,309，外扩；宽度须>=32满足MLKit下限）
+		[679, 337, 728, 392],	// 缘结之庭
+		[997, 340, 1036, 381],	// 狐栖归处
+	];
+	const hp = thisScript.helperBridge.getHelper(1280, 720);
+	for (let i = 0; i < regions.length; i++) {
+		const r = regions[i];
+		const sp = hp.GetPoint(r[0], r[1], left);
+		const ep = hp.GetPoint(r[2], r[3], left);
+		const ocrResult = thisScript.findText('中', 0, [sp.x, sp.y, ep.x, ep.y], '包含');
+		if (ocrResult.length) {
+			console.log(`503 OCR兜底命中町中牌子"中"字，区域: ${r.join(',')}`);
+			return true;
+		}
+	}
+	return false;
+}
+
 export class Func503 implements IFuncOrigin {
 	id = 503;
 	name = '返回庭院界面';
@@ -388,7 +419,15 @@ export class Func503 implements IFuncOrigin {
 			[left, 1280, 720, 110, 15, 152, 57, 2000] // 修改为返回庭院按钮
 		]
 	}, {	// 12 判断_是否为庭院中的'町中'立牌
-		desc: '庭院_町中立牌'
+		desc: [
+			1280, 720,
+			[
+				[center, 738, 324, 0x979693],
+				[center, 738, 349, 0x999595],
+				[center, 740, 247, 0xb7b0af],
+				[center, 754, 302, 0xaba896],
+			]
+		]
 	}, {
 		//	13 页面是否为庭院(菜单已展开)另一种图标 御祝图标 只支持默认庭院皮肤与默认装饰
 		desc: '页面是否为庭院_菜单已展开_另一种图标_御祝图标_只支持默认庭院皮肤与默认装饰',
@@ -895,12 +934,14 @@ export class Func503 implements IFuncOrigin {
 				})) {
 					return true;
 				}
+				// 取色优先（快）：命中「庭院_町中立牌」直接确认；未命中再走 OCR 兜底，
+				// 牌子上"町中"二字与皮肤无关，可兼容未配置取色的庭院皮肤
 				if (thisScript.oper({
 					name: '庭院界面',
 					operator: [{
 						desc: thisOperator[12].desc
 					}]
-				})) {
+				}) || ocrConfirmCourt(thisScript)) {
 					// 返回方案起始点,并重置起始点?必要性存疑
 					let next_scheme = thisScript.runtimeParams && thisScript.runtimeParams.next_scheme_name;
 					if (!next_scheme) {

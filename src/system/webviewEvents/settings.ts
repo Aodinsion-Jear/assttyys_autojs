@@ -9,6 +9,7 @@ import helperBridge from '@/system/helperBridge';
 import { mlkitOcr } from '@/system/Ocr/MlkitOcr';
 import { mlkitOcr2 } from '@/system/Ocr/MlkitOcr2';
 import { yunxiOcr } from '@/system/Ocr/YunxiOcr';
+import { rapidOcr } from '@/system/Ocr/RapidOcr';
 import { myShell } from '@/system/MyAutomator';
 import pushClients from '@/system/PushClient/index';
 import { AbstractPushClient } from '../PushClient/AbstractPushClient';
@@ -188,7 +189,7 @@ export default function webviewSettigns() {
 			name: 'ocrType',
 			type: 'assttyys_setting',
 			stype: 'list',
-			data: ['MlkitOcr', 'MlkitOcr2', 'YunxiOcr'],
+			data: ['MlkitOcr', 'MlkitOcr2', 'YunxiOcr', 'RapidOcr'],
 			value: storeSettings.ocrType
 		}];
 
@@ -199,6 +200,8 @@ export default function webviewSettigns() {
 			ocrExtEnb = mlkitOcr2.isInstalled();
 		} else if (storeSettings.ocrType === 'YunxiOcr') {
 			ocrExtEnb = yunxiOcr.isInstalled();
+		} else if (storeSettings.ocrType === 'RapidOcr') {
+			ocrExtEnb = rapidOcr.isInstalled();
 		}
 		ret.push({
 			desc: 'OCR扩展',
@@ -448,6 +451,8 @@ export default function webviewSettigns() {
 					ocr = mlkitOcr;
 				} else if (storeSettings.ocrType === 'YunxiOcr') {
 					ocr = yunxiOcr;
+				} else if (storeSettings.ocrType === 'RapidOcr') {
+					ocr = rapidOcr;
 				}
 				ocr.install({
 					successCallback: function () {

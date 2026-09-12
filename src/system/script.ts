@@ -9,6 +9,7 @@ import { IOcr, IOcrDetector, OcrResult } from './Ocr/IOcr';
 import { mlkitOcr } from '@/system/Ocr/MlkitOcr';
 import { mlkitOcr2 } from '@/system/Ocr/MlkitOcr2';
 import { yunxiOcr } from '@/system/Ocr/YunxiOcr';
+import { rapidOcr } from '@/system/Ocr/RapidOcr';
 import { setCurrentScheme } from '@/common/tool';
 import { getWidthPixels, getHeightPixels } from '@auto.pro/core';
 import schemeDialog from './schemeDialog';
@@ -137,6 +138,9 @@ export class Script {
 			} else if (storeSettings.ocrType === 'YunxiOcr') {
 				this.ocrDetector = yunxiOcr.prepare();
 				this.ocr = yunxiOcr;
+			} else if (storeSettings.ocrType === 'RapidOcr') {
+				this.ocrDetector = rapidOcr.prepare();
+				this.ocr = rapidOcr;
 			}
 		}
 	}

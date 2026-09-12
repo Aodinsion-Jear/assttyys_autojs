@@ -1686,5 +1686,8 @@ export const versionList = [{
 }, {
 	version: '20260902_01',
 	desc: '新增：690启动游戏、993应用启动登录兼容十周"进入游戏"登录页（新旧界面均可识别；十周登录页区服名为竖排文字无法OCR，命中时跳过区服校验直接点击进入游戏）。'
+}, {
+	version: '20260912_tyfs_01',
+	desc: '新增：OCR扩展类型 RapidOcr（离线 onnxruntime + PP-OCRv5 模型，对中文艺术字更友好，支持32位真机与x86_64模拟器，需在设置页下载扩展）。'
 }];
 export default versionList[versionList.length - 1].version;
