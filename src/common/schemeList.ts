@@ -276,7 +276,12 @@ const SchemeList: IScheme[] = [
 		id: 42,
 		schemeName: '庭院进入阴界之门',
 		groupNames: ['寮活动'],
-		list: [509, 510, 0, 1, 2, 3, 6220, 5, 606],
+		list: [509, 510, 0, 1, 2, 3, 6120, 5, 606],
+		config: {
+			'6120': {
+				type: '阴界之门',
+			}
+		}
 	},
 	{
 		id: 76,
