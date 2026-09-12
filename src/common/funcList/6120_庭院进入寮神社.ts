@@ -8,14 +8,14 @@ const right = 2;
 export class Func6120 implements IFuncOrigin {
 	id = 6120;
 	name = '庭院进入寮神社';
-	desc = '从庭院(默认皮肤)导航进入寮神社，可选进入麒麟或道馆';
+	desc = '从庭院(默认皮肤)导航进入寮神社，可选进入麒麟、道馆或阴界之门';
 	config = [{
 		desc: '',
 		config: [{
 			name: 'type',
 			desc: '进入目标',
 			type: 'list',
-			data: ['麒麟', '道馆'],
+			data: ['麒麟', '道馆', '阴界之门'],
 			default: '麒麟',
 		}]
 	}];
@@ -96,11 +96,48 @@ export class Func6120 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 396, 126, 625, 351, 1000]
 		]
+	}, {
+		// 8 在神社页面点击阴界之门按钮
+		desc: [1280, 720,
+			[
+				[left, 107, 127, 0xe8d8c6],
+				[left, 101, 137, 0x371517],
+				[left, 253, 500, 0xedc7ed],
+				[left, 194, 460, 0xc1ae93],
+				[left, 233, 531, 0x7c526e],
+				[left, 294, 542, 0x925195],
+				[right, 1216, 414, 0xc17749],
+			]
+		],
+		oper: [
+			[left, 1280, 720, 163, 430, 358, 584, 1000]
+		]
+	}, {
+		// 9 检测已进入阴界之门内部
+		desc: [1280, 720,
+			[
+				[right, 1109, 641, 0x2b153f],
+				[right, 1089, 648, 0x300812],
+				[right, 1087, 670, 0x552a30],
+				[right, 1124, 657, 0x8d2a6e],
+				[right, 1141, 678, 0x3b132a],
+				[left, 44, 39, 0xf3e8a7],
+				[left, 66, 39, 0xb3834d],
+			]
+		]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		const thisConf = thisScript.scheme.config['6120'];
-		// 根据配置选择神社内的目标：道馆或麒麟(狩猎战)
-		const targetOper = thisConf && thisConf.type === '道馆' ? thisOperator[7] : thisOperator[5];
+		// 根据配置选择神社内的目标：麒麟(狩猎战)、道馆或阴界之门
+		let targetOper = thisOperator[5];
+		let arrivalDesc = thisOperator[6].desc;
+		if (thisConf && thisConf.type === '道馆') {
+			targetOper = thisOperator[7];
+			arrivalDesc = null;
+		} else if (thisConf && thisConf.type === '阴界之门') {
+			targetOper = thisOperator[8];
+			arrivalDesc = thisOperator[9].desc;
+		}
 		if (thisScript.oper({
 			id: 6120,
 			name: '庭院进入寮神社_导航',
@@ -109,10 +146,10 @@ export class Func6120 implements IFuncOrigin {
 			return true;
 		}
 
-		if (thisConf && thisConf.type !== '道馆' && thisScript.oper({
-			name: '检测_已进入狩猎战',
+		if (arrivalDesc && thisScript.oper({
+			name: '检测_已进入目标界面',
 			operator: [{
-				desc: thisOperator[6].desc
+				desc: arrivalDesc
 			}]
 		})) {
 			return false;
