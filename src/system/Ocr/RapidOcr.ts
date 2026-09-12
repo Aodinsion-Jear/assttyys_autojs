@@ -3,22 +3,24 @@ import drawFloaty from '../drawFloaty';
 import { IOcr, IOcrDetector, OcrResult } from './IOcr';
 
 /**
- * RapidOcr：离线 OCR 扩展（onnxruntime + PP-OCRv5 mobile 模型，armeabi-v7a + x86_64）。
- * 插件工程见 C:/Users/Administrator/rapidocr_plugin，打包产物 rapidocr_v1.zip
- * 通过 install() 从服务器下载解压到 外部存储/assttyus_ng/rapidocr/。
+ * RapidOcr：离线 OCR 扩展（onnxruntime + PP-OCRv5 mobile 模型）。
+ * 以 Auto.js 插件 APK 形式分发（包名 com.tyys.rapidocr，与 MLKit 插件同模式），
+ * 用户按 CPU 架构下载安装 APK 后，脚本通过 $plugins.load 加载。
+ * 插件工程见 C:/Users/Administrator/rapidocr_plugin，构建产物为按 ABI 分包的 APK。
  */
 class RapidOcrDetector implements IOcrDetector {
+	// IOcrDetector 接口要求的占位字段，与 plugin 指向同一对象
 	instance = null;
+	// $plugins.load 返回的插件 JS 包装对象（插件 assets/plugin-rapidocr/index.js 导出）
+	plugin = null;
 	initResult: boolean = false;
 
-	constructor(detPath: string, clsPath: string, recPath: string, keysPath: string) {
-		// dex 已由 RapidOcr.prepare 通过 runtime.loadDex 加载
-		const loaded = com.tyys.rapidocr.RapidOcrPlugin.loadNative(runtime.libraryDir);
-		console.log(`RapidOcr loadNative(${runtime.libraryDir}): ${loaded}`);
-		this.instance = new com.tyys.rapidocr.RapidOcrPlugin();
-		this.initResult = this.instance.init(detPath, clsPath, recPath, keysPath);
+	constructor(plugin) {
+		this.plugin = plugin;
+		this.instance = plugin;
+		this.initResult = plugin.init();
 		if (!this.initResult) {
-			console.error(`RapidOcr init 失败: ${this.instance.getLastError()}`);
+			console.error(`RapidOcr init 失败: ${plugin.getLastError()}`);
 		}
 		events.on('exit', () => {
 			this.destroy(); // 释放 session，否则下次无法 init
@@ -27,7 +29,7 @@ class RapidOcrDetector implements IOcrDetector {
 
 	loadImage(bitmap) {
 		if (this.initResult === true) {
-			const result = this.instance.ocr(bitmap);
+			const result = this.plugin.ocr(bitmap);
 			return JSON.parse(result);
 		} else {
 			return null;
@@ -35,8 +37,8 @@ class RapidOcrDetector implements IOcrDetector {
 	}
 
 	destroy() {
-		if (this.instance) {
-			this.instance.destroy();
+		if (this.plugin) {
+			this.plugin.destroy();
 		}
 	}
 }
@@ -45,98 +47,89 @@ export class RapidOcr implements IOcr {
 	detector: RapidOcrDetector;
 	typeName: string = 'RapidOcr';
 
-	// 下载地址：rapidocr_v1.zip 需手动上传到服务器
-	static get downloadUrl(): string {
-		return 'https://asttyys.gzlyyds.cn/assttyys/rapidocr_v1.zip';
-	}
+	static packageName: string = 'com.tyys.rapidocr';
 
-	static get basePath(): string {
-		return context.getExternalFilesDir(null).getAbsolutePath() + '/assttyus_ng/rapidocr';
+	// 插件 APK versionCode 最低要求（2 起为插件模式，1 是 zip 时代的调试包）
+	static minPluginVersion: number = 2;
+
+	// 下载地址：rapidocr_plugin_<abi>.apk 需手动上传到服务器
+	static get downloadBaseUrl(): string {
+		return 'https://asttyys.gzlyyds.cn/assttyys';
 	}
 
 	/**
-	 * 当前进程的 native ABI 目录名（nativeLibraryDir 以 /lib/arm、/lib/arm64、/lib/x86_64 等结尾）
+	 * 设备首选 ABI（SUPPORTED_ABIS 按优先级排列），映射到分包 APK 文件名
 	 */
-	static get abiDir(): string {
-		const libDir: string = context.getApplicationInfo().nativeLibraryDir;
-		const suffix = libDir.substring(libDir.lastIndexOf('/') + 1);
-		const map = { arm: 'armeabi-v7a', arm64: 'arm64-v8a', x86: 'x86', x86_64: 'x86_64' };
-		return map[suffix] || 'armeabi-v7a';
+	static get deviceAbi(): string {
+		const supported = android.os.Build.SUPPORTED_ABIS as string[];
+		for (const abi of ['arm64-v8a', 'armeabi-v7a', 'x86_64']) {
+			if (supported.includes(abi)) {
+				return abi;
+			}
+		}
+		return supported[0] || 'arm64-v8a';
 	}
 
 	/**
 	 * 获取ocr是否安装
 	 */
 	isInstalled(): boolean {
-		const path = RapidOcr.basePath;
-		const abi = RapidOcr.abiDir;
-		const toCheckPaths = [
-			path + '/libs/RapidOcr.dex',
-			path + `/libs/${abi}/libonnxruntime.so`,
-			path + `/libs/${abi}/libonnxruntime4j_jni.so`,
-			path + '/models/ch_PP-OCRv5_det_mobile.onnx',
-			path + '/models/ch_PP-LCNet_x0_25_textline_ori_cls_mobile.onnx',
-			path + '/models/ch_PP-OCRv5_rec_mobile.onnx',
-			path + '/models/ppocrv5_dict.txt',
-		];
-		let flag = true;
-		for (const path of toCheckPaths) {
-			if (!files.exists(path)) {
-				console.error(`该文件不存在${path}`);
-				flag = false;
+		try {
+			const plg = $plugins.load(RapidOcr.packageName);
+			const ver = plg.getPluginVersion();
+			if (ver < RapidOcr.minPluginVersion) {
+				console.error(`RapidOcr 插件版本过低: ${ver}，请安装新版插件`);
+				return false;
 			}
+		} catch (e) {
+			console.error(e);
+			return false;
 		}
-		return flag;
+		return true;
 	}
 
 	/**
-	 * 安装：从服务器下载 zip 并解压（约 20MB）
+	 * 安装：从服务器下载对应架构的插件 APK 并拉起系统安装器（约 30MB）。
+	 * 与 MlkitOcr 一致：安装由用户在系统安装器中手动完成，
+	 * 完成后重新打开开关，isInstalled() 通过即为成功。
 	 */
 	install(option) {
-		// 已安装（含手动 adb push 部署的情况）直接成功，避免重复下载
+		// 已安装直接成功
 		if (this.isInstalled()) {
 			option.successCallback();
 			return;
 		}
-		const self = this;
-		dialogs.confirm('提示', '大约消耗20Mb，是否下载OCR扩展（RapidOcr）？', function (cr) {
+		const abi = RapidOcr.deviceAbi;
+		dialogs.confirm('提示', `大约消耗30Mb，是否下载OCR扩展（RapidOcr，${abi}）？下载后请手动安装，装完重新打开本开关。`, function (cr) {
 			if (cr) {
-				try {
-					threads.start(function () {
-						try {
-							toastLog('下载中，请稍后...');
-							const path = RapidOcr.basePath;
-							const url = RapidOcr.downloadUrl;
-							const r = http.get(url);
-							// @ts-expect-error d.ts文件问题
-							if (r.statusCode !== 200) {
-								toastLog('下载失败');
-								option.failCallback();
-								return;
-							}
-							console.log(`解压路径：${path}`);
-							files.ensureDir(path + '/rapidocr_v1.zip');
-							// @ts-expect-error d.ts文件问题
-							files.writeBytes(path + '/rapidocr_v1.zip', r.body.bytes());
-							$zip.unzip(path + '/rapidocr_v1.zip', path);
-							toastLog('下载完成');
-							files.remove(path + '/rapidocr_v1.zip');
-							if (self.isInstalled()) {
-								option.successCallback();
-							} else {
-								option.failCallback();
-							}
-						} catch (e) {
-							toast(e);
-							console.error($debug.getStackTrace(e));
+				threads.start(function () {
+					try {
+						toastLog('下载中，请稍后...');
+						const url = `${RapidOcr.downloadBaseUrl}/rapidocr_plugin_${abi}.apk`;
+						const apkPath = context.getExternalFilesDir(null).getAbsolutePath() + `/rapidocr_plugin_${abi}.apk`;
+						const r = http.get(url);
+						// @ts-expect-error d.ts文件问题
+						if (r.statusCode !== 200) {
+							toastLog('下载失败');
 							option.failCallback();
+							return;
 						}
-					});
-				} catch (e) {
-					toast(e);
-					console.error($debug.getStackTrace(e));
+						// @ts-expect-error d.ts文件问题
+						files.writeBytes(apkPath, r.body.bytes());
+						toastLog('下载完成，请安装');
+						try {
+							app.viewFile(apkPath);
+						} catch (e) {
+							console.error(e);
+							$app.openUrl(`${RapidOcr.downloadBaseUrl}/rapidocr_plugin_${abi}.apk`);
+						}
+					} catch (e) {
+						toast(e);
+						console.error($debug.getStackTrace(e));
+					}
+					// 安装动作由用户在系统安装器中完成，本次开关按失败处理，装完重开即可
 					option.failCallback();
-				}
+				});
 			} else {
 				option.failCallback();
 			}
@@ -144,22 +137,8 @@ export class RapidOcr implements IOcr {
 	}
 
 	prepare() {
-		const path = RapidOcr.basePath;
-		console.log(`RapidOcr Path: ${path}`);
-		runtime.loadDex(path + '/libs/RapidOcr.dex');
-		const abi = RapidOcr.abiDir;
-		const soLibs = ['libonnxruntime.so', 'libonnxruntime4j_jni.so'];
-		for (const so of soLibs) {
-			if (!files.exists(runtime.files.join(runtime.libraryDir, so))) {
-				files.copy(path + `/libs/${abi}/` + so, runtime.files.join(runtime.libraryDir, so));
-			}
-		}
-		this.detector = new RapidOcrDetector(
-			path + '/models/ch_PP-OCRv5_det_mobile.onnx',
-			path + '/models/ch_PP-LCNet_x0_25_textline_ori_cls_mobile.onnx',
-			path + '/models/ch_PP-OCRv5_rec_mobile.onnx',
-			path + '/models/ppocrv5_dict.txt'
-		);
+		const plg = $plugins.load(RapidOcr.packageName);
+		this.detector = new RapidOcrDetector(plg);
 		return this.detector;
 	}
 
