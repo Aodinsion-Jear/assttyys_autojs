@@ -1692,5 +1692,8 @@ export const versionList = [{
 }, {
 	version: '20260912_tyfs_02',
 	desc: '优化：RapidOcr 扩展改为 APK 插件模式（与 MLKit 相同，已装旧版扩展的需按 CPU 架构重新下载安装插件 APK）；新增：庭院皮肤狐栖归处兼容（流畅画质）。'
+}, {
+	version: '20260912_tyfs_03',
+	desc: '修复：狐栖归处皮肤下"菜单未展开"判定误命中（取色组缺少菜单按钮本体点，菜单展开后仍判定未展开），导致启动游戏反复点击展开按钮死循环。'
 }];
 export default versionList[versionList.length - 1].version;
