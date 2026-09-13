@@ -283,6 +283,16 @@ export class Func503 implements IFuncOrigin {
 			desc: '50 麒麟狩猎成功',
 			type: 'switch',
 			default: true,
+		}, {
+			name: 'oper_51',
+			desc: '51 阴门组队_已挑战',
+			type: 'switch',
+			default: true,
+		}, {
+			name: 'oper_52',
+			desc: '52 阴界之门地图界面',
+			type: 'switch',
+			default: true,
 		}
 		]
 	}];
@@ -878,6 +888,38 @@ export class Func503 implements IFuncOrigin {
 		oper: [
 			[left, 1280, 720, 98, 19, 137, 60, 2000],
 		]
+	}, { // 51 阴门组队_已挑战
+		desc: [1280, 720,
+			[
+				[left, 282, 111, 0x771a35],
+				[left, 276, 301, 0x170b2a],
+				[left, 288, 343, 0x170b2a],
+				[center, 361, 345, 0x6b102a],
+				[center, 405, 410, 0xf7eff5],
+				[center, 405, 459, 0x68188b],
+				[center, 338, 617, 0xc7bdb4],
+				[right, 691, 193, 0x432c00],
+			]
+		],
+		oper: [
+			[right, 1280, 720, 1163, 51, 1215, 104, 1000], // 点击返回按钮，回到阴界之门地图界面
+		]
+	}, { // 52 阴界之门地图界面
+		desc: [1280, 720,
+			[
+				[left, 53, 30, 0xf1d997],
+				[left, 66, 33, 0xb1804a],
+				[left, 123, 32, 0xf9eeb7],
+				[right, 1108, 627, 0x160a2b],
+				[right, 1085, 625, 0x26040c],
+				[right, 1109, 678, 0xefd9e8],
+				[right, 1116, 661, 0xf3e4f0],
+				[right, 1141, 659, 0x170a2b],
+			]
+		],
+		oper: [
+			[left, 1280, 720, 105, 19, 151, 57, 2000], // 点击返回庭院按钮
+		]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		const thisConf = thisScript.scheme.config['503'];
@@ -935,11 +977,13 @@ export class Func503 implements IFuncOrigin {
 					return true;
 				}
 				// 取色优先（快）：命中「庭院_町中立牌」直接确认；未命中再走 OCR 兜底，
-				// 牌子上"町中"二字与皮肤无关，可兼容未配置取色的庭院皮肤
+				// 牌子上"町中"二字与皮肤无关，可兼容未配置取色的庭院皮肤。
+				// 注意必须用字符串 key 引用 multiDetectColors，皮肤变体（缘结之庭/狐栖归处）
+				// 挂在该 key 的 fallbacks 上；传内联数组（如 thisOperator[12].desc）不会走 fallbacks。
 				if (thisScript.oper({
 					name: '庭院界面',
 					operator: [{
-						desc: thisOperator[12].desc
+						desc: '庭院_町中立牌'
 					}]
 				}) || ocrConfirmCourt(thisScript)) {
 					// 返回方案起始点,并重置起始点?必要性存疑

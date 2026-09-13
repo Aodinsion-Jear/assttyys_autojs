@@ -6,7 +6,7 @@ const center = 1;
 const right = 2;
 
 // 超时状态（模块级，operatorFunc 以 call(null) 调用，不能用 this）
-// idle: 尚未识别到任何阴门界面; active: 已识别并开始操作; done: 已进组队界面移交6231
+// idle: 尚未识别到任何阴门界面; active: 已识别并开始操作; done: 已移交（进组队界面移交6231 / 已挑战移交503），done 后本功能完全静默
 let yinmenState: 'idle' | 'active' | 'done' = 'idle';
 let yinmenEnterTime = 0;
 const YINMEN_TIMEOUT = 30000; // 30s 内未识别到任何相关界面则停止脚本
@@ -14,7 +14,7 @@ const YINMEN_TIMEOUT = 30000; // 30s 内未识别到任何相关界面则停止�
 export class Func6121 implements IFuncOrigin {
 	id = 6121;
 	name = '阴门挑战';
-	desc = '阴界之门地图点击阴门图标，挑战界面点击挑战(弹窗点确认)，进入组队界面后移交6231；30s未识别到任何相关界面则停止脚本';
+	desc = '阴界之门地图点击阴门图标，挑战界面点击挑战(弹窗点确认)，进入组队界面后移交6231；识别到已挑战则移交503返回庭院；30s未识别到任何相关界面则停止脚本';
 	operator: IFuncOperatorOrigin[] = [{
 		// 0 阴界之门地图界面 → 点击阴界之门图标
 		desc: [1280, 720,
@@ -78,7 +78,7 @@ export class Func6121 implements IFuncOrigin {
 			]
 		]
 	}, {
-		// 4 检测阴界之门已挑战(挑战界面按钮置灰状态) → 停止脚本
+		// 4 检测阴界之门已挑战(挑战界面按钮置灰状态) → 移交503返回庭院
 		desc: [1280, 720,
 			[
 				[left, 291, 109, 0x761a36],
@@ -97,6 +97,12 @@ export class Func6121 implements IFuncOrigin {
 			yinmenEnterTime = now;
 		}
 
+		// done 后（已移交6231 或 已移交503）本功能完全静默，
+		// 防止 503 往回走经过阴界之门地图时，operator[0] 又点阴门图标造成循环
+		if (yinmenState === 'done') {
+			return false;
+		}
+
 		// 已挑战(按钮置灰)优先判定，防止置灰界面被挑战取色误匹配导致误点
 		if (thisScript.oper({
 			name: '检测_阴界之门已挑战',
@@ -104,9 +110,9 @@ export class Func6121 implements IFuncOrigin {
 				desc: thisOperator[4].desc
 			}]
 		})) {
-			thisScript.myToast('阴界之门今日已挑战，脚本停止');
-			thisScript.stop();
-			sleep(2000);
+			// 不再停止脚本，移交 503 返回庭院（组队已挑战→点返回→阴界之门地图→点返回庭院）
+			yinmenState = 'done';
+			thisScript.myToast('阴界之门今日已挑战，返回庭院');
 			return false;
 		}
 
@@ -132,8 +138,8 @@ export class Func6121 implements IFuncOrigin {
 			return false;
 		}
 
-		// 移交后(战斗中/结算中)不再做超时判定；idle/active 阶段 30s 无识别则停止
-		if (yinmenState !== 'done' && now - yinmenEnterTime > YINMEN_TIMEOUT) {
+		// 移交后(战斗中/结算中/返回庭院中)已在函数顶部拦截；idle/active 阶段 30s 无识别则停止
+		if (now - yinmenEnterTime > YINMEN_TIMEOUT) {
 			thisScript.myToast('阴门挑战: 30s内未识别到任何相关界面，脚本停止');
 			thisScript.stop();
 			sleep(2000);
