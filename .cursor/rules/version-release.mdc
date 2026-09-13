@@ -1,0 +1,12 @@
+---
+description: 修改版本记录文件时的发布规范
+globs: src/common/version.ts
+alwaysApply: false
+---
+
+`version.ts` 是手机端更新提示的触发源，修改时遵守：
+
+1. 每次发布前在末尾 `}];` 前追加一条 `{ version: 'YYYYMMDD_tyfs_序号', desc: '...' }`，版本号不能重复（规范见 `C:/Users/Administrator/Desktop/DiyAss/docs/versioning.md`）。
+2. 同步上游合并时此文件几乎必冲突：保留双方全部记录，上游记录在前、tyfs 记录在最后，保证 `versionList[versionList.length-1]` 是体验服版本。
+3. 只推 `tyfs-custom` 不会触发编译，必须合并到 `master` 并推 `origin/master`。
+4. 构建产物 `assttyys_ng.zip` 不要提交。

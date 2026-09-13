@@ -1,0 +1,12 @@
+---
+description: 同步原作者上游（git merge upstream/master）时的完整流程与检查清单
+alwaysApply: false
+---
+
+同步上游必须按文档执行，不要凭记忆操作：
+
+1. 流程：`C:/Users/Administrator/Desktop/DiyAss/docs/workflows.md` §5.4（merge-tree 干跑预测冲突 → 排查静默覆盖文件 → 逐文件解决 → 构建验证后发布）
+2. 合并后复查清单：`docs/custom-features.md` §4.14（按脆弱度排序，优先查静默失效项：思金神两个 key、026 灯笼单行坐标、029 突破界面分支、courtSkins 的 base key）
+3. 体服自定义总清单：`docs/custom-changes.md` §4.0（diff 里出现的每个文件都要确认）
+4. `version.ts` 保留双方记录（上游在前、tyfs 在最后）；`package.json` 与两个锁文件必须同时保留 `github:` fork 指向
+5. 不要 `git add .`；`assttyys_ng.zip` 不提交；合并后 `npm run build` 必须通过才能发布

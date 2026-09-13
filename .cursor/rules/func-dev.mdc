@@ -1,0 +1,14 @@
+---
+description: 修改 funcList 功能、取色数据、庭院皮肤数据时的规范与文档指引
+globs: src/common/funcList/*.ts, src/common/multiDetectColors.ts, src/common/multiFindColors.ts, src/common/schemeList.ts, src/common/courtSkins/**
+alwaysApply: false
+---
+
+修改功能逻辑 / 取色 / 坐标前必读维护文档（在文档仓库 `C:/Users/Administrator/Desktop/DiyAss`）：
+
+- 坐标格式：`docs/coordinate-format.md`
+- 该文件的体服自定义说明与合并脆弱度：`docs/custom-changes.md` §4.0 清单 + 对应小节
+- 新增 func 后必须被 `schemeList.ts` 某个方案的 list 引用才会执行（见 `docs/custom-features.md` §4.12）
+- 庭院皮肤适配不要改 func，走 `src/common/courtSkins/` 数据驱动框架（见 `COURT_SKIN_GUIDE.md` 与 `docs/custom-features.md` §4.12A）
+- 4 个共享庭院取色 key（`页面是否为庭院_菜单未展开_只支持默认庭院皮肤与默认装饰` 等）被十余个 func 共用，改动影响面大
+- 完成后在 `src/common/version.ts` 追加版本记录才会触发手机端更新提示
