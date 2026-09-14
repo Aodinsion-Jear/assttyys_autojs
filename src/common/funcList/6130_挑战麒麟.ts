@@ -7,14 +7,24 @@ const center = 1;
 const right = 2;
 
 // operatorFunc 以 call(null) 调用，辅助逻辑放在模块级。
-function handlePriorityPage(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
-	if (thisScript.oper({ name: '检测_麒麟已被击杀', operator: [thisOperator[3]] })) {
-		thisScript.myToast('麒麟已被击杀，点击返回并停止脚本');
-		sleep(2000);
-		thisScript.stop();
-		return true;
+// 已击杀/已挑战界面不在此处点击或停止：打 qilinFinishedScheme 标记后返回 false，
+// 交给方案中靠后的 503（分支 50/53）点返回庭院并收尾；6120 见到标记不再从庭院导航进寮。
+function checkQilinFinishedPage(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
+	if (!thisScript.oper({
+		name: '检测_麒麟已击杀或已挑战',
+		operator: [{ desc: thisOperator[4].desc }, { desc: thisOperator[5].desc }]
+	})) {
+		return false;
 	}
-	return !!thisScript.oper({ id: 6130, name: '麒麟_未借协战确认继续', operator: [thisOperator[4]] });
+	if (thisScript.global.qilinFinishedScheme !== thisScript.scheme.schemeName) {
+		thisScript.global.qilinFinishedScheme = thisScript.scheme.schemeName;
+		thisScript.myToast('麒麟已击杀或已挑战，返回庭院后结束');
+	}
+	return true;
+}
+
+function handlePriorityPage(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
+	return !!thisScript.oper({ id: 6130, name: '麒麟_未借协战确认继续', operator: [thisOperator[3]] });
 }
 
 function isSelectionPage(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
@@ -72,6 +82,8 @@ function hasSelectionText(results: OcrResult[]): boolean {
 function selectSixStar(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 	for (let attempt = 1; attempt <= 3; attempt++) {
 		thisScript.keepScreen(false);
+		// 选择途中麒麟被击杀/超时：放弃本轮选择，交给 503 返回庭院
+		if (checkQilinFinishedPage(thisScript, thisOperator)) return false;
 		if (handlePriorityPage(thisScript, thisOperator)) return true;
 		if (!isSelectionPage(thisScript, thisOperator)) {
 			if (challenge(thisScript, thisOperator)) return true;
@@ -151,19 +163,7 @@ export class Func6130 implements IFuncOrigin {
 		]],
 		oper: [[right, 1280, 720, 1136, 586, 1216, 671, 1000]]
 	}, {
-		// 3 检测麒麟已被击杀 → 点击返回并停止脚本
-		desc: [1280, 720, [
-			[left, 67, 655, 0xdcb576],
-			[left, 143, 661, 0x868686],
-			[left, 228, 657, 0xed4b36],
-			[left, 296, 655, 0xb73a1a],
-			[right, 1177, 599, 0xdcdcdc],
-			[right, 1183, 645, 0xd8d8d8],
-			[right, 856, 564, 0xbe1010],
-		]],
-		oper: [[left, 1280, 720, 98, 19, 137, 60, 2000]]
-	}, {
-		// 4 未借协战式神提示 → 点击确定继续挑战
+		// 3 未借协战式神提示 → 点击确定继续挑战
 		desc: [1280, 720, [
 			[center, 479, 430, 0xdf6851],
 			[center, 476, 445, 0xdf6851],
@@ -175,8 +175,33 @@ export class Func6130 implements IFuncOrigin {
 			[right, 709, 436, 0xf3b25e],
 		]],
 		oper: [[center, 1280, 720, 675, 410, 840, 454, 1000]]
+	}, {
+		// 4 检测麒麟已被击杀（仅判定打标记，不点击，取色与 503 分支 50 一致）
+		desc: [1280, 720, [
+			[left, 67, 655, 0xdcb576],
+			[left, 143, 661, 0x868686],
+			[left, 228, 657, 0xed4b36],
+			[left, 296, 655, 0xb73a1a],
+			[right, 1177, 599, 0xdcdcdc],
+			[right, 1183, 645, 0xd8d8d8],
+			[right, 856, 564, 0xbe1010],
+		]]
+	}, {
+		// 5 检测麒麟已挑战（仅判定打标记，不点击，取色与 503 分支 53 一致）
+		desc: [1280, 720, [
+			[left, 114, 32, 0xf9eeb7],
+			[right, 1182, 605, 0xd9d9d9],
+			[right, 1183, 663, 0xdbdbdb],
+			[right, 1062, 665, 0xfff4f4],
+			[right, 961, 656, 0xfff9e6],
+			[right, 874, 661, 0x6d5758],
+			[right, 787, 664, 0xfff4f5],
+			[left, 73, 658, 0xa87443],
+		]]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
+		// 已击杀/已挑战页面返回 false，让同轮靠后的 503 点返回庭院
+		if (checkQilinFinishedPage(thisScript, thisOperator)) return false;
 		if (handlePriorityPage(thisScript, thisOperator)) return true;
 		if (isSelectionPage(thisScript, thisOperator)) return selectSixStar(thisScript, thisOperator);
 		return challenge(thisScript, thisOperator);

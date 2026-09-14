@@ -127,6 +127,12 @@ export class Func6120 implements IFuncOrigin {
 		]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
+		// 6130 已标记麒麟结束时（已击杀/已挑战），本方案进入返回庭院收尾阶段：
+		// 庭院出现后不得抢先导航进寮，否则 503 没机会确认庭院并结束（2026-09-14 实测竞态）。
+		// 标记按方案名隔离，切换到其他方案后不影响本功能。
+		if (thisScript.global.qilinFinishedScheme === thisScript.scheme.schemeName) {
+			return false;
+		}
 		const thisConf = thisScript.scheme.config['6120'];
 		// 根据配置选择神社内的目标：麒麟(狩猎战)、道馆或阴界之门
 		let targetOper = thisOperator[5];

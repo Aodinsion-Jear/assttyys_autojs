@@ -12,6 +12,7 @@ export type globalRootType = {
 	notifyTime: number,
 	back: boolean, // 返回庭院的开关,true为开启,false为关闭.默认为:true(开启)
 	back_time: number, // 记录返回庭院的点击次数
+	qilinFinishedScheme: string | null, // 6130 检测到麒麟已击杀/已挑战时记录当前方案名，6120 据此不再导航进寮，交给 503 返回庭院收尾
 	tp_swipe_times: number,
 	tsAttackSwhipeNum: number,
 	dgCurNum: number,
@@ -308,6 +309,7 @@ export const globalRoot: globalRootType = {
 	miWenClearTimer: 0,
 	back: true,
 	back_time: 0,
+	qilinFinishedScheme: null,
 }
 export type superGlobalRootType = {
 	liao_activity_Switch: Record<string, boolean>, // 寮活动记录

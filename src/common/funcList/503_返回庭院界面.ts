@@ -293,6 +293,11 @@ export class Func503 implements IFuncOrigin {
 			desc: '52 阴界之门地图界面',
 			type: 'switch',
 			default: true,
+		}, {
+			name: 'oper_53',
+			desc: '53 麒麟已挑战界面',
+			type: 'switch',
+			default: true,
 		}
 		]
 	}];
@@ -919,6 +924,22 @@ export class Func503 implements IFuncOrigin {
 		],
 		oper: [
 			[left, 1280, 720, 105, 19, 151, 57, 2000], // 点击返回庭院按钮
+		]
+	}, { // 53 麒麟已挑战界面
+		desc: [1280, 720,
+			[
+				[left, 114, 32, 0xf9eeb7],
+				[right, 1182, 605, 0xd9d9d9],
+				[right, 1183, 663, 0xdbdbdb],
+				[right, 1062, 665, 0xfff4f4],
+				[right, 961, 656, 0xfff9e6],
+				[right, 874, 661, 0x6d5758],
+				[right, 787, 664, 0xfff4f5],
+				[left, 73, 658, 0xa87443],
+			]
+		],
+		oper: [
+			[left, 1280, 720, 94, 15, 135, 57, 2000], // 点击返回庭院按钮
 		]
 	}];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
