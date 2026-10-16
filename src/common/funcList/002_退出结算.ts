@@ -439,7 +439,47 @@ export class Func002 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 595, 454, 685, 494, 1000],
 		]
-	},];
+	},
+	{ // 37 通用获得奖励弹窗
+		desc: [1280, 720, [
+			[center, 387, 328, 0xd9c5b0],
+			[center, 504, 293, 0xd9c5b0],
+			[right, 687, 292, 0xd9c5b0],
+			[right, 893, 303, 0xd9c5b0],
+		]],
+		oper: [[center, 1280, 720, 1042, 176, 1187, 585, 1000]],
+		notForCnt: true,
+	},
+	{ // 38 雪御前boss
+		desc: [1280, 720, [
+			[center, 1220, 38, 0xe8d3d0],
+			[center, 1212, 31, 0xe9d4d1],
+			[center, 1229, 33, 0xe7d3ce],
+			[center, 1221, 26, 0xa66090],
+			[center, 1222, 54, 0xad5796],
+		]],
+		oper: [[center, 1280, 720, 1215, 32, 1230, 50, 1000]],
+		notForCnt: true,
+	},
+	{ // 39 思金神活动获得奖励（体服，原024）
+		desc: [1280, 720, [
+			[left, 45, 46, 0x30343c],
+			[left, 71, 48, 0x343841],
+			[left, 100, 50, 0x363c45],
+			[left, 42, 75, 0x383d46],
+			[left, 73, 75, 0x373d47],
+			[left, 99, 76, 0x343a43],
+			[right, 1182, 263, 0x292b36],
+			[right, 1187, 300, 0x735a3c],
+			[right, 1183, 350, 0x303136],
+			[right, 1208, 271, 0x1d1e24],
+			[right, 1213, 304, 0x2e2e31],
+			[right, 1212, 341, 0x292d36],
+		]],
+		oper: [[center, 1280, 720, 850, 580, 1255, 703, 1000]],
+		notForCnt: true,
+	}]
+
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 		const thisconf = thisScript.scheme.config['2'];
 		if (thisconf && thisconf.rechallenge && thisScript.oper({
@@ -488,7 +528,9 @@ export class Func002 implements IFuncOrigin {
 				thisOperator[11], thisOperator[23], thisOperator[24],
 				thisOperator[26], thisOperator[27], thisOperator[28], thisOperator[29],
 				thisOperator[30], thisOperator[31], thisOperator[33], thisOperator[34],
-				thisOperator[35], thisOperator[36]]
+				thisOperator[35], thisOperator[36], thisOperator[37], thisOperator[38],
+				thisOperator[39],
+			]
 		});
 	}
 }

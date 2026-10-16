@@ -9,7 +9,7 @@ const SchemeList: IScheme[] = [
 		id: 11,
 		schemeName: '小功能合集',
 		star: true,
-		list: [0, 1, 2, 3, 17, 22, 28, 31, 302, 309, 310, 319, 24],
+		list: [0, 1, 2, 3, 17, 22, 28, 31, 302, 309, 310, 319],
 	},
 	{
 		id: 26,
@@ -19,7 +19,7 @@ const SchemeList: IScheme[] = [
 	{
 		id: 29,
 		schemeName: '返回庭院',
-		list: [0, 1, 2, 3, 24, 503],
+		list: [0, 1, 2, 3, 503],
 		config: {
 			'0': {
 				jspd_enabled_longtime_nodo: true,
@@ -31,7 +31,7 @@ const SchemeList: IScheme[] = [
 		id: 62,
 		schemeName: '通用准备退出',
 		star: true,
-		list: [0, 1, 2, 3, 24],
+		list: [0, 1, 2, 3],
 	},
 	// ========== 战斗 ==========
 	{
@@ -39,7 +39,7 @@ const SchemeList: IScheme[] = [
 		schemeName: '通用活动',
 		groupNames: ['战斗'],
 		star: true,
-		list: [0, 1, 2, 3, 24, 312],
+		list: [0, 1, 2, 3, 312],
 	},
 	{
 		id: 3,
@@ -159,7 +159,7 @@ const SchemeList: IScheme[] = [
 		schemeName: '逢魔日常',
 		groupNames: ['日常'],
 		star: true,
-		list: [1, 2, 3, 23, 24, 26, 508, 8, 504],
+		list: [1, 2, 3, 23, 26, 508, 8, 504],
 		config: {
 			'508': {
 				next_scheme: '每日签到与收取邮件',
@@ -251,7 +251,7 @@ const SchemeList: IScheme[] = [
 		id: 44,
 		schemeName: '狭间暗域',
 		groupNames: ['寮活动'],
-		list: [318, 311, 315, 510, 0, 1, 2, 3, 24, 603],
+		list: [318, 311, 315, 510, 0, 1, 2, 3, 603],
 	},
 	{
 		id: 25,
@@ -359,7 +359,7 @@ const SchemeList: IScheme[] = [
 		schemeName: '六道椒图',
 		groupNames: ['每周活动'],
 		star: true,
-		list: [690, 509, 510, 0, 1, 316, 2, 3, 24, 29, 503],
+		list: [690, 509, 510, 0, 1, 316, 2, 3, 29, 503],
 		config: {
 			'316': {
 				overTimes: '2'
@@ -379,7 +379,7 @@ const SchemeList: IScheme[] = [
 		id: 102,
 		schemeName: '每周真蛇_队员',
 		groupNames: ['每周活动'],
-		list: [690, 509, 510, 0, 1, 2, 3, 4, 24, 1106, 503],
+		list: [690, 509, 510, 0, 1, 2, 3, 4, 1106, 503],
 		config: {
 			'0': {
 				jspd_enabled_2: true,
@@ -432,7 +432,7 @@ const SchemeList: IScheme[] = [
 		id: 78,
 		schemeName: '周三神秘商人',
 		groupNames: ['每周活动'],
-		list: [690, 0, 1, 2, 3, 24, 1110, 503],
+		list: [690, 0, 1, 2, 3, 1110, 503],
 		config: {
 			'0': {
 				jspd_times_longtime_nodo: '1',
@@ -443,7 +443,7 @@ const SchemeList: IScheme[] = [
 		id: 78,
 		schemeName: '百鬼棋局',
 		groupNames: ['每周活动'],
-		list: [0, 1, 2, 3, 24, 320],
+		list: [0, 1, 2, 3, 320],
 		config: {
 			'0': {
 				jspd_times_longtime_nodo: '5',
@@ -454,7 +454,7 @@ const SchemeList: IScheme[] = [
 		id: 78,
 		schemeName: '每周资源领取',
 		groupNames: ['每周活动'],
-		list: [690, 0, 1, 2, 3, 24, 1100, 1101, 1102, 1103, 1104, 1105, 1107, 1108, 1109, 1111, 503],
+		list: [690, 0, 1, 2, 3, 1100, 1101, 1102, 1103, 1104, 1105, 1107, 1108, 1109, 1111, 503],
 		config: {
 			'0': {
 				jspd_times_longtime_nodo: '1',
@@ -519,7 +519,7 @@ const SchemeList: IScheme[] = [
 		id: 99,
 		schemeName: '伊吹之擂',
 		groupNames: ['罕见活动'],
-		list: [0, 3, 24, 99],
+		list: [0, 3, 99],
 	},
 	{
 		id: 101,
@@ -536,7 +536,7 @@ const SchemeList: IScheme[] = [
 		id: 78,
 		schemeName: '清自己1-4星鬼王',
 		groupNames: ['罕见活动'],
-		list: [0, 1, 2, 3, 24, 317],
+		list: [0, 1, 2, 3, 317],
 	},
 	// ========== 循环任务 ==========
 	{
@@ -672,7 +672,7 @@ const SchemeList: IScheme[] = [
 		id: 111,
 		schemeName: '僵尸寮日常任务',
 		star: true,
-		list: [0, 1, 2, 3, 24, 609, 503],
+		list: [0, 1, 2, 3, 609, 503],
 		groupNames: ['小号部分'],
 		config: {
 			'0': {
@@ -717,7 +717,7 @@ const SchemeList: IScheme[] = [
 		id: 79,
 		schemeName: '师徒_徒弟登录',
 		groupNames: ['师徒部分'],
-		list: [690, 0, 1, 2, 3, 5, 24, 691, 503],
+		list: [690, 0, 1, 2, 3, 5, 691, 503],
 		config: {
 			'0': {
 				jspd_times_longtime_nodo: '3',
