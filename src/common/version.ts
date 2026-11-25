@@ -1722,5 +1722,11 @@ export const versionList = [{
 }, {
 	version: '20261016_tyfs_01',
 	desc: '同步原作者更新至fb59132c：024获得奖励确认停用并内置到002（体服思金神活动奖励弹窗随之迁入002作为operator 39，内置方案列表移除func 24引用）、510式神录重新取点、401对弈竞猜添加推送并修复PushPlus；312通用活动新增"活动右下角式神录"判定；退出结算经验金币buff取色重取；保留思金神界面判定、庭院fallbacks机制、思金神返回/智慧之火取色key。'
+}, {
+	version: '20261030_01',
+	desc: '适配新悬赏'
+}, {
+	version: '20261126_tyfs_01',
+	desc: '同步原作者更新至8c63a9a6；002、018采用原作者版本；保留自有服务器构建配置并合并庭院立牌与悬赏取色。'
 }];
 export default versionList[versionList.length - 1].version;

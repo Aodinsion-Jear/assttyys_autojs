@@ -17,6 +17,11 @@ export class Func316 implements IFuncOrigin {
 			type: 'switch',
 			default: false,
 		}, {
+			name: 'onlyDouble',
+			desc: '只打双倍（双倍次数用完自动停止）',
+			type: 'switch',
+			default: true,
+		}, {
 			name: 'overTimes',
 			desc: '挂机局数，完成后自动切换方案，0表示一直刷',
 			type: 'integer',
@@ -89,7 +94,7 @@ export class Func316 implements IFuncOrigin {
 			]
 		],
 		oper: [
-			[center, 1280, 720, 1034, 578, 1137, 621, 500], // 万相之赐
+			[center, 1280, 720, 1034, 578, 1137, 621, 1000], // 万相之赐
 		]
 	}, { // 5 已适配66 混沌_宝箱
 		desc: [
@@ -288,15 +293,14 @@ export class Func316 implements IFuncOrigin {
 			[
 				[right, 1211, 657, 0xbbab7f],
 				[right, 1225, 633, 0xb8a67d],
-				[right, 1200, 45, 0x99948a],
-				[right, 1204, 43, 0x9a968b],
-				[right, 1204, 40, 0x7d7870],
-				[right, 1198, 35, 0xb2ada1],
-				[right, 1198, 33, 0xb2ada1],
+				[right, 1201, 32, 0x45413c],
+				[right, 1201, 37, 0x878279],
+				[right, 1207, 41, 0x282422],
+				[right, 1200, 44, 0x8a857d],
 			]
 		],
 		oper: [
-			[center, 1280, 720, 1191, 621, 1243, 676, 500],
+			[center, 1280, 720, 1191, 621, 1243, 676, 2000],
 		]
 	}, { // 18 十位数的0
 		desc: [
@@ -304,14 +308,14 @@ export class Func316 implements IFuncOrigin {
 			[
 				[right, 1211, 657, 0xbbab7f],
 				[right, 1225, 633, 0xb8a67d],
-				[right, 1197, 39, 0xa7a296],
-				[right, 1205, 39, 0x8f8a80],
-				[right, 1205, 37, 0x8f8b80],
-				[right, 1197, 36, 0xa7a297],
+				[right, 1197, 35, 0xa49e94],
+				[right, 1205, 36, 0x948e85],
+				[right, 1201, 45, 0x7e7972],
+				[right, 1201, 37, 0x1f191d],
 			]
 		],
 		oper: [
-			[center, 1280, 720, 1191, 621, 1243, 676, 500],
+			[center, 1280, 720, 1191, 621, 1243, 676, 2000],
 		]
 	}, { // 19 boss_挑战
 		desc: [
@@ -332,12 +336,12 @@ export class Func316 implements IFuncOrigin {
 		desc: [
 			1280, 720,
 			[
-				[right, 1203, 30, 0xd9e7f4],
-				[right, 1203, 34, 0xc8dbf1],
-				[right, 1207, 32, 0xd0e4f5],
-				[right, 1220, 32, 0xc8d4ec],
-				[right, 1211, 32, 0xccdaec],
-				[right, 1202, 36, 0xb7ccec],
+				[right, 1204, 28, 0xdae3ef],
+				[right, 1209, 27, 0x274685],
+				[right, 1214, 27, 0xccccdd],
+				[right, 1204, 32, 0xd2e5f5],
+				[right, 1209, 38, 0x204891],
+				[right, 1220, 34, 0xbed2ec],
 			]
 		],
 		oper: [
@@ -409,11 +413,11 @@ export class Func316 implements IFuncOrigin {
 		desc: [
 			1280, 720,
 			[
-				[left, 217, 171, 0x4786d8],
+				[center, 217, 171, 0x4786d8],
 				[center, 490, 171, 0x4687d9],
 				[center, 762, 172, 0x4583d0],
-				[left, 263, 216, 0x5ba0f2],
-				[center, 536, 216, 0x5aa1f3],
+				[center, 262, 216, 0x5ba0f2],
+				[center, 536, 216, 0x5893de],
 				[center, 809, 216, 0x5aa1f5],
 			]
 		]
@@ -512,6 +516,31 @@ export class Func316 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 1133, 601, 1207, 653, 1000],
 		]
+	}, { // 33 双倍次数为0
+		desc: [1280, 720,
+			[
+				[right, 1192, 33, 0xd4d2c1],
+				[right, 1198, 34, 0xd4d3c2],
+				[right, 1190, 40, 0xdfdecd],
+				[right, 1199, 40, 0xdfdecd],
+				[right, 1195, 40, 0x0e0e0f],
+				[right, 1191, 46, 0xd3d1c1],
+				[right, 1198, 46, 0xd4d2c1],
+			]
+		]
+	}, { // 34 柔风满层
+		desc: [1280, 720,
+			[
+				[left, 25, 91, 0xfcf5e0],
+				[left, 25, 92, 0xfaf4de],
+				[left, 25, 93, 0xf9f4df],
+				[left, 25, 94, 0xfbf6e1],
+				[left, 27, 89, 0x3f2719],
+				[left, 27, 100, 0x402b1b],
+				[left, 23, 94, 0x392417],
+				[left, 31, 94, 0x3a2417],
+			]
+		]
 	},];
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
 
@@ -545,7 +574,7 @@ export class Func316 implements IFuncOrigin {
 					]];
 					thisScript.regionClick(oper);
 					thisScript.global.d6RouFeng++;
-					log('当前柔风数量:' + thisScript.global.d6RouFeng);
+					console.log('当前柔风数量:' + thisScript.global.d6RouFeng);
 					return true;
 				}
 				else if (thisScript.oper({
@@ -553,14 +582,17 @@ export class Func316 implements IFuncOrigin {
 					name: '六道椒图_低级buff',
 					operator: [thisOperator[25]]
 				})) {//  有低级buff_选择跳过
+					console.log('有低级buff');
 					thisScript.regionClick([thisOperator[4].oper[0]]);
 					return true;
 				} else if (thisScript.oper({ // 无升级按钮_选择刷新
 					name: '六道椒图_刷新buff',
 					operator: [thisOperator[17], thisOperator[18]]
 				})) {
+					console.log('无升级按钮_选择刷新');
 					return true;
 				} else { // 无升级按钮无刷新_选择跳过
+					console.log('无升级按钮无刷新_选择跳过');
 					thisScript.regionClick([thisOperator[4].oper[0]]);
 					return true;
 				}
@@ -621,6 +653,39 @@ export class Func316 implements IFuncOrigin {
 			thisScript.global.d6RouFeng++;
 			log('当前柔风数量:' + thisScript.global.d6RouFeng);
 			return true;
+		}
+
+		// 新增：只打双倍检测
+		if ((thisScript.scheme.config['316'] || {}).onlyDouble) {
+			if (thisScript.oper({
+				id: 316,
+				name: '六道椒图_开始战斗检测',
+				operator: [{ desc: thisOperator[9].desc }]
+			})) {
+				if (thisScript.oper({
+					id: 316,
+					name: '六道椒图_双倍次数检测',
+					operator: [thisOperator[33]]
+				})) {
+					thisScript.myToast('双倍次数已用完，停止运行');
+					console.log('双倍次数已用完，停止运行');
+					thisScript.rerun('__停止脚本__');
+					return true;
+				}
+			}
+		}
+
+		// 新增：柔风满层检测，便于接手打到一半的局
+		if (thisScript.global.d6RouFeng < 5) {
+			if (thisScript.oper({
+				id: 316,
+				name: '六道椒图_柔风满层检测',
+				operator: [{ desc: thisOperator[34].desc }]
+			})) {
+				thisScript.global.d6RouFeng = 5;
+				thisScript.myToast('柔风已满，进入速通模式');
+				console.log('检测到柔风满层，进入速通模式');
+			}
 		}
 
 		if (thisScript.oper({

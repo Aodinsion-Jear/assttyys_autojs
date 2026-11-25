@@ -465,17 +465,17 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 			]
 		]
 	},
-	'退出结算_经验金币buff_第一个掉落': {
+	'退出结算_经验金币buff_掉落物金框': {
 		desc: [1280, 720,
 			[
-				[left, 187, 668, 0xf7e721],
-				[left, 339, 668, 0xf7e322],
-				[left, 277, 659, 0x5d5141],
-				[center, 425, 659, 0x5f5544],
-				[left, 256, 140, 0xcb943d],
-				[center, 380, 184, 0xd69d3b],
+				[left, 187, 652, 0x92b7e4],
+				[left, 186, 667, 0xf6e42b],
+				[left, 315, 658, 0xf1eed2],
+				[left, 339, 666, 0xf7e82e],
+				[center, 429, 104, 0xfe9843],
+				[center, 449, 210, 0xffa840],
 			]
-		]
+		],
 	},
 	'退出结算_体力不足': {
 		desc: [1280, 720,
@@ -891,7 +891,26 @@ const multiDetectColors: IMultiDetectColorsOrigin = {
 				[center, 754, 302, 0xaba896],
 			]
 		]
-	}
+	},
+	'悬赏界面': {
+		desc: [1280, 720,
+			[
+				[center, 308, 96, 0x2c2020],
+				[center, 892, 87, 0x2c2016],
+				[left, 80, 301, 0x232121],
+				[right, 1191, 303, 0x1b1a1d],
+				[left, 292, 642, 0xd7c4a3],
+				[right, 1092, 655, 0xc5ba97],
+				[center, 1212, 108, 0xebd7cf],
+				// 下面是一键追踪的点
+				[center, 1168, 640, 0x3c2d20],
+				[center, 1156, 619, 0xf0e4a4],
+				[center, 1221, 628, 0xe7d396],
+				[center, 1185, 670, 0xdbbe68],
+				[center, 1225, 637, 0xe3cf92],
+			]
+		]
+	},
 };
 
 

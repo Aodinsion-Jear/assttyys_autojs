@@ -162,14 +162,15 @@ export class Func002 implements IFuncOrigin {
 		],
 		notForCnt: true,
 	}, {
-		// 14 打开后的达摩，所有点都被结算挡住了，使用经验，金币buff，和第一个奖励的xx作为特征
-		desc: '退出结算_经验金币buff_第一个掉落',
+		// 14 打开后的达摩，所有点都被结算挡住了，使用经验，金币buff，和第二个奖励金框作为特征,第一个奖励可能为紫蛇皮,兼容常规一行6个奖励,以及逢魔演武一行8个的情况
+		// 有的寮买不起经验金币buff,目前想不到解决办法
+		desc: '退出结算_经验金币buff_掉落物金框',
 		operStepRandom: [
-			[
-				[left, 1280, 720, 69, 171, 170, 452, 2000, 2],
-				[right, 1280, 720, 1104, 72, 1200, 528, 2000, 5],
+			[ // 缩小点击范围
+				[left, 1280, 720, 59, 32, 106, 662, 1000, 10], // 最后一个参数貌似表示点击时长下限,上限为+50
+				[right, 1280, 720, 1192, 49, 1261, 654, 1000, 10],
 			]
-		],
+		]
 	}, {
 		// 15 经验金币妖怪，胜利太鼓
 		desc: '退出结算_经验金币妖怪_胜利太鼓',
@@ -439,18 +440,38 @@ export class Func002 implements IFuncOrigin {
 		oper: [
 			[center, 1280, 720, 595, 454, 685, 494, 1000],
 		]
-	},
-	{ // 37 通用获得奖励弹窗
-		desc: [1280, 720, [
-			[center, 387, 328, 0xd9c5b0],
-			[center, 504, 293, 0xd9c5b0],
-			[right, 687, 292, 0xd9c5b0],
-			[right, 893, 303, 0xd9c5b0],
-		]],
-		oper: [[center, 1280, 720, 1042, 176, 1187, 585, 1000]],
+	}, { // 37 通用获得奖励弹窗
+		desc: [1280, 720,
+			[
+				[center, 387, 328, 0xd9c5b0],
+				[center, 504, 293, 0xd9c5b0],
+				[right, 687, 292, 0xd9c5b0],
+				[right, 893, 303, 0xd9c5b0],
+				[center, 490, 260, 0x3e2b23],
+				[right, 830, 259, 0x402d23],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 1042, 176, 1187, 585, 1000],
+		],
 		notForCnt: true,
-	},
-	{ // 38 雪御前boss
+	}, { // 38 新的获得奖励弹窗，能显示到三排半
+		desc: [1280, 720,
+			[
+				[center, 387, 328, 0xd9c5b0],
+				[center, 504, 293, 0xd9c5b0],
+				[right, 687, 292, 0xd9c5b0],
+				[right, 893, 303, 0xd9c5b0],
+				[center, 481, 167, 0x412e24],
+				[right, 841, 166, 0x432f25],
+				[center, 555, 155, 0xf1d984],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 1042, 176, 1187, 585, 1000],
+		],
+		notForCnt: true,
+	}, { // 39 雪御前boss
 		desc: [1280, 720, [
 			[center, 1220, 38, 0xe8d3d0],
 			[center, 1212, 31, 0xe9d4d1],
@@ -460,24 +481,37 @@ export class Func002 implements IFuncOrigin {
 		]],
 		oper: [[center, 1280, 720, 1215, 32, 1230, 50, 1000]],
 		notForCnt: true,
-	},
-	{ // 39 思金神活动获得奖励（体服，原024）
+	}, { // 40 逢魔获得奖励弹窗（竖卷轴，金色轴杆+米黄纸面）
 		desc: [1280, 720, [
-			[left, 45, 46, 0x30343c],
-			[left, 71, 48, 0x343841],
-			[left, 100, 50, 0x363c45],
-			[left, 42, 75, 0x383d46],
-			[left, 73, 75, 0x373d47],
-			[left, 99, 76, 0x343a43],
-			[right, 1182, 263, 0x292b36],
-			[right, 1187, 300, 0x735a3c],
-			[right, 1183, 350, 0x303136],
-			[right, 1208, 271, 0x1d1e24],
-			[right, 1213, 304, 0x2e2e31],
-			[right, 1212, 341, 0x292d36],
+			[center, 387, 328, 0xd9c5ae],
+			[right, 893, 303, 0xd9c5ae],
+			[center, 420, 482, 0xd9c5ae],
+			[center, 372, 300, 0xf3c683],
+			[right, 905, 300, 0xf3c683],
+			[center, 500, 239, 0xc1a361],
+			[right, 700, 482, 0xc9ab74],
+			[center, 638, 508, 0x413228],
 		]],
-		oper: [[center, 1280, 720, 850, 580, 1255, 703, 1000]],
+		oper: [[center, 1280, 720, 1042, 176, 1187, 585, 1000]],
 		notForCnt: true,
+	}, {
+		// 41 契灵组队结束的太鼓界面，右下角有观战队友挑战中的字样
+		// 暂时没找到原来是哪里管点的，先加一个，后面如果找到的话再把原来那个修复
+		desc: [1280, 720,
+			[
+				[center, 476, 120, 0x7e1910],
+				[center, 459, 160, 0x9e1b11],
+				[center, 508, 155, 0x9c1c12],
+				[center, 483, 145, 0xd0bfab],
+				[center, 444, 134, 0xc9b7a2],
+				[center, 514, 124, 0xc6b59f],
+				[center, 493, 207, 0xd7c9b0],
+				[right, 897, 158, 0xceb07b],
+			]
+		],
+		oper: [
+			[center, 1280, 720, 64, 197, 362, 488, 1000],
+		]
 	}]
 
 	operatorFunc(thisScript: Script, thisOperator: IFuncOperator[]): boolean {
@@ -529,7 +563,7 @@ export class Func002 implements IFuncOrigin {
 				thisOperator[26], thisOperator[27], thisOperator[28], thisOperator[29],
 				thisOperator[30], thisOperator[31], thisOperator[33], thisOperator[34],
 				thisOperator[35], thisOperator[36], thisOperator[37], thisOperator[38],
-				thisOperator[39],
+				thisOperator[39], thisOperator[40], thisOperator[41],
 			]
 		});
 	}
